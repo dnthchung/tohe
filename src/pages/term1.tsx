@@ -1,9 +1,8 @@
-"use client"
+import { useTranslation } from "react-i18next"
 
-import { useLanguage } from "@/contexts/language-context"
 
 export function Term1Page() {
-  const { t } = useLanguage()
+  const { t } = useTranslation()
 
   return (
     <div className="max-w-4xl mx-auto">

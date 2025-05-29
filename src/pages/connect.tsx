@@ -1,10 +1,8 @@
-"use client"
-
-import { useLanguage } from "@/contexts/language-context"
-import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/contexts/language-context";
+import { Button } from "@/components/ui/button";
 
 export function ConnectPage() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -30,5 +28,5 @@ export function ConnectPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
