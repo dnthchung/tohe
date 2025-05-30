@@ -1,8 +1,8 @@
-import { useLanguage } from "@/contexts/language-context";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next"
 
 export function ConnectPage() {
-  const { t } = useLanguage();
+  const { t, i18n } = useTranslation("connect");
 
   return (
     <div className="max-w-4xl mx-auto">

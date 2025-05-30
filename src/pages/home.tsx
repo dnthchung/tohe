@@ -1,10 +1,10 @@
 "use client"
 
-import { useLanguage } from "@/contexts/language-context"
+import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/button"
 
 export function HomePage() {
-  const { t } = useLanguage()
+  const { t } = useTranslation()
 
   return (
     <div className="max-w-4xl mx-auto">

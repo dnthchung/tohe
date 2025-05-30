@@ -1,9 +1,8 @@
-"use client"
+import { useTranslation } from "react-i18next"
 
-import { useLanguage } from "@/contexts/language-context"
 
 export function FAQPage() {
-  const { t } = useLanguage()
+  const { t, i18n } = useTranslation("header")
 
   const faqs = [
     {

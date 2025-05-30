@@ -1,10 +1,10 @@
 "use client"
 
-import { useLanguage } from "@/contexts/language-context"
+import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/button"
 
 export function ProductsPage() {
-  const { t } = useLanguage()
+  const { t } = useTranslation()
 
   const products = [
     { id: 1, name: "Product 1", description: "Description for product 1" },
