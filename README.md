@@ -7,6 +7,7 @@ Gồm có 7 page (route) chính:
   - Kỳ 2 / Semester 2 - Kỳ 2: Hành Trình Tò He Qua Thăng Trầm Đất Việt
   - Kỳ 3 / Semester 3 - Kỳ 3: Tò He – Ngọn Lửa Nhỏ Trong Cơn Gió Lớn
   - Sản phẩm / Product (Sẽ có nhiều mùa - hiện tại chỉ mới đang có "Mùa 1") - Tò He x 12 con giáp
-  - Kết nối / Contact - Thông tin các workshop/ sự kiện về Tò He diễn ra trong thời gian tới
+  - Kết nối / Connect - Thông tin các workshop/ sự kiện về Tò He diễn ra trong thời gian tới
   - Câu hỏi thường gặp / FAQ
-  
+
+Header cần có Logo và các đường dẫn đến các page trên.

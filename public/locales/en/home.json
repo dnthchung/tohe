@@ -1,8 +1,9 @@
 {
     "welcome": "Welcome to our application",
     "content": "This is the content for",
-    "page": "page",
-    "term1": "Term 1",
-    "term2": "Term 2",
-    "term3": "Term 3"
+    "page": "home page",
+    "poem": "A tò he costs just one coin,\nI buy one for my dear boy to enjoy.\nIf he breaks it, never fear,\nI’ll get my own and hold it dear.",
+    "section1": "This innocent folk rhyme still echoes in the memories of many generations of Vietnamese people - a simple yet vivid slice of childhood. Tò he is not just a traditional toy — it is a vibrant symbol of Vietnamese culture, molded by skillful hands and childhood memories across generations. In today’s digital communication era, our mission is to reignite the spirit of this folk art and bring it closer to younger generations and international friends through each delicate shape.",
+    "section2": "We aim to preserve and celebrate tò he as a living emblem of Vietnamese identity, reviving the spirit of folk culture in the digital age while inspiring creativity, craftsmanship, and cultural memory.",
+    "section3": "Here, you can explore the stories behind each piece, meet the devoted artisans who have inherited and innovated this craft, and join us in the ongoing journey of preserving and reimagining the art of rice dough modeling."
   }
