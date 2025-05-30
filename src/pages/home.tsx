@@ -14,7 +14,7 @@
 //       document.documentElement.style.setProperty("--scroll", `${window.scrollY}px`);
 //     };
 
-//     window.addEventListener("scroll", handleScroll);
+//     window.addEventListener("scroll", handlbuildeScroll);
 //     return () => window.removeEventListener("scroll", handleScroll);
 //   }, []);
 
