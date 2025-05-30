@@ -143,14 +143,14 @@ export function HomePage() {
       <img
         src={sub2}
         className="fixed left-0 bottom-0 w-[50vw] z-10 pointer-events-none will-change-transform transition-transform duration-300 ease-out"
-        style={{ transform: "translateX(calc(var(--scroll) * -0.4))" }}
+        style={{ transform: "translateX(calc(var(--scroll) * -1))" }}
         alt="sub2"
       />
 
       <img
         src={sub1}
         className="fixed right-0 bottom-0 w-[50vw] z-10 pointer-events-none will-change-transform transition-transform duration-300 ease-out"
-        style={{ transform: "translateX(calc(var(--scroll) * 0.4))" }}
+        style={{ transform: "translateX(calc(var(--scroll) * 1))" }}
         alt="sub1"
       />
 
@@ -162,7 +162,7 @@ export function HomePage() {
       </section>
 
       {/* -------------- SECTION 1 -------------- */}
-      <section className="h-screen flex items-center justify-center text-center text-white bg-cover bg-center px-6" style={{ backgroundImage: `url(${bg2})` }}>
+      <section className="h-screen flex items-center justify-center text-center text-white bg-cover bg-center px-6" style={{ backgroundImage: `url(${nightSky})` }}>
         <p className="text-lg font-bold leading-relaxed whitespace-pre-line max-w-3xl">{t("poem") || "This is the poem section. Centered and full‑screen."}</p>
       </section>
 
