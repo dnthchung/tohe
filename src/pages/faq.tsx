@@ -1,35 +1,37 @@
-import { useTranslation } from "react-i18next"
-
+import { useTranslation } from "react-i18next";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Copyright } from "@/components/copyright";
+import nenGradient from "/images/Nền gradient.png";
 
 export function FAQPage() {
-  const { t, i18n } = useTranslation("header")
-
-  const faqs = [
-    {
-      question: "What is TOHE?",
-      answer: "TOHE is a comprehensive platform designed to help you manage your projects effectively.",
-    },
-    {
-      question: "How do I get started?",
-      answer: "You can get started by creating an account and following our onboarding process.",
-    },
-    {
-      question: "Is there customer support?",
-      answer: "Yes, we provide 24/7 customer support through various channels.",
-    },
-  ]
+  const { t } = useTranslation("faq");
+  const faqKeys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"];
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">{t("faq")}</h1>
-      <div className="space-y-4">
-        {faqs.map((faq, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-            <p className="text-gray-600">{faq.answer}</p>
-          </div>
-        ))}
+    <div className="relative w-full min-h-screen overflow-hidden text-gray-800">
+      {/* Nền gradient cố định */}
+      <img src={nenGradient} alt="Background" className="fixed top-0 left-0 w-full h-full object-cover z-0" />
+
+      {/* Nền phụ lặp toàn trang (liền mạch với accordion + copyright) */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/Nền sáng.png')] bg-repeat-y bg-center bg-cover z-0 opacity-80"></div>
+
+      {/* Nội dung chính */}
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10">
+        {/* Accordion content */}
+        <Accordion type="single" collapsible className="space-y-2">
+          {faqKeys.map((key) => (
+            <AccordionItem key={key} value={key} className="bg-white/90 backdrop-blur-md rounded-xl border border-gray-200">
+              <AccordionTrigger className="px-6 py-4 text-left text-lg font-semibold">{t(`${key}.question`)}</AccordionTrigger>
+              <AccordionContent className="px-6 pb-4 text-gray-700 leading-relaxed">{t(`${key}.answer`)}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+
+      {/* ✅ Copyright nằm sát đáy, liền nền */}
+      <div className="relative z-10">
+        <Copyright />
       </div>
     </div>
-  )
+  );
 }

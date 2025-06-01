@@ -1,6 +1,34 @@
 {
-  "title": "Frequently Asked Questions",
-  "content": "This is the content for",
-  "page": "page",
-  "description": "Find answers to frequently asked questions about our services."
+  "q1": {
+    "question": "Are tò he ingredients safe? Can tò he be eaten?",
+    "answer": "Yes. Tò he is made from glutinous rice flour and regular rice flour, colored with either food-safe dyes or natural ingredients. Traditionally, it’s safe for children to play with and, in some regions, edible as a sweet treat — hence its old nickname “con bánh” (edible figurine)."
+  },
+  "q2": {
+    "question": "How long can tò he last?",
+    "answer": "Typically, tò he lasts from 10 to 30 days. With well-kneaded dough and proper care, it can last much longer — even up to several years. Some modern versions use improved materials that harden over time and become very durable."
+  },
+  "q3": {
+    "question": "How should I store tò he?",
+    "answer": "Keep tò he in a dry, cool place. Avoid high humidity (which may cause mold) and direct sunlight (which may cause cracking or fading). Enclosed display spaces are ideal for longer preservation."
+  },
+  "q4": {
+    "question": "Why is tò he small and colorful?",
+    "answer": "Its small size makes it easy for children to hold and play with. The vibrant colors and varied shapes stimulate creativity and visual appeal. Traditional colors often carry symbolic meanings in Vietnamese folk culture."
+  },
+  "q5": {
+    "question": "How much does a tò he figure cost?",
+    "answer": "Prices range from 20,000 to 40,000 VND (1–2 USD) for traditional models. More intricate or custom-made figures by skilled artisans may cost more — but still remain affordable cultural souvenirs."
+  },
+  "q6": {
+    "question": "Are tò he artisans professionally trained?",
+    "answer": "Most artisans learn the craft through family tradition and hands-on experience. Today, some are supported by folk art training programs and cultural preservation initiatives for more structured learning."
+  },
+  "q7": {
+    "question": "Where can I see or buy tò he today?",
+    "answer": "You can often find tò he artisans at walking streets and parks in major cities like Hanoi or Ho Chi Minh City, especially on weekends. They’re also popular at traditional festivals, spring fairs, or folk markets. For an immersive experience, visit the traditional craft village of Xuan La (Phu Xuyen, Ha Noi)."
+  },
+  "q8": {
+    "question": "How to tell traditional tò he from modern ones?",
+    "answer": "Traditional tò he is fully handmade, with a rustic look and natural colors that may fade over time. Modern versions might use synthetic colors (bright, even, long-lasting), new materials, or updated designs — but the spirit of craftsmanship remains at the core."
+  }
 }
