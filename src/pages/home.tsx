@@ -44,14 +44,14 @@ export function HomePage() {
     <div className="relative w-full overflow-x-hidden bg-black">
       {/* Parallax layers */}
       <img
-        src={sub2}
-        className="fixed left-0 bottom-0 w-[50vw] z-10 pointer-events-none will-change-transform transition-transform duration-300 ease-out"
+        src={biaChuCuoi}
+        className="fixed left-0 bottom-0 w-[80vw] z-10 pointer-events-none will-change-transform transition-transform duration-300 ease-out"
         style={{ transform: "translateX(calc(var(--scroll) * -1))" }}
         alt="sub2"
       />
       <img
-        src={sub1}
-        className="fixed right-0 bottom-0 w-[50vw] z-10 pointer-events-none will-change-transform transition-transform duration-300 ease-out"
+        src={biaChiHang}
+        className="fixed right-0 bottom-0 w-[80vw] z-10 pointer-events-none will-change-transform transition-transform duration-300 ease-out"
         style={{ transform: "translateX(calc(var(--scroll) * 1))" }}
         alt="sub1"
       />

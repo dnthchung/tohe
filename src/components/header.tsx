@@ -1,15 +1,15 @@
-// src/components/layout/header.tsx
+// src/components/header.tsx
+
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import Logo from "/vite.svg";
-import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { LanguageToggle } from "@/components/languageToggle";
 
 export function Header() {
   const { t, i18n } = useTranslation("header");
   const { pathname } = useLocation();
-  const [showLangMenu, setShowLangMenu] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const navItems = [
     { key: "home", path: "/" },
@@ -21,23 +21,24 @@ export function Header() {
     { key: "faq", path: "/faq" },
   ];
 
-  const toggleLang = (lang: string) => {
-    i18n.changeLanguage(lang);
-    setShowLangMenu(false);
-  };
-
   return (
-    <header className="w-full py-3 px-4 flex justify-center fixed top-0 left-0 right-0 z-50">
-      <div className="w-full max-w-6xl rounded-full bg-slate-800/70 backdrop-blur-md shadow-sm">
-        {/* main row */}
-        <div className="flex items-center justify-between h-14 px-4 relative">
-          {/* logo */}
+    <header className="fixed inset-x-0 top-0 z-50 flex justify-center py-3 px-4">
+      <div
+        className={`
+          w-full max-w-6xl bg-slate-800/70 backdrop-blur-md shadow-sm
+          transition-all duration-300
+          rounded-none ${mobileOpen ? "rounded-b-2xl" : "md:rounded-full"}
+        `}
+      >
+        {/* TOP ROW */}
+        <div className="flex items-center justify-between h-14 px-4">
+          {/* Logo */}
           <Link to="/" className="flex-shrink-0">
             <img src={Logo} alt="TOHE" className="h-8 w-8" />
           </Link>
 
-          {/* nav center */}
-          <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-4">
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-4">
             {navItems.map(({ key, path }) => (
               <Link
                 key={key}
@@ -52,37 +53,32 @@ export function Header() {
             ))}
           </nav>
 
-          {/* language dropdown */}
-          <div className="relative">
-            <Button variant="ghost" size="sm" className="font-semibold text-xs text-white hover:bg-white/10 flex items-center gap-1" onClick={() => setShowLangMenu(!showLangMenu)}>
-              {i18n.language.toUpperCase()}
-              <ChevronDown className="w-3 h-3" />
-            </Button>
-            {showLangMenu && (
-              <div className="absolute right-0 mt-1 bg-white rounded shadow text-sm text-slate-800 z-10">
-                <button onClick={() => toggleLang("vi")} className="px-3 py-1 hover:bg-slate-100 w-full text-left">
-                  Tiếng Việt
-                </button>
-                <button onClick={() => toggleLang("en")} className="px-3 py-1 hover:bg-slate-100 w-full text-left">
-                  English
-                </button>
-              </div>
-            )}
+          {/* Language + Burger */}
+          <div className="flex items-center gap-3">
+            <LanguageToggle />
           </div>
         </div>
 
-        {/* mobile nav */}
-        <nav className="md:hidden flex flex-wrap gap-2 pb-4 px-4 justify-center">
-          {navItems.map(({ key, path }) => (
-            <Link
-              key={key}
-              to={path}
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${pathname === path ? "bg-white/20 text-white" : "text-white/70 hover:bg-white/10 hover:text-white"}`}
-            >
-              {t(key)}
-            </Link>
-          ))}
-        </nav>
+        {/* Mobile nav panel */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300
+            ${mobileOpen ? "max-h-[80vh] py-4" : "max-h-0 py-0"}
+          `}
+        >
+          <nav className="flex flex-col gap-2 px-4 max-h-[70vh] overflow-y-auto">
+            {navItems.map(({ key, path }) => (
+              <Link
+                key={key}
+                to={path}
+                onClick={() => setMobileOpen(false)}
+                className={`px-3 py-2 rounded-md text-base font-medium transition-colors
+                  ${pathname === path ? "bg-white/20 text-white" : "text-white/70 hover:bg-white/10 hover:text-white"}`}
+              >
+                {t(key)}
+              </Link>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
   );
