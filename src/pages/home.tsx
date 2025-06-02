@@ -18,6 +18,7 @@ import chuCuoi from "/images/Chú cuội.png";
 
 // Background variations
 import nenGradient from "/images/Nền gradient.png";
+import nenGradientFlip from "/images/Nền gradient flip.png";
 import nenHongNhat from "/images/Nền hồng nhạt.png";
 import nenHong from "/images/Nền hồng.png";
 import nenSang from "/images/Nền sáng.png";
