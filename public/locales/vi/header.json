@@ -1,9 +1,9 @@
 {
-    "home": "Trang chủ",
-    "term1": "Kỳ 1",
-    "term2": "Kỳ 2",
-    "term3": "Kỳ 3",
-    "products": "Sản phẩm",
-    "connect": "Kết nối",
-    "faq": "FAQ"
-  }
+  "home": "Trang chủ",
+  "chapter1": "Kỳ 1",
+  "chapter2": "Kỳ 2",
+  "chapter3": "Kỳ 3",
+  "products": "Sản phẩm",
+  "connect": "Kết nối",
+  "faq": "FAQ"
+}

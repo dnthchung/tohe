@@ -7,15 +7,15 @@ import Logo from "/vite.svg";
 import { LanguageToggle } from "@/components/languageToggle";
 
 export function Header() {
-  const { t, i18n } = useTranslation("header");
+  const { t } = useTranslation("header");
   const { pathname } = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navItems = [
     { key: "home", path: "/" },
-    { key: "term1", path: "/term1" },
-    { key: "term2", path: "/term2" },
-    { key: "term3", path: "/term3" },
+    { key: "chapter1", path: "/chapter1" },
+    { key: "chapter2", path: "/chapter2" },
+    { key: "chapter3", path: "/chapter3" },
     { key: "products", path: "/products" },
     { key: "connect", path: "/connect" },
     { key: "faq", path: "/faq" },
@@ -34,7 +34,7 @@ export function Header() {
         <div className="flex items-center justify-between h-14 px-4">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
-            <img src={Logo} alt="TOHE" className="h-8 w-8" />
+            <img src={Logo} alt="TO HE" className="h-8 w-8" />
           </Link>
 
           {/* Desktop nav */}
