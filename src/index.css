@@ -126,3 +126,17 @@
     display: none;
   }
 }
+
+/* Slider animations */
+@keyframes slideProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-slideProgress {
+  animation: slideProgress 4s linear infinite;
+}
