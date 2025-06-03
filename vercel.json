@@ -1,0 +1,10 @@
+{
+    "ignoreCommand": "echo 'skip deployment'",
+    "redirects": [
+      {
+        "source": "/(.*)",
+        "destination": "/maintenance.html",
+        "permanent": false
+      }
+    ]
+  }

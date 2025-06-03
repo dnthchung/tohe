@@ -1,8 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { useEffect, useRef, useState, useMemo, useCallback } from "react";
-import nenGradientFlip from "/images/Nền gradient flip.png";
-import nenHong from "/images/Nền hồng.png";
-import nenHongFix from "/images/Nền hồng không mây.png"
 import nenHong2 from "/images/Nền hồng nhạt fixed mây.png"
 
 
@@ -354,7 +351,7 @@ export function Chapter1Page() {
             style={{ top: topOffset, height: chunkHeight }}
           >
             <img
-              src={nenGradientFlip}
+              src={nenHong2}
               className="absolute top-0 left-0 w-full h-full z-0"
               alt="Background"
               loading="lazy"
