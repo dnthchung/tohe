@@ -1,6 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { useEffect, useRef, useState, useMemo, useCallback } from "react";
+import nenGradientFlip from "/images/Nền gradient flip.png";
 import nenHong from "/images/Nền hồng.png";
+import nenHongFix from "/images/Nền hồng không mây.png"
+import nenHong2 from "/images/Nền hồng nhạt fixed mây.png"
+
 
 interface Paragraph {
   passage: number;
@@ -350,7 +354,7 @@ export function Chapter1Page() {
             style={{ top: topOffset, height: chunkHeight }}
           >
             <img
-              src={nenHong}
+              src={nenGradientFlip}
               className="absolute top-0 left-0 w-full h-full z-0"
               alt="Background"
               loading="lazy"
@@ -393,7 +397,7 @@ export function Chapter1Page() {
           style={{ top: topOffset, height: chunkHeight }}
         >
           <img
-            src={nenHong}
+            src={nenHong2}
             className="absolute top-0 left-0 w-full h-full z-0"
             alt="Background"
             loading="lazy"
@@ -462,7 +466,7 @@ export function Chapter1Page() {
 
   return !content || typeof content !== "object" ? (
     <div className="relative w-full h-screen flex items-center justify-center">
-      <img src={nenHong} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Background" />
+      <img src={nenHong2} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Background" />
       <div className="relative z-10 text-center">
         <p className="text-lg text-white">Loading content...</p>
       </div>
