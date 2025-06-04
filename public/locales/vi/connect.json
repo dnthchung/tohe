@@ -1,13 +1,6 @@
 {
-  "title": "Kết nối",
-  "content": "Đây là nội dung cho trang",
-  "page": "trang",
-  "contactInfo": "Thông tin liên hệ",
-  "email": "Email",
-  "phone": "Điện thoại",
-  "address": "Địa chỉ",
-  "getInTouch": "Liên hệ với chúng tôi",
-  "sendMessage": "Gửi tin nhắn",
-  "scheduleCall": "Đặt lịch gọi",
-  "description": "Liên hệ với chúng tôi để được hỗ trợ và tư vấn."
+  "connect": "Workshop & Sự kiện",
+  "content": "Trang này sẽ giới thiệu các workshop và sự kiện văn hóa về Tò He sắp diễn ra.",
+  "updating": "Thông tin đang được cập nhật. Vui lòng quay lại sau!",
+  "thanks": "Cảm ơn bạn đã quan tâm đến Tò He!"
 }

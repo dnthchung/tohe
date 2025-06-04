@@ -1,30 +1,28 @@
-import { Button } from "@/components/ui/button";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
+import nenGradient from "/images/Nền gradient.png";
 
 export function ConnectPage() {
-  const { t, i18n } = useTranslation("connect");
+  const { t } = useTranslation("connect");
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">{t("connect")}</h1>
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <p className="text-gray-600 mb-6">
-          {t("content")} {t("connect")} {t("page")}.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Contact Information</h3>
-            <p className="text-gray-600 mb-2">Email: contact@tohe.com</p>
-            <p className="text-gray-600 mb-2">Phone: +84 123 456 789</p>
-            <p className="text-gray-600">Address: Ho Chi Minh City, Vietnam</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Get in Touch</h3>
-            <Button className="w-full mb-3">Send Message</Button>
-            <Button variant="outline" className="w-full">
-              Schedule Call
-            </Button>
-          </div>
+    <div className="relative w-full min-h-screen overflow-hidden text-white">
+      {/* Nền gradient cố định */}
+      <img
+        src={nenGradient}
+        alt="Background"
+        className="fixed top-0 left-0 w-full h-full object-cover z-0"
+      />
+
+      {/* Overlay đen xuyên thấu */}
+      {/* <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-0" /> */}
+
+      {/* Nội dung trung tâm */}
+      <div className="relative z-10 flex items-center justify-center w-full h-screen px-4">
+        <div className="bg-black/50 backdrop-blur-sm rounded-xl p-10 text-center max-w-3xl">
+          <h1 className="text-4xl font-bold mb-4">{t("connect")}</h1>
+          <p className="text-lg mb-3">{t("content")}</p>
+          <p className="italic mb-4">{t("updating")}</p>
+          <p className="text-sm text-gray-300">{t("thanks")}</p>
         </div>
       </div>
     </div>

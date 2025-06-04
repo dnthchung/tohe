@@ -1,13 +1,6 @@
 {
-  "title": "Connect",
-  "content": "This is the content for",
-  "page": "page",
-  "contactInfo": "Contact Information",
-  "email": "Email",
-  "phone": "Phone",
-  "address": "Address",
-  "getInTouch": "Get in Touch",
-  "sendMessage": "Send Message",
-  "scheduleCall": "Schedule Call",
-  "description": "Contact us for support and consultation."
+  "connect": "Workshops & Events",
+  "content": "This page will feature upcoming workshops and cultural events related to Tò He.",
+  "updating": "We are currently updating the information. Please check back soon!",
+  "thanks": "Thank you for your interest in Tò He!"
 }
