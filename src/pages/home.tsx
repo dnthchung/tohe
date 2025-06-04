@@ -1,3 +1,4 @@
+//home.tsx
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -46,15 +47,15 @@ export function HomePage() {
       {/* Parallax layers */}
       <img
         src={biaChuCuoi}
-        className="fixed left-0 bottom-0 w-[80vw] z-10 pointer-events-none will-change-transform transition-transform duration-300 ease-out"
+        className="fixed left-0 bottom-0 w-[80vw] z-10 pointer-events-none transition-transform duration-300 ease-out"
         style={{ transform: "translateX(calc(var(--scroll) * -1))" }}
-        alt="sub2"
+        alt="Chu Cuội"
       />
       <img
         src={biaChiHang}
-        className="fixed right-0 bottom-0 w-[80vw] z-10 pointer-events-none will-change-transform transition-transform duration-300 ease-out"
+        className="fixed right-0 bottom-0 w-[80vw] z-10 pointer-events-none transition-transform duration-300 ease-out"
         style={{ transform: "translateX(calc(var(--scroll) * 1))" }}
-        alt="sub1"
+        alt="Chị Hằng"
       />
 
       {/* SECTION 1 - Welcome */}
@@ -72,7 +73,7 @@ export function HomePage() {
       <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center">
-          <p className="text-lg font-bold leading-relaxed whitespace-pre-line max-w-3xl">{t("poem") || "This is the poem section. Centered and full‑screen."}</p>
+          <p className="text-2xl font-semibold leading-relaxed whitespace-pre-line max-w-4xl">{t("poem") || "This is the poem section. Centered and full‑screen."}</p>
         </div>
       </section>
 
@@ -80,7 +81,7 @@ export function HomePage() {
       <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center">
-          <p className="max-w-3xl text-lg font-medium leading-relaxed whitespace-pre-line">{t("section1") || "Section 1 content goes here."}</p>
+          <p className="text-2xl font-medium leading-relaxed whitespace-pre-line max-w-4xl">{t("section1") || "Section 1 content goes here."}</p>
         </div>
       </section>
 
@@ -88,8 +89,8 @@ export function HomePage() {
       <section className="relative h-screen flex flex-col justify-center items-center text-white overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center">
-          <h2 className="text-2xl font-bold mb-6">CHUYỆN TÒ HE</h2>
-          <p className="max-w-3xl text-lg font-medium leading-relaxed whitespace-pre-line">{t("section2") || "Section 2 content goes here."}</p>
+          <h2 className="text-3xl font-bold mb-6">CHUYỆN TÒ HE</h2>
+          <p className="text-2xl font-medium leading-relaxed whitespace-pre-line max-w-4xl">{t("section2") || "Section 2 content goes here."}</p>
         </div>
       </section>
 
@@ -97,8 +98,8 @@ export function HomePage() {
       <section className="relative h-screen flex flex-col justify-center items-center text-white overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center">
-          <h2 className="text-2xl font-bold mb-6">CHUYỆN TÒ HE</h2>
-          <p className="max-w-3xl text-lg font-medium leading-relaxed whitespace-pre-line">{t("section3") || "Section 3 content goes here."}</p>
+          <h2 className="text-3xl font-bold mb-6">CHUYỆN TÒ HE</h2>
+          <p className="text-2xl font-medium leading-relaxed whitespace-pre-line max-w-4xl">{t("section3") || "Section 3 content goes here."}</p>
         </div>
       </section>
     </div>

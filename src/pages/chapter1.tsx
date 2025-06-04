@@ -1,8 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import { ImageGallery } from "../components/ImageGallery";
-import nenHong2 from "/images/Nền hồng nhạt fixed mây.png"
-
+import nenHong2 from "/images/Nền hồng nhạt fixed mây.png";
 
 interface Paragraph {
   passage: number;
@@ -42,7 +41,7 @@ export function Chapter1Page() {
 
   // Toggle expand/collapse for a specific paragraph
   const toggleParagraphExpansion = useCallback((chunkId: string) => {
-    setExpandedParagraphs(prev => {
+    setExpandedParagraphs((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(chunkId)) {
         newSet.delete(chunkId);
@@ -54,18 +53,24 @@ export function Chapter1Page() {
   }, []);
 
   // Function to truncate text
-  const getTruncatedText = useCallback((text: string, chunkId: string) => {
-    const isExpanded = expandedParagraphs.has(chunkId);
-    if (text.length <= MAX_TEXT_LENGTH || isExpanded) {
-      return text;
-    }
-    return text.substring(0, MAX_TEXT_LENGTH) + "...";
-  }, [expandedParagraphs, MAX_TEXT_LENGTH]);
+  const getTruncatedText = useCallback(
+    (text: string, chunkId: string) => {
+      const isExpanded = expandedParagraphs.has(chunkId);
+      if (text.length <= MAX_TEXT_LENGTH || isExpanded) {
+        return text;
+      }
+      return text.substring(0, MAX_TEXT_LENGTH) + "...";
+    },
+    [expandedParagraphs, MAX_TEXT_LENGTH],
+  );
 
   // Check if text needs truncation
-  const needsTruncation = useCallback((text: string) => {
-    return text.length > MAX_TEXT_LENGTH;
-  }, [MAX_TEXT_LENGTH]);
+  const needsTruncation = useCallback(
+    (text: string) => {
+      return text.length > MAX_TEXT_LENGTH;
+    },
+    [MAX_TEXT_LENGTH],
+  );
 
   const contentChunks = useMemo(() => {
     if (!content || typeof content !== "object") return [];
@@ -155,7 +160,7 @@ export function Chapter1Page() {
         threshold: 0.3,
         rootMargin: "-100px 0px -100px 0px",
         root: scrollRef.current,
-      }
+      },
     );
 
     const chunkElements = document.querySelectorAll("[data-chunk-id]");
@@ -182,25 +187,21 @@ export function Chapter1Page() {
 
       if (chunkData.type === "title") {
         return (
-          <div
-            key={chunkData.id}
-            data-chunk-id={chunkData.id}
-            className="absolute w-full flex flex-col items-center justify-center overflow-hidden"
-            style={{ top: topOffset, height: chunkHeight }}
-          >
+          <div key={chunkData.id} data-chunk-id={chunkData.id} className="absolute w-full flex flex-col items-center justify-center overflow-hidden" style={{ top: topOffset, height: chunkHeight }}>
             <img
               src={nenHong2}
               className="absolute top-0 left-0 w-full h-full z-0"
               alt="Background"
               loading="lazy"
               style={{
-                objectFit: 'cover',
-                objectPosition: 'center top',
-                minHeight: '100%',
-                width: '100%'
+                objectFit: "cover",
+                objectPosition: "center top",
+                minHeight: "100%",
+                width: "100%",
               }}
             />
-            <div className="relative z-10 text-center px-6">
+            {/* Centered content with proper padding for navigation dots */}
+            <div className="relative z-10 text-center px-6 pr-16 w-full max-w-6xl">
               <h1
                 className={`text-4xl md:text-6xl font-bold mb-8 text-white drop-shadow-lg transition-all duration-1500 ease-out ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
@@ -209,7 +210,7 @@ export function Chapter1Page() {
                 {t("title")}
               </h1>
               <p
-                className={`text-xl md:text-2xl text-white max-w-4xl leading-relaxed transition-all duration-1500 ease-out ${
+                className={`text-xl md:text-2xl text-white max-w-4xl mx-auto leading-relaxed transition-all duration-1500 ease-out ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                 }`}
                 style={{ transitionDelay: "500ms" }}
@@ -225,48 +226,35 @@ export function Chapter1Page() {
       const contentOnLeft = chunkData.isEven;
 
       return (
-        <div
-          key={chunkData.id}
-          data-chunk-id={chunkData.id}
-          className="absolute w-full flex items-center justify-center overflow-hidden"
-          style={{ top: topOffset, height: chunkHeight }}
-        >
+        <div key={chunkData.id} data-chunk-id={chunkData.id} className="absolute w-full flex items-center justify-center overflow-hidden" style={{ top: topOffset, height: chunkHeight }}>
           <img
             src={nenHong2}
             className="absolute top-0 left-0 w-full h-full z-0"
             alt="Background"
             loading="lazy"
             style={{
-              objectFit: 'cover',
-              objectPosition: 'center top',
-              minHeight: '100%',
-              width: '100%'
+              objectFit: "cover",
+              objectPosition: "center top",
+              minHeight: "100%",
+              width: "100%",
             }}
           />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6 w-full h-full flex items-center">
-            <div className={`grid grid-cols-1 ${hasImages ? 'lg:grid-cols-2' : 'lg:grid-cols-1'} gap-12 items-center w-full min-h-[80vh]`}>
-
+          {/* Content container with proper padding for navigation dots */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 pr-16 w-full h-full flex items-center">
+            <div className={`grid grid-cols-1 ${hasImages ? "lg:grid-cols-2" : "lg:grid-cols-1"} gap-12 items-center w-full min-h-[80vh]`}>
               {/* Content */}
               <div
-                className={`space-y-6 ${
-                  hasImages ? (contentOnLeft ? 'lg:order-1' : 'lg:order-2') : 'lg:col-span-1 max-w-4xl mx-auto'
-                } transition-all duration-1200 ease-out ${
-                  isVisible ? "opacity-100 translate-x-0" : `opacity-0 ${contentOnLeft ? 'translate-x-[-50px]' : 'translate-x-[50px]'}`
+                className={`space-y-6 ${hasImages ? (contentOnLeft ? "lg:order-1" : "lg:order-2") : "lg:col-span-1 max-w-4xl mx-auto"} transition-all duration-1200 ease-out ${
+                  isVisible ? "opacity-100 translate-x-0" : `opacity-0 ${contentOnLeft ? "translate-x-[-50px]" : "translate-x-[50px]"}`
                 }`}
                 style={{ transitionDelay: "300ms" }}
               >
                 {/* Only show section title for passage 1 */}
-                {chunkData.paragraph.passage === 1 && (
-                  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white text-center lg:text-left">
-                    {chunkData.sectionTitle}
-                  </h2>
-                )}
+                {chunkData.paragraph.passage === 1 && <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white text-center lg:text-left">{chunkData.sectionTitle}</h2>}
 
                 <div className={`${glassStyle} p-8`}>
-                  <p className="text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium">
-                    {getTruncatedText(chunkData.paragraph.text, chunkData.id)}
-                  </p>
+                  <p className="text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium">{getTruncatedText(chunkData.paragraph.text, chunkData.id)}</p>
 
                   {needsTruncation(chunkData.paragraph.text) && (
                     <button
@@ -281,14 +269,8 @@ export function Chapter1Page() {
 
               {/* Images */}
               {hasImages && (
-                <div
-                  className={`${contentOnLeft ? 'lg:order-2' : 'lg:order-1'} h-full flex items-center justify-center`}
-                >
-                  <ImageGallery
-                    images={chunkData.paragraph.images}
-                    isVisible={isVisible}
-                    delay={600}
-                  />
+                <div className={`${contentOnLeft ? "lg:order-2" : "lg:order-1"} h-full flex items-center justify-center`}>
+                  <ImageGallery images={chunkData.paragraph.images} isVisible={isVisible} delay={600} />
                 </div>
               )}
             </div>
@@ -296,7 +278,7 @@ export function Chapter1Page() {
         </div>
       );
     },
-    [visibleChunks, glassStyle, t, getTruncatedText, needsTruncation, toggleParagraphExpansion, expandedParagraphs]
+    [visibleChunks, glassStyle, t, getTruncatedText, needsTruncation, toggleParagraphExpansion, expandedParagraphs],
   );
 
   return !content || typeof content !== "object" ? (
@@ -317,17 +299,8 @@ export function Chapter1Page() {
         `}
       </style>
       <div className="relative w-full h-screen overflow-hidden">
-        <div
-          ref={scrollRef}
-          className="w-full h-full overflow-y-auto overflow-x-hidden"
-          onScroll={handleScroll}
-          style={{ scrollBehavior: "smooth" }}
-        >
-          <div
-            ref={containerRef}
-            className="relative w-full"
-            style={{ height: totalHeight }}
-          >
+        <div ref={scrollRef} className="w-full h-full overflow-y-auto overflow-x-hidden" onScroll={handleScroll} style={{ scrollBehavior: "smooth" }}>
+          <div ref={containerRef} className="relative w-full" style={{ height: totalHeight }}>
             {visibleChunkIndices.map((i) => renderChunk(chunkPositions[i], i))}
           </div>
         </div>
@@ -342,8 +315,8 @@ export function Chapter1Page() {
           />
         </div>
 
-        {/* Navigation dots */}
-        <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 space-y-2">
+        {/* Navigation dots - positioned to not interfere with content */}
+        <div className="fixed right-2 top-1/2 transform -translate-y-1/2 z-40 space-y-2">
           {chunkPositions.map((chunkData) => (
             <button
               key={chunkData.id}
@@ -353,16 +326,10 @@ export function Chapter1Page() {
                   behavior: "smooth",
                 })
               }
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                visibleChunks.has(chunkData.id)
-                  ? "bg-white scale-125 shadow-lg"
-                  : "bg-white/40 hover:bg-white/60"
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 border border-white/30 ${
+                visibleChunks.has(chunkData.id) ? "bg-white scale-150 shadow-lg border-white" : "bg-white/40 hover:bg-white/60 hover:scale-125"
               }`}
-              title={
-                chunkData.type === "title"
-                  ? "Title"
-                  : `${chunkData.sectionTitle} - Passage ${chunkData.paragraph.passage}`
-              }
+              title={chunkData.type === "title" ? "Title" : `${chunkData.sectionTitle} - Passage ${chunkData.paragraph.passage}`}
             />
           ))}
         </div>
