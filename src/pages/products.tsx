@@ -34,27 +34,82 @@ const animalCards = [
 
 const zodiacNames = ["Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
 
+// Loading component
+const LoadingScreen = () => (
+  <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
+    <div className="text-center text-white">
+      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
+      <p className="text-xl font-semibold">Đang tải...</p>
+      <p className="text-sm opacity-70 mt-2">Loading resources...</p>
+    </div>
+  </div>
+);
+
 export function ProductsPage() {
   const { t } = useTranslation("products");
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
   const [visibleCards, setVisibleCards] = useState(new Set());
 
   useEffect(() => {
-    // Trigger initial load animation
-    setIsLoaded(true);
+    // Preload all images
+    const preloadImages = async () => {
+      const imageUrls = [
+        nenGradient,
+        nenSang,
+        hopToHe,
+        ...animalCards.map(card => card.img)
+      ];
 
-    // Animate cards appearing one by one
-    const timer = setTimeout(() => {
-      animalCards.forEach((_, index) => {
-        setTimeout(() => {
-          setVisibleCards((prev) => new Set([...prev, index]));
-        }, index * 100); // Stagger animation by 100ms
+      const imagePromises = imageUrls.map((src) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = src;
+        });
       });
-    }, 1000); // Delayed to start after first section
 
-    return () => clearTimeout(timer);
+      try {
+        await Promise.all(imagePromises);
+        // Add minimum loading time for better UX
+        setTimeout(() => {
+          setIsLoading(false);
+          setIsLoaded(true);
+        }, 1500);
+      } catch (error) {
+        console.error("Error loading images:", error);
+        // Still proceed even if some images fail to load
+        setTimeout(() => {
+          setIsLoading(false);
+          setIsLoaded(true);
+        }, 2000);
+      }
+    };
+
+    preloadImages();
   }, []);
+
+  useEffect(() => {
+    if (!isLoading && isLoaded) {
+      // Animate cards appearing one by one
+      const timer = setTimeout(() => {
+        animalCards.forEach((_, index) => {
+          setTimeout(() => {
+            setVisibleCards((prev) => new Set([...prev, index]));
+          }, index * 100); // Stagger animation by 100ms
+        });
+      }, 1000); // Delayed to start after first section
+
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading, isLoaded]);
+
+  // Show loading screen while resources are loading
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="relative w-full min-h-screen overflow-x-hidden">
