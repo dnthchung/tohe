@@ -88,4 +88,35 @@ Tạo file `public/maintenance.html` (hoặc `static/maintenance.html` tùy proj
 
 ---
 
-Bạn muốn mình gửi luôn toàn bộ file `vercel.json` và `maintenance.html` mẫu không?
+//home.tsx
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+
+// Backgrounds
+import bg1 from "/images/bg1.png";
+import bg2 from "/images/bg2.png";
+import bg3 from "/images/bg3.png";
+
+// Custom backgrounds
+import biaChiHang from "/images/Bìa chị hằng.png";
+import biaChuCuoi from "/images/Bìa chú cuội.png";
+import biaNenTrongSuot from "/images/Bìa nền trong suốt.png";
+import bia from "/images/Bìa.png";
+
+// Characters
+import chiHang from "/images/Chị Hằng.png";
+import chuCuoi from "/images/Chú cuội.png";
+
+// Background variations
+import nenGradient from "/images/Nền gradient.png";
+import nenGradientFlip from "/images/Nền gradient flip.png";
+import nenHongNhat from "/images/Nền hồng nhạt.png";
+import nenHong from "/images/Nền hồng.png";
+import nenSang from "/images/Nền sáng.png";
+
+// Decorative & Parallax
+import nightSky from "/images/night-sky-998641.jpg";
+import sub1 from "/images/sub1.png";
+import sub2 from "/images/sub2.png";
+import subSvg1 from "/images/sub1.svg";
+import subSvg2 from "/images/sub2.svg";

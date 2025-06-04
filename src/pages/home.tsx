@@ -1,35 +1,10 @@
 //home.tsx
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
-// Backgrounds
-import bg1 from "/images/bg1.png";
-import bg2 from "/images/bg2.png";
-import bg3 from "/images/bg3.png";
-
-// Custom backgrounds
 import biaChiHang from "/images/Bìa chị hằng.png";
 import biaChuCuoi from "/images/Bìa chú cuội.png";
-import biaNenTrongSuot from "/images/Bìa nền trong suốt.png";
-import bia from "/images/Bìa.png";
-
-// Characters
-import chiHang from "/images/Chị Hằng.png";
-import chuCuoi from "/images/Chú cuội.png";
-
-// Background variations
 import nenGradient from "/images/Nền gradient.png";
-import nenGradientFlip from "/images/Nền gradient flip.png";
-import nenHongNhat from "/images/Nền hồng nhạt.png";
-import nenHong from "/images/Nền hồng.png";
 import nenSang from "/images/Nền sáng.png";
-
-// Decorative & Parallax
-import nightSky from "/images/night-sky-998641.jpg";
-import sub1 from "/images/sub1.png";
-import sub2 from "/images/sub2.png";
-import subSvg1 from "/images/sub1.svg";
-import subSvg2 from "/images/sub2.svg";
 
 export function HomePage() {
   const { t } = useTranslation("home");
@@ -61,13 +36,24 @@ export function HomePage() {
       {/* SECTION 1 - Welcome */}
       <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
         <img src={nenGradient} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
-        <h1
-          className="relative z-10 text-4xl md:text-6xl font-bold drop-shadow-md will-change-transform transition-transform duration-300 ease-out"
-          style={{ transform: "translateY(calc(var(--scroll) * 0.2))" }}
-        >
-          Welcome to TOHE
-        </h1>
+        <div className="relative z-10" style={{ transform: "translateY(calc(var(--scroll) * 0.2))" }}>
+          <svg viewBox="0 0 500 200" className="w-[90vw] max-w-4xl mx-auto">
+            <defs>
+              <path
+                id="curve"
+                d="M 50 150 Q 250 0 450 150"
+                fill="transparent"
+              />
+            </defs>
+            <text fill="white" fontSize="24" fontWeight="bold">
+              <textPath href="#curve" startOffset="50%" textAnchor="middle">
+                CHUYỆN TÒ HE - TO HE TALES
+              </textPath>
+            </text>
+          </svg>
+        </div>
       </section>
+
 
       {/* SECTION 2 - Poem */}
       <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
