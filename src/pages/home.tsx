@@ -86,7 +86,7 @@ export function HomePage() {
 
       {/* SECTION 4 - Chuyện tò he 1 */}
       <section className="relative h-screen flex flex-col justify-center items-center text-white overflow-hidden">
-        <img src={bg2} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
+        <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center">
           <h2 className="text-2xl font-bold mb-6">CHUYỆN TÒ HE</h2>
           <p className="max-w-3xl text-lg font-medium leading-relaxed whitespace-pre-line">{t("section2") || "Section 2 content goes here."}</p>
@@ -95,7 +95,7 @@ export function HomePage() {
 
       {/* SECTION 5 - Chuyện tò he 2 */}
       <section className="relative h-screen flex flex-col justify-center items-center text-white overflow-hidden">
-        <img src={bg2} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
+        <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center">
           <h2 className="text-2xl font-bold mb-6">CHUYỆN TÒ HE</h2>
           <p className="max-w-3xl text-lg font-medium leading-relaxed whitespace-pre-line">{t("section3") || "Section 3 content goes here."}</p>
