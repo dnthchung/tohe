@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Logo from "/vite.svg";
+import Logo from "/Logo.png";
 import { LanguageToggle } from "@/components/languageToggle";
 
 export function Header() {
