@@ -29,48 +29,13 @@ export function Chapter1Page() {
   const [scrollY, setScrollY] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
   const [visibleChunks, setVisibleChunks] = useState<Set<string>>(new Set());
-  const [expandedParagraphs, setExpandedParagraphs] = useState<Set<string>>(new Set());
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const CHUNK_HEIGHT = window.innerHeight; // Mỗi passage chiếm full screen
   const BUFFER_SIZE = 2;
-  const MAX_TEXT_LENGTH = 300; // Giới hạn ký tự cho đoạn văn
 
   const glassStyle = "bg-black/40 backdrop-blur-sm rounded-lg shadow-lg";
-
-  // Toggle expand/collapse for a specific paragraph
-  const toggleParagraphExpansion = useCallback((chunkId: string) => {
-    setExpandedParagraphs((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(chunkId)) {
-        newSet.delete(chunkId);
-      } else {
-        newSet.add(chunkId);
-      }
-      return newSet;
-    });
-  }, []);
-
-  // Function to truncate text
-  const getTruncatedText = useCallback(
-    (text: string, chunkId: string) => {
-      const isExpanded = expandedParagraphs.has(chunkId);
-      if (text.length <= MAX_TEXT_LENGTH || isExpanded) {
-        return text;
-      }
-      return text.substring(0, MAX_TEXT_LENGTH) + "...";
-    },
-    [expandedParagraphs, MAX_TEXT_LENGTH],
-  );
-
-  // Check if text needs truncation
-  const needsTruncation = useCallback(
-    (text: string) => {
-      return text.length > MAX_TEXT_LENGTH;
-    },
-    [MAX_TEXT_LENGTH],
-  );
 
   const contentChunks = useMemo(() => {
     if (!content || typeof content !== "object") return [];
@@ -165,6 +130,7 @@ export function Chapter1Page() {
 
     const chunkElements = document.querySelectorAll("[data-chunk-id]");
     chunkElements.forEach((el) => observer.observe(el));
+
     return () => observer.disconnect();
   }, [visibleChunkIndices]);
 
@@ -174,6 +140,7 @@ export function Chapter1Page() {
         setContainerHeight(containerRef.current.clientHeight);
       }
     };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -187,17 +154,26 @@ export function Chapter1Page() {
 
       if (chunkData.type === "title") {
         return (
-          <div key={chunkData.id} data-chunk-id={chunkData.id} className="absolute w-full flex flex-col items-center justify-center overflow-hidden" style={{ top: topOffset, height: chunkHeight }}>
+          <div
+            key={chunkData.id}
+            data-chunk-id={chunkData.id}
+            className="absolute w-full flex flex-col items-center justify-center overflow-hidden"
+            style={{
+              top: topOffset,
+              height: chunkHeight + 2 // Thêm 2px để overlap
+            }}
+          >
             <img
               src={nenHong2}
-              className="absolute top-0 left-0 w-full h-full z-0"
+              className="absolute top-0 left-0 w-full z-0"
               alt="Background"
               loading="lazy"
               style={{
                 objectFit: "cover",
                 objectPosition: "center top",
-                minHeight: "100%",
+                height: chunkHeight + 4, // Tăng chiều cao background để che khoảng trống
                 width: "100%",
+                transform: "translateY(-2px)" // Dịch chuyển lên trên để overlap
               }}
             />
             {/* Centered content with proper padding for navigation dots */}
@@ -226,50 +202,70 @@ export function Chapter1Page() {
       const contentOnLeft = chunkData.isEven;
 
       return (
-        <div key={chunkData.id} data-chunk-id={chunkData.id} className="absolute w-full flex items-center justify-center overflow-hidden" style={{ top: topOffset, height: chunkHeight }}>
+        <div
+          key={chunkData.id}
+          data-chunk-id={chunkData.id}
+          className="absolute w-full flex items-center justify-center overflow-hidden"
+          style={{
+            top: topOffset,
+            height: chunkHeight + 2 // Thêm 2px để overlap
+          }}
+        >
           <img
             src={nenHong2}
-            className="absolute top-0 left-0 w-full h-full z-0"
+            className="absolute top-0 left-0 w-full z-0"
             alt="Background"
             loading="lazy"
             style={{
               objectFit: "cover",
               objectPosition: "center top",
-              minHeight: "100%",
+              height: chunkHeight + 4, // Tăng chiều cao background để che khoảng trống
               width: "100%",
+              transform: "translateY(-2px)" // Dịch chuyển lên trên để overlap
             }}
           />
-
           {/* Content container with proper padding for navigation dots */}
           <div className="relative z-10 max-w-7xl mx-auto px-6 pr-16 w-full h-full flex items-center">
-            <div className={`grid grid-cols-1 ${hasImages ? "lg:grid-cols-2" : "lg:grid-cols-1"} gap-12 items-center w-full min-h-[80vh]`}>
+            <div
+              className={`grid grid-cols-1 ${
+                hasImages ? "lg:grid-cols-2" : "lg:grid-cols-1"
+              } gap-12 items-center w-full min-h-[80vh]`}
+            >
               {/* Content */}
               <div
-                className={`space-y-6 ${hasImages ? (contentOnLeft ? "lg:order-1" : "lg:order-2") : "lg:col-span-1 max-w-4xl mx-auto"} transition-all duration-1200 ease-out ${
-                  isVisible ? "opacity-100 translate-x-0" : `opacity-0 ${contentOnLeft ? "translate-x-[-50px]" : "translate-x-[50px]"}`
+                className={`space-y-6 ${
+                  hasImages
+                    ? contentOnLeft
+                      ? "lg:order-1"
+                      : "lg:order-2"
+                    : "lg:col-span-1 max-w-4xl mx-auto"
+                } transition-all duration-1200 ease-out ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-16"
                 }`}
                 style={{ transitionDelay: "300ms" }}
               >
                 {/* Only show section title for passage 1 */}
-                {chunkData.paragraph.passage === 1 && <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white text-center lg:text-left">{chunkData.sectionTitle}</h2>}
-
+                {chunkData.paragraph.passage === 1 && (
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white text-center lg:text-left">
+                    {chunkData.sectionTitle}
+                  </h2>
+                )}
                 <div className={`${glassStyle} p-8`}>
-                  <p className="text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium">{getTruncatedText(chunkData.paragraph.text, chunkData.id)}</p>
-
-                  {needsTruncation(chunkData.paragraph.text) && (
-                    <button
-                      onClick={() => toggleParagraphExpansion(chunkData.id)}
-                      className="mt-4 px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg transition-all duration-300 backdrop-blur-sm border border-white/20 hover:border-white/40 text-sm font-medium"
-                    >
-                      {expandedParagraphs.has(chunkData.id) ? "Ẩn bớt" : "Hiển thị đầy đủ"}
-                    </button>
-                  )}
+                  <p className="text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium">
+                    {chunkData.paragraph.text}
+                  </p>
                 </div>
               </div>
 
               {/* Images */}
               {hasImages && (
-                <div className={`${contentOnLeft ? "lg:order-2" : "lg:order-1"} h-full flex items-center justify-center`}>
+                <div
+                  className={`${
+                    contentOnLeft ? "lg:order-2" : "lg:order-1"
+                  } h-full flex items-center justify-center`}
+                >
                   <ImageGallery images={chunkData.paragraph.images} isVisible={isVisible} delay={600} />
                 </div>
               )}
@@ -278,7 +274,7 @@ export function Chapter1Page() {
         </div>
       );
     },
-    [visibleChunks, glassStyle, t, getTruncatedText, needsTruncation, toggleParagraphExpansion, expandedParagraphs],
+    [visibleChunks, glassStyle, t],
   );
 
   return !content || typeof content !== "object" ? (
@@ -299,7 +295,23 @@ export function Chapter1Page() {
         `}
       </style>
       <div className="relative w-full h-screen overflow-hidden">
-        <div ref={scrollRef} className="w-full h-full overflow-y-auto overflow-x-hidden" onScroll={handleScroll} style={{ scrollBehavior: "smooth" }}>
+        {/* Fixed background để đảm bảo không có khoảng trống */}
+        <div
+          className="fixed inset-0 w-full h-full z-0"
+          style={{
+            backgroundImage: `url(${nenHong2})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center top',
+            backgroundAttachment: 'fixed'
+          }}
+        />
+
+        <div
+          ref={scrollRef}
+          className="w-full h-full overflow-y-auto overflow-x-hidden relative z-10"
+          onScroll={handleScroll}
+          style={{ scrollBehavior: "smooth" }}
+        >
           <div ref={containerRef} className="relative w-full" style={{ height: totalHeight }}>
             {visibleChunkIndices.map((i) => renderChunk(chunkPositions[i], i))}
           </div>
@@ -327,9 +339,15 @@ export function Chapter1Page() {
                 })
               }
               className={`w-2.5 h-2.5 rounded-full transition-all duration-300 border border-white/30 ${
-                visibleChunks.has(chunkData.id) ? "bg-white scale-150 shadow-lg border-white" : "bg-white/40 hover:bg-white/60 hover:scale-125"
+                visibleChunks.has(chunkData.id)
+                  ? "bg-white scale-150 shadow-lg border-white"
+                  : "bg-white/40 hover:bg-white/60 hover:scale-125"
               }`}
-              title={chunkData.type === "title" ? "Title" : `${chunkData.sectionTitle} - Passage ${chunkData.paragraph.passage}`}
+              title={
+                chunkData.type === "title"
+                  ? "Title"
+                  : `${chunkData.sectionTitle} - Passage ${chunkData.paragraph.passage}`
+              }
             />
           ))}
         </div>
