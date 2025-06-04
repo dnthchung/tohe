@@ -19,6 +19,9 @@ export function HomePage() {
 
   return (
     <div className="relative w-full overflow-x-hidden bg-black">
+      {/* Overlay for better contrast */}
+      {/* <div className="absolute inset-0 bg-black/20 z-5" /> */}
+
       {/* Parallax layers */}
       <img
         src={biaChuCuoi}
@@ -39,11 +42,7 @@ export function HomePage() {
         <div className="relative z-10" style={{ transform: "translateY(calc(var(--scroll) * 0.2))" }}>
           <svg viewBox="0 0 500 200" className="w-[90vw] max-w-4xl mx-auto">
             <defs>
-              <path
-                id="curve"
-                d="M 50 150 Q 250 0 450 150"
-                fill="transparent"
-              />
+              <path id="curve" d="M 50 150 Q 250 0 450 150" fill="transparent" />
             </defs>
             <text fill="white" fontSize="24" fontWeight="bold">
               <textPath href="#curve" startOffset="50%" textAnchor="middle">
@@ -53,7 +52,6 @@ export function HomePage() {
           </svg>
         </div>
       </section>
-
 
       {/* SECTION 2 - Poem */}
       <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">

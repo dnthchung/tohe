@@ -1,57 +1,171 @@
 import { useTranslation } from "react-i18next";
-import nenGradient from "/images/Nền gradient.png";
-import hopToHe from "../assets/12congiap/Hộp.png"
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import nenGradient from "/images/Nền gradient.png";
+import nenSang from "/images/Nền sáng.png";
+import hopToHe from "../assets/12congiap/Hộp.png";
+import chuot from "../assets/12congiap/1.png";
+import trau from "../assets/12congiap/2.png";
+import ho from "../assets/12congiap/3.png";
+import meo from "../assets/12congiap/4.png";
+import rong from "../assets/12congiap/5.png";
+import ran from "../assets/12congiap/6.png";
+import ngua from "../assets/12congiap/7.png";
+import de from "../assets/12congiap/8.png";
+import khi from "../assets/12congiap/9.png";
+import ga from "../assets/12congiap/10.png";
+import cho from "../assets/12congiap/11.png";
+import lon from "../assets/12congiap/12.png";
 
 const animalCards = [
-  { id: "1", name: "chuot", img: "../assets/12congiap/chó.png" },
-  { id: "2", name: "trau", img: "../assets/12congiap/trâu.png" },
-  { id: "3", name: "ho", img: "../assets/12congiap/3.png" },
-  { id: "4", name: "meo", img: "../assets/12congiap/4.png" },
-  { id: "5", name: "rong", img: "../assets/12congiap/5.png" },
-  { id: "6", name: "ran", img: "../assets/12congiap/6.png" },
-  { id: "7", name: "ngua", img: "../assets/12congiap/7.png" },
-  { id: "8", name: "de", img: "../assets/12congiap/8.png" },
-  { id: "9", name: "khi", img: "../assets/12congiap/9.png" },
-  { id: "10", name: "ga", img: "../assets/12congiap/10.png" },
-  { id: "11", name: "cho", img: "../assets/12congiap/11.png" },
-  { id: "12", name: "lon", img: "../assets/12congiap/12.png" },
+  { id: "1", name: "chuot", img: chuot },
+  { id: "2", name: "trau", img: trau },
+  { id: "3", name: "ho", img: ho },
+  { id: "4", name: "meo", img: meo },
+  { id: "5", name: "rong", img: rong },
+  { id: "6", name: "ran", img: ran },
+  { id: "7", name: "ngua", img: ngua },
+  { id: "8", name: "de", img: de },
+  { id: "9", name: "khi", img: khi },
+  { id: "10", name: "ga", img: ga },
+  { id: "11", name: "cho", img: cho },
+  { id: "12", name: "lon", img: lon },
 ];
+
+const zodiacNames = ["Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
 
 export function ProductsPage() {
   const { t } = useTranslation("products");
   const navigate = useNavigate();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [visibleCards, setVisibleCards] = useState(new Set());
+
+  useEffect(() => {
+    // Trigger initial load animation
+    setIsLoaded(true);
+
+    // Animate cards appearing one by one
+    const timer = setTimeout(() => {
+      animalCards.forEach((_, index) => {
+        setTimeout(() => {
+          setVisibleCards((prev) => new Set([...prev, index]));
+        }, index * 100); // Stagger animation by 100ms
+      });
+    }, 1000); // Delayed to start after first section
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden bg-black text-white">
-      <img
-        src={nenGradient}
-        alt="Background"
-        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-      />
+    <div className="relative w-full min-h-screen overflow-x-hidden">
+      {/* Section 1: Giới thiệu hộp với nền sáng */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center">
+        {/* Background using nenGradient image */}
+        <img src={nenGradient} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Light Background" />
 
-      {/* Header */}
-      <div className="pt-24 text-center">
-        <h1 className="text-4xl font-bold">Mùa 1: Tò He x 12 con giáp</h1>
-      </div>
+        {/* Overlay for better contrast */}
+        {/* <div className="absolute inset-0 bg-black/20 z-5" /> */}
 
-      {/* Box Display */}
-      <div className="flex justify-center my-12">
-        <img src={hopToHe} alt="Hộp Tò He" className="w-[320px] md:w-[420px]" />
-      </div>
-
-      {/* Card Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 px-4 pb-20 max-w-6xl mx-auto">
-        {animalCards.map((card) => (
-          <div
-            key={card.id}
-            className="cursor-pointer transform transition duration-300 hover:scale-105 shadow-lg rounded-xl overflow-hidden bg-white"
-            onClick={() => navigate(`/products/${card.name}`)}
-          >
-            <img src={card.img} alt={card.name} className="w-full h-auto object-cover" />
+        {/* Content for section 1 */}
+        <div className="relative z-10 flex flex-col items-center px-4 py-8">
+          {/* Header with fade-in animation */}
+          <div className={`pt-16 mb-12 text-center transition-all duration-1000 transform ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"}`}>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg mb-6">Mùa 1: Tò He x 12 con giáp</h1>
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Khám phá bộ sưu tập độc đáo với 12 con giáp được tạo hình tinh xảo từ nghệ thuật tò he truyền thống Việt Nam
+            </p>
           </div>
-        ))}
-      </div>
+
+          {/* Box Display with scale animation */}
+          <div className={`transition-all duration-1000 delay-500 transform ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>
+            <img src={hopToHe} alt="Hộp Tò He" className="w-[300px] md:w-[400px] lg:w-[500px] drop-shadow-2xl hover:scale-105 transition-transform duration-300" />
+          </div>
+
+          {/* Scroll indicator */}
+          <div className={`mt-16 transition-all duration-1000 delay-1000 transform ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <div className="animate-bounce">
+              <svg className="w-6 h-6 mx-auto text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+            <p className="text-gray-600 text-sm mt-2">Khám phá 12 con giáp</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 2: Grid 12 con giáp với nền gradient */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center">
+        {/* Background using nenSang image */}
+        <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Gradient Background" />
+
+        {/* Overlay for better contrast */}
+        {/* <div className="absolute inset-0 bg-black/20 z-5" /> */}
+
+        {/* Content for section 2 */}
+        <div className="relative z-10 flex flex-col items-center px-4 py-16 text-white">
+          {/* Section title */}
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-2xl mb-4">12 Con Giáp Tò He</h2>
+            <p className="text-lg md:text-xl text-white/90 drop-shadow-lg">Chọn con giáp của bạn để khám phá chi tiết</p>
+          </div>
+
+          {/* Card Grid - 4 columns x 3 rows with staggered animation */}
+          <div className="grid grid-cols-4 gap-4 md:gap-6 lg:gap-8 max-w-4xl w-full">
+            {animalCards.map((card, index) => (
+              <div
+                key={card.id}
+                className={`
+                  relative group cursor-pointer
+                  transform transition-all duration-500
+                  hover:scale-105 hover:-translate-y-1
+                  shadow-sm hover:shadow-2xl
+                  rounded-xl overflow-hidden
+                  border border-white/30
+                  ${visibleCards.has(index) ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-75"}
+                `}
+                style={{ transitionDelay: `${index * 100}ms` }}
+                onClick={() => navigate(`/products/${card.name}`)}
+              >
+                {/* Hình ảnh */}
+                <div className="relative overflow-hidden">
+                  <img src={card.img} alt={card.name} className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1" />
+
+                  {/* Shimmer ánh sáng khi hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+
+                  {/* Overlay ánh sáng khi hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/5 via-transparent to-black/10 opacity-50 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                </div>
+
+                {/* Số thứ tự hiển thị khi hover */}
+                <div className="absolute top-2 left-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100 shadow-lg">
+                  {/* #{card.id} */}
+                  {zodiacNames[index]}
+                </div>
+
+                {/* Gradient viền glow khi hover */}
+                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 -z-10 blur-sm group-hover:blur-md pointer-events-none"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Floating particles effect */}
+        <div className="absolute inset-0 pointer-events-none z-5">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 3}s`,
+              }}
+            />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
