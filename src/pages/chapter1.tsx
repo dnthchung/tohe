@@ -177,7 +177,7 @@ export function Chapter1Page() {
               }}
             />
             {/* Centered content with proper padding for navigation dots */}
-            <div className="relative z-10 text-center px-6 pr-16 w-full max-w-6xl">
+            <div className="relative z-10 text-center px-6 w-full max-w-6xl">
               <h1
                 className={`text-4xl md:text-6xl font-bold mb-8 text-white drop-shadow-lg transition-all duration-1500 ease-out ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
@@ -225,7 +225,7 @@ export function Chapter1Page() {
             }}
           />
           {/* Content container with proper padding for navigation dots */}
-          <div className="relative z-10 max-w-7xl mx-auto px-6 pr-16 w-full h-full flex items-center">
+          <div className="relative z-10 max-w-7xl mx-auto px-6 w-full h-full flex items-center">
             <div
               className={`grid grid-cols-1 ${
                 hasImages ? "lg:grid-cols-2" : "lg:grid-cols-1"
@@ -317,18 +317,8 @@ export function Chapter1Page() {
           </div>
         </div>
 
-        {/* Progress bar */}
-        <div className="fixed top-0 left-0 w-full h-1 bg-black/20 z-50">
-          <div
-            className="h-full bg-gradient-to-r from-pink-400 to-purple-500 transition-all duration-300"
-            style={{
-              width: `${Math.min(100, (scrollY / (totalHeight - containerHeight)) * 100)}%`,
-            }}
-          />
-        </div>
-
-        {/* Navigation dots - positioned to not interfere with content */}
-        <div className="fixed right-2 top-1/2 transform -translate-y-1/2 z-40 space-y-2">
+        {/* Navigation dots - positioned horizontally at bottom */}
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 flex space-x-2">
           {chunkPositions.map((chunkData) => (
             <button
               key={chunkData.id}

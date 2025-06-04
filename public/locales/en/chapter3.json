@@ -1,6 +1,59 @@
 {
-  "title": "Chapter 3",
-  "content": "This is the content for",
-  "page": "page",
-  "description": "Detailed information about Chapter 3."
+  "title": "Chapter 3: Tò He – A Flicker of Tradition in a Storm of Change",
+  "description": "In the digital age, tò he faces many challenges but also finds new paths to survive and thrive.",
+  "content": {
+    "I. When tradition meets the digital storm": [
+      {
+        "passage": 1,
+        "text": "In an age of TikTok trends, online gaming, and rapid digital innovation, the traditional Vietnamese sugar-dough figurine art of tò he has become unfamiliar to many young people. Once a beloved sight at village markets, festivals, and Hanoi's street corners, the image of artisans meticulously shaping each figurine is now increasingly rare.",
+        "images": [
+          "images/imageForEachChapter/11.jpg"
+        ]
+      },
+      {
+        "passage": 2,
+        "text": "One of the craft's greatest challenges is waning awareness among younger generations. Many have never seen tò he in person and know little of its history or cultural significance. Meanwhile, mass-produced toys and fast-consumption culture command far greater attention, making tò he struggle to compete in terms of variety, availability, and appeal.",
+        "images": [
+          "images/imageForEachChapter/15.jpg"
+        ]
+      }
+    ],
+    "II. The struggle for survival and continuity": [
+      {
+        "passage": 1,
+        "text": "Moreover, the community of skilled tò he artisans is aging, and finding successors is not easy. This craft demands patience, dexterity, and genuine passion - qualities that can be hard to sustain when income is unpredictable and seasonal. As a result, the risk of this art form fading away grows ever more real.",
+        "images": [
+          "images/imageForEachChapter/19.jpg"
+        ]
+      },
+      {
+        "passage": 2,
+        "text": "Artisans also face hurdles in adopting modern marketing and communication tools. Most still rely on traditional sales channels - festival stalls, markets, or fixed street-vending spots - while today's young consumers discover new products primarily through social media and e-commerce platforms.",
+        "images": [
+          "images/imageForEachChapter/26.jpg"
+        ]
+      }
+    ],
+    "III. A youth-driven solution – Breathing new life into tradition": [
+      {
+        "passage": 1,
+        "text": "In response to these challenges, heheviet has been created to reintroduce tò he to young audiences through a fresh, engaging perspective. We believe tò he is more than just a traditional toy, it embodies Vietnamese cultural identity, artistic creativity, and educational value.",
+        "images": [
+          "images/imageForEachChapter/27.jpg"
+        ]
+      },
+      {
+        "passage": 2,
+        "text": "Through our digital platform, we share the personal stories of tò he artisans, reveal the time-honored techniques behind each figurine, and decode the craft's deep historical and cultural meanings. More importantly, we aim to bridge tò he with the interests and creative spirit of today's youth, showcasing its relevance in contemporary life.",
+        "images": [
+          "images/imageForEachChapter/28.jpg"
+        ]
+      },
+      {
+        "passage": 3,
+        "text": "This website is not just for browsing, it's a call to understand, appreciate, and take action. We invite you to join us in preserving this endangered craft and to breathe new life into it with your energy, curiosity, and creativity. Together, we can ensure that tò he continues to enchant and inspire for generations to come.",
+        "images": []
+      }
+    ]
+  }
 }

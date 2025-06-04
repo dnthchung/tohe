@@ -1,6 +1,54 @@
 {
-  "title": "Kỳ 3",
-  "content": "Đây là nội dung cho trang",
-  "page": "trang",
-  "description": "Thông tin chi tiết về Kỳ 3."
+  "title": "Kỳ 3: Tò He – Ngọn Lửa Nhỏ Trong Cơn Gió Lớn",
+  "description": "Trong thời đại số hóa, tò he đối mặt với nhiều thách thức nhưng cũng tìm ra con đường mới để tồn tại và phát triển.",
+  "content": {
+    "I. Khi truyền thống gặp thời đại số": [
+      {
+        "passage": 1,
+        "text": "Trong thời đại của TikTok, game online và công nghệ số, nghề làm tò he - một loại hình nghệ thuật dân gian gắn với ký ức tuổi thơ của bao thế hệ - đang dần trở nên xa lạ với giới trẻ. Nếu như trước kia, tò he từng xuất hiện khắp các phiên chợ quê, lễ hội hay góc phố Hà Nội, thì ngày nay, hình ảnh người nghệ nhân cần mẫn nặn tò he giữa đám đông đang dần trở nên hiếm hoi.",
+        "images": [
+          "images/imageForEachChapter/11.jpg"
+        ]
+      },
+      {
+        "passage": 2,
+        "text": "Một trong những thách thức lớn nhất mà ngành nghề này đang đối mặt là sự lãng quên trong nhận thức của thế hệ trẻ. Nhiều bạn trẻ chưa từng được nhìn thấy tò he ngoài đời thực, càng ít biết về lịch sử hay ý nghĩa văn hóa của những hình nặn từ bột gạo giản dị ấy. Trong khi đó, sự phát triển mạnh mẽ của đồ chơi công nghiệp và văn hóa tiêu dùng nhanh khiến tò he ngày càng khó cạnh tranh về mẫu mã và độ phổ biến.",
+        "images": [
+          "images/imageForEachChapter/15.jpg"
+        ]
+      }
+    ],
+    "II. Thử thách trong việc lưu truyền nghề": [
+      {
+        "passage": 1,
+        "text": "Không chỉ vậy, những nghệ nhân làm tò he hiện nay phần lớn đã lớn tuổi, còn việc tìm kiếm lớp kế cận lại không hề dễ dàng. Nghề thủ công này đòi hỏi sự kiên nhẫn, kỹ năng và lòng đam mê - những điều không dễ duy trì khi thu nhập từ nghề lại khá bấp bênh. Việc truyền nghề vì thế trở nên khó khăn, khiến nguy cơ mai một là hoàn toàn có thật.",
+        "images": [
+          "images/imageForEachChapter/19.jpg"
+        ]
+      },
+      {
+        "passage": 2,
+        "text": "Ngoài ra, nghệ nhân tò he cũng gặp rào cản trong việc tiếp cận công nghệ và truyền thông hiện đại. Hầu hết vẫn bán hàng theo hình thức truyền thống, phụ thuộc vào các dịp lễ hội hoặc địa điểm cố định. Trong khi đó, xu hướng tiêu dùng hiện đại, đặc biệt từ giới trẻ, lại diễn ra chủ yếu qua mạng xã hội và các nền tảng trực tuyến.",
+        "images": [
+          "images/imageForEachChapter/26.jpg"
+        ]
+      }
+    ],
+    "III. Sứ mệnh của Chuyện Tò He – Thổi sức sống mới": [
+      {
+        "passage": 1,
+        "text": "Trước thực trạng ấy, Chuyện Tò He ra đời với một mục tiêu rõ ràng: đưa tò he quay trở lại với thế hệ trẻ, dưới một góc nhìn mới, gần gũi và sống động hơn. Chúng tôi tin rằng, tò he không chỉ là một món đồ chơi truyền thống, mà còn là một biểu tượng văn hóa, một loại hình nghệ thuật thủ công đầy sáng tạo, có giá trị giáo dục, nghệ thuật và tinh thần dân tộc sâu sắc.",
+        "images": [
+          "images/imageForEachChapter/27.jpg"
+        ]
+      },
+      {
+        "passage": 2,
+        "text": "Thông qua nền tảng truyền thông số này, chúng tôi muốn lan tỏa câu chuyện của những nghệ nhân, giới thiệu quy trình nặn tò he, giải mã những giá trị lịch sử - văn hóa trong từng sản phẩm, và đặc biệt là kết nối tò he với thị hiếu, nhu cầu và cảm hứng sáng tạo của giới trẻ ngày nay. Trang web này không chỉ là nơi để xem, mà là nơi để hiểu, để yêu và để hành động. Chúng tôi mời bạn đồng hành cùng chúng tôi trong hành trình gìn giữ một nghề truyền thống đang dần bị lãng quên, và thổi vào đó sức sống mới bằng chính năng lượng, sự quan tâm và sáng tạo của thế hệ trẻ.",
+        "images": [
+          "images/imageForEachChapter/28.jpg"
+        ]
+      }
+    ]
+  }
 }
