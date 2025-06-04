@@ -1,21 +1,74 @@
 //home.tsx
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import biaChiHang from "/images/Bìa chị hằng.png";
 import biaChuCuoi from "/images/Bìa chú cuội.png";
 import nenGradient from "/images/Nền gradient.png";
 import nenSang from "/images/Nền sáng.png";
+import { Copyright } from "@/components/copyright";
+
+// Loading component
+const LoadingScreen = () => (
+  <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
+    <div className="text-center text-white">
+      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
+      <p className="text-xl font-semibold">Đang tải...</p>
+      <p className="text-sm opacity-70 mt-2">Loading resources...</p>
+    </div>
+  </div>
+);
 
 export function HomePage() {
   const { t } = useTranslation("home");
+  const [isLoading, setIsLoading] = useState(true);
 
+  // Preload images
   useEffect(() => {
+    const imagesToPreload = [biaChiHang, biaChuCuoi, nenGradient, nenSang];
+
+    const preloadImages = async () => {
+      try {
+        const imagePromises = imagesToPreload.map((src) => {
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = src;
+          });
+        });
+
+        await Promise.all(imagePromises);
+
+        // Add a small delay for better UX
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+      } catch (error) {
+        console.error("Error preloading images:", error);
+        // Still show content even if some images fail to load
+        setIsLoading(false);
+      }
+    };
+
+    preloadImages();
+  }, []);
+
+  // Scroll effect
+  useEffect(() => {
+    if (isLoading) return;
+
     const handleScroll = () => {
       document.documentElement.style.setProperty("--scroll", `${window.scrollY}px`);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isLoading]);
+
+  // Show loading screen while resources are loading
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="relative w-full overflow-x-hidden bg-black">
@@ -86,6 +139,11 @@ export function HomePage() {
           <p className="text-2xl font-medium leading-relaxed whitespace-pre-line max-w-4xl">{t("section3") || "Section 3 content goes here."}</p>
         </div>
       </section>
+
+      {/* Footer luôn dính đáy */}
+      <footer className="relative z-10">
+        <Copyright />
+      </footer>
     </div>
   );
 }
