@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import nenGradient from "/images/Nền gradient.png";
+import { Copyright } from "@/components/copyright";
 
 interface AnimalData {
   id: string;
@@ -30,7 +31,7 @@ const animalToFileMapping: { [key: string]: string } = {
   khi: "than",
   ga: "dau",
   cho: "tuat",
-  lon: "hoi"
+  lon: "hoi",
 };
 
 export function ProductDetail() {
@@ -55,10 +56,10 @@ export function ProductDetail() {
         return;
       }
 
-                                    const namespace = `12${fileName}`; // → "12ty", "12suu", ...
+      const namespace = `12${fileName}`; // → "12ty", "12suu", ...
       try {
         // Thử fetch trực tiếp thay vì dựa vào i18next backend
-        const currentLang = i18n.language || 'vi';
+        const currentLang = i18n.language || "vi";
         console.log("Fetching data for:", { animalName, fileName, namespace, currentLang });
 
         const response = await fetch(`/locales/${currentLang}/${namespace}.json`);
@@ -72,7 +73,7 @@ export function ProductDetail() {
         const data = jsonData[animalName] as AnimalData;
         console.log("Extracted animal data:", data);
 
-        if (!data || typeof data !== 'object' || !data.animal) {
+        if (!data || typeof data !== "object" || !data.animal) {
           console.error("Data validation failed:", { data, type: typeof data, jsonData, animalName });
           throw new Error("Invalid data structure");
         }
@@ -259,6 +260,11 @@ export function ProductDetail() {
           line-height: 1.75;
         }
       `}</style>
+
+      {/* Footer luôn dính đáy */}
+      <footer className="relative z-10">
+        <Copyright />
+      </footer>
     </div>
   );
 }
