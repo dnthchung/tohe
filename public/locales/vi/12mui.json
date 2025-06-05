@@ -1,0 +1,13 @@
+{
+  "id": 8,
+  "animal": "Mùi",
+  "intro": "Trong văn hóa, dê là loài vật gắn liền với sự hiền hậu, ôn hòa và nhẫn nhịn. Hình ảnh dê gợi nhớ đến tính cách thiện lương, hòa ái, sống chan hòa với môi trường xung quanh.",
+  "passage1": "Chú dê tò he được nặn với đôi tai cụp nhẹ, sừng nhỏ xoắn và nét mặt hiền lành, dịu dàng.",
+  "passage2": "Người tuổi Mùi thường nhẹ nhàng, chu đáo và sống giàu tình cảm. Họ có xu hướng sống nội tâm, giàu lòng trắc ẩn và luôn sẵn sàng giúp đỡ người khác. Tuy đôi khi thiếu quyết đoán, nhưng sự nhẫn nại và chân thành khiến họ trở thành người bạn, người đồng hành đáng tin cậy.",
+  "characteristics": ["Nhẹ nhàng", "Chu đáo", "Tình cảm", "Nội tâm", "Trắc ẩn", "Nhẫn nại", "Chân thành"],
+  "years": [1991, 2003, 2015],
+  "images": {
+    "card": "/assets/12congiap/8.png",
+    "product": "/assets/12congiap/animal/8.png"
+  }
+}

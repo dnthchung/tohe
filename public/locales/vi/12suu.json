@@ -1,0 +1,13 @@
+{
+  "id": 2,
+  "animal": "Sửu",
+  "intro": "Trong văn hóa Á Đông, trâu là biểu tượng của sự chăm chỉ, kiên nhẫn và bền bỉ. Loài vật này đại diện cho sức lao động cần mẫn và sự ổn định vững chắc, luôn gắn liền với sự thịnh vượng và may mắn trong mùa màng bội thu.",
+  "passage1": "Chú trâu nhỏ được nặn tỉ mỉ với màu xám nâu ấm áp, thân hình chắc khỏe, đôi mắt to tròn toát lên vẻ hiền lành nhưng không kém phần mạnh mẽ.",
+  "passage2": "Người tuổi Sửu thường có tính cách điềm tĩnh, kiên định và rất đáng tin cậy. Họ không ngại khó khăn, luôn nỗ lực bền bỉ theo đuổi mục tiêu dù đôi khi phải đối mặt với những thử thách gian nan. Với tinh thần trách nhiệm cao, họ biết cách sắp xếp công việc một cách khoa học và đều đặn, đồng thời rất kiên trì trong việc giữ gìn các mối quan hệ và xây dựng cuộc sống ổn định. Chính sự bền bỉ và lòng trung thành ấy đã giúp người tuổi Sửu ghi dấu ấn sâu đậm trong lòng mọi người xung quanh.",
+  "characteristics": ["Điềm tĩnh", "Kiên định", "Đáng tin cậy", "Bền bỉ", "Trách nhiệm", "Khoa học", "Trung thành"],
+  "years": [1997, 2009, 2021],
+  "images": {
+    "card": "/assets/12congiap/2.png",
+    "product": "/assets/12congiap/animal/2.png"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": 8,
+  "animal": "Goat",
+  "intro": "In cultural symbolism, the goat represents gentleness, harmony, and patience. The image of the goat evokes kindness, amiability, and a life lived harmoniously with the surroundings.",
+  "passage1": "The tò he goat is shaped with slightly drooping ears, small curled horns, and a gentle, kind expression.",
+  "passage2": "People born in the Year of the Goat are often gentle, considerate, and emotionally rich. They tend to be introspective, compassionate, and always ready to help others. Though sometimes indecisive, their patience and sincerity make them dependable friends and companions.",
+  "characteristics": ["Gentle", "Considerate", "Emotional", "Introspective", "Compassionate", "Patient", "Sincere"],
+  "years": [1991, 2003, 2015],
+  "images": {
+    "card": "/assets/12congiap/8.png",
+    "product": "/assets/12congiap/animal/8.png"
+  }
+}

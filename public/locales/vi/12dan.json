@@ -1,0 +1,13 @@
+{
+  "id": 3,
+  "animal": "Dần",
+  "intro": "Trong văn hóa Á Đông, hổ là biểu tượng của quyền lực, lòng dũng cảm và sự quyết đoán. Đây còn là loài vật thể hiện sự tự tin và tinh thần chiến đấu không ngừng nghỉ, được xem là người bảo vệ mạnh mẽ trước mọi thử thách.",
+  "passage1": "Chú hổ được tạc tinh tế với bộ lông vằn mạnh mẽ, thân hình uy nghi, toát lên vẻ dũng mãnh và đầy khí chất nhưng cũng không kém phần dễ thương.",
+  "passage2": "Người tuổi Dần thường mang trong mình bản năng lãnh đạo bẩm sinh cùng sự nhiệt huyết đầy mãnh liệt. Họ luôn tràn đầy năng lượng và không ngại đương đầu với khó khăn, sẵn sàng thể hiện cá tính mạnh mẽ và quyết đoán trong từng hành động. Tuy có lúc bộc trực và nóng tính, nhưng sự chân thành và dũng cảm của họ lại khiến người khác kính phục và tin tưởng. Với tầm nhìn rộng mở và ý chí kiên cường, người tuổi Dần luôn biết cách biến thử thách thành cơ hội để vươn lên mạnh mẽ hơn trong cuộc sống.",
+  "characteristics": ["Lãnh đạo", "Nhiệt huyết", "Mạnh mẽ", "Quyết đoán", "Bộc trực", "Chân thành", "Dũng cảm", "Kiên cường"],
+  "years": [1998, 2010, 2022],
+  "images": {
+    "card": "/assets/12congiap/3.png",
+    "product": "/assets/12congiap/animal/3.png"
+  }
+}

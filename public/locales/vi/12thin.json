@@ -1,0 +1,13 @@
+{
+  "id": 5,
+  "animal": "Thìn",
+  "intro": "Rồng là biểu tượng của sức mạnh, thịnh vượng và khát vọng vươn xa. Trong văn hóa phương Đông, đây là linh vật tối cao – hiện thân của trời đất, tượng trưng cho vua chúa, cho sự phát triển và thịnh trị.",
+  "passage1": "Chú rồng tò he được tạo hình sống động của sức mạnh và may mắn. Với sắc vàng chủ đạo điểm xuyết họa tiết đỏ, xanh và cam rực rỡ, chú rồng nhỏ toát lên vẻ quyền uy nhưng gần gũi. Mái bờm uốn lượn mềm mại, đôi sừng trắng cong nhẹ và đôi mắt đen ánh lên vẻ thông tuệ. Dáng đứng kiêu hãnh trên cụm mây xanh lam khiến Thìn không chỉ là linh vật, mà còn là biểu tượng của khát vọng vươn cao và tinh thần dân tộc.",
+  "passage2": "Người tuổi Thìn thường mang khí chất lãnh đạo, có năng lượng tích cực và tư duy lớn. Họ tham vọng, thông minh, cương trực và giữ chữ tín. Tuy nhiên, đôi khi người tuổi Thìn có xu hướng mơ mộng, dễ nóng nảy và cần học cách kiểm soát cảm xúc cũng như kiên nhẫn hơn để đạt thành công bền vững.",
+  "characteristics": ["Lãnh đạo", "Tích cực", "Tham vọng", "Thông minh", "Cương trực", "Mơ mộng", "Nóng nảy"],
+  "years": [2000, 2012, 2024],
+  "images": {
+    "card": "/assets/12congiap/5.png",
+    "product": "/assets/12congiap/animal/5.png"
+  }
+}

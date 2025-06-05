@@ -1,0 +1,13 @@
+{
+  "id": 4,
+  "animal": "Mão",
+  "intro": "Mèo là biểu tượng của sự thanh lịch, bình an và may mắn. Trong đời sống người Việt, mèo còn gắn với khả năng xua đuổi tà khí và bảo vệ không gian sống yên ổn.",
+  "passage1": "Chú mèo tò he có lông vàng óng được tô điểm bằng những họa tiết màu cam, xanh, đỏ uốn lượn như tranh dân gian. Đôi mắt đen tròn ánh lên vẻ lanh lợi, tò mò, trong khi đôi tai vểnh cao khiến chú trông lúc nào cũng sẵn sàng lắng nghe thế giới xung quanh.",
+  "passage2": "Người tuổi Mão thường có tính cách dịu dàng, nhạy cảm và biết quan tâm đến người khác. Họ sống tinh tế, khéo léo và luôn cố gắng giữ gìn sự hài hòa trong các mối quan hệ. Tuy nhiên, vì không thích xung đột, họ có xu hướng né tránh đối đầu và cần học cách thể hiện quan điểm rõ ràng hơn trong những tình huống quan trọng.",
+  "characteristics": ["Dịu dàng", "Nhạy cảm", "Quan tâm", "Tinh tế", "Khéo léo", "Hài hòa", "Né tránh"],
+  "years": [1999, 2011, 2023],
+  "images": {
+    "card": "/assets/12congiap/4.png",
+    "product": "/assets/12congiap/animal/4.png"
+  }
+}

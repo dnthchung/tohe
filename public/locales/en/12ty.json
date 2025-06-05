@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "animal": "Mouse",
+  "intro": "In East Asian culture, the rat symbolizes wisdom, agility, and cleverness. Not only quick-witted, the rat is also considered a symbol of abundance and prosperity, often appearing in places of plenty and warmth.",
+  "passage1": "The tò he rat is delicately crafted in a soft bluish-gray tone, with a plump little body and large, round ears perked up in an endearing pose.",
+  "passage2": "People born in the Year of the Rat often possess sharp intelligence along with outstanding agility and alertness. They have a keen eye for detail, easily recognizing and seizing opportunities around them. Moreover, they excel at planning, always preparing carefully to achieve their goals. Although sometimes reserved in expressing themselves, they compensate with firm perseverance and remarkable adaptability, helping them overcome many challenges in life.",
+  "characteristics": ["Intelligent", "Agile", "Alert", "Meticulous", "Perseverant", "Adaptable", "Reserved"],
+  "years": [1996, 2008, 2020],
+  "images": {
+    "card": "/assets/12congiap/1.png",
+    "product": "/assets/12congiap/animal/1.png"
+  }
+}

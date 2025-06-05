@@ -1,0 +1,13 @@
+{
+  "id": 2,
+  "animal": "Ox",
+  "intro": "In East Asian culture, the ox represents diligence, patience, and endurance. This animal stands for hard work and stable strength, always associated with prosperity and luck, especially in bountiful harvests.",
+  "passage1": "The little tò he ox is carefully sculpted in a warm gray-brown hue, with a sturdy body and large, round eyes that reflect both gentleness and quiet strength.",
+  "passage2": "People born in the Year of the Ox are typically calm, steadfast, and highly reliable. They are not afraid of hardship, tirelessly pursuing their goals even when facing tough challenges. With a strong sense of responsibility, they know how to organize their work methodically and persistently maintain relationships, building a stable life. This perseverance and loyalty leave a lasting impression on those around them.",
+  "characteristics": ["Calm", "Steadfast", "Reliable", "Persistent", "Responsible", "Methodical", "Loyal"],
+  "years": [1997, 2009, 2021],
+  "images": {
+    "card": "/assets/12congiap/2.png",
+    "product": "/assets/12congiap/animal/2.png"
+  }
+}

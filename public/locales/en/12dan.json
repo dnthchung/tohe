@@ -1,0 +1,13 @@
+{
+  "id": 3,
+  "animal": "Tiger",
+  "intro": "In East Asian culture, the tiger is a symbol of power, courage, and decisiveness. It also embodies confidence and an indomitable fighting spirit, seen as a strong protector against all challenges.",
+  "passage1": "The tò he tiger is finely crafted with bold, striped fur and a majestic build, radiating strength and charisma while still retaining a touch of endearing charm.",
+  "passage2": "People born in the Year of the Tiger often possess innate leadership qualities and intense passion. They are full of energy, unafraid of difficulties, and eager to showcase their bold and decisive personality in their actions. Though sometimes blunt and hot-tempered, their sincerity and bravery earn admiration and trust. With broad vision and resilient determination, they know how to turn challenges into opportunities for stronger growth.",
+  "characteristics": ["Leading", "Passionate", "Bold", "Decisive", "Blunt", "Sincere", "Brave", "Resilient"],
+  "years": [1998, 2010, 2022],
+  "images": {
+    "card": "/assets/12congiap/3.png",
+    "product": "/assets/12congiap/animal/3.png"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": 12,
+  "animal": "Pig",
+  "intro": "In East Asian culture, the pig symbolizes prosperity, wealth, and contentment. It often appears during festivals and rituals as a sign of good fortune and a plentiful life.",
+  "passage1": "The tò he pig features a round, adorable appearance with big, bright eyes, a gentle smiling mouth, and rosy cheeks delicately highlighted. Its tightly curled tail adds a playful, friendly charm, evoking a sense of warmth, abundance, and contentment.",
+  "passage2": "Those born in the Year of the Pig are gentle, generous, and emotionally warm. They value simple joys over ambition and are known for their kindness, steady nature, and ability to bring peace and happiness to those around them.",
+  "characteristics": ["Gentle", "Generous", "Emotional", "Kind", "Steady", "Peaceful", "Content"],
+  "years": [1995, 2007, 2019],
+  "images": {
+    "card": "/assets/12congiap/12.png",
+    "product": "/assets/12congiap/animal/12.png"
+  }
+}

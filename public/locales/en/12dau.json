@@ -1,0 +1,13 @@
+{
+  "id": 10,
+  "animal": "Rooster",
+  "intro": "In East Asian culture, the rooster represents alertness, diligence, and integrity. Especially in its crowing, the rooster is seen as a symbol of courage, light, and protection — a sound believed to chase away evil spirits and welcome the new day.",
+  "passage1": "The tò he rooster stands out with its vibrant, multicolored feathers, especially the bright red comb meticulously sculpted upright on its head. With a proud stance, stretched neck, and slightly spread wings, it appears ready to crow and welcome the new day. Every detail — from the curved tail and sharp claws to the alert, lively eyes — contributes to the vivid and spirited presence of this symbolic creature.",
+  "passage2": "People born in the Year of the Rooster are often meticulous, hardworking, and highly responsible. They live by clear principles, possess strong organizational skills, and strive for thoroughness in everything they do. Though sometimes seen as stubborn due to their straightforward nature, they are dependable and always stand up for what is right. Their thoughtfulness and keen eye for detail often leave a lasting impression on others, both at work and in life Champs-Élysées life.",
+  "characteristics": ["Meticulous", "Hardworking", "Responsible", "Principled", "Dependable", "Straightforward", "Thoughtful"],
+  "years": [1993, 2005, 2017],
+  "images": {
+    "card": "/assets/12congiap/10.png",
+    "product": "/assets/12congiap/animal/10.png"
+  }
+}

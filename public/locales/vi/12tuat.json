@@ -1,0 +1,13 @@
+{
+  "id": 11,
+  "animal": "Tuất",
+  "intro": "Trong văn hóa Á Đông, chó là loài vật tượng trưng cho lòng trung thành, sự bảo vệ và tình nghĩa. Từ lâu, chó đã được xem là người bạn đồng hành đáng tin cậy của con người, không chỉ giữ nhà mà còn mang đến cảm giác an toàn, bình yên.",
+  "passage1": "Chú chó tò he được nghệ nhân tỉ mỉ nhào nặn với hình thù đáng yêu nhưng mang đầy đủ ý nghĩa biểu tượng văn hoá Á Đông. Đôi tai vểnh cao và ánh mắt đầy cảnh giác. Bộ lông rực rỡ được tạo điểm nhấn bằng những đường nét gọn gàng, chiếc đuôi cong vút và tư thế ngồi ngay ngắn như một người bạn trung thành luôn sẵn sàng bảo vệ chủ nhân.",
+  "passage2": "Người tuổi Tuất thường sống nghĩa tình, chân thành và có tinh thần trách nhiệm cao. Họ luôn đứng về phía công bằng, ghét sự giả dối và rất sẵn lòng giúp đỡ người khác mà không tính toán. Chính sự trung thực và tận tụy giúp họ dễ dàng xây dựng được những mối quan hệ bền vững trong cuộc sống. Dù đôi lúc có phần bảo thủ hoặc quá lo nghĩ, nhưng với tấm lòng nhân hậu và sự kiên định, người tuổi Tuất luôn là chỗ dựa vững chắc cho những người xung quanh.",
+  "characteristics": ["Nghĩa tình", "Chân thành", "Trách nhiệm", "Công bằng", "Trung thực", "Tận tụy", "Nhân hậu"],
+  "years": [1994, 2006, 2018],
+  "images": {
+    "card": "/assets/12congiap/11.png",
+    "product": "/assets/12congiap/animal/11.png"
+  }
+}

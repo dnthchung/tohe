@@ -1,0 +1,13 @@
+{
+  "id": 5,
+  "animal": "Dragon",
+  "intro": "The dragon is a symbol of strength, prosperity, and far-reaching ambition. In Eastern culture, it is the supreme mythical creature — the embodiment of heaven and earth, representing royalty, progress, and flourishing times.",
+  "passage1": "The dragon tò he embodies strength and auspicious energy in a vibrant, approachable form. Dominated by golden hues and adorned with bold patterns in red, green, and orange, this little dragon radiates a noble yet friendly presence. Flowing mane, curved ivory horns, and gleaming black eyes give Thìn an air of wisdom and charm. The dragon’s coiled posture suggests movement and grace, as if it's gliding through the clouds. Standing proudly atop a deep blue cloud, Thìn is not just a mythical creature, but a figure of aspiration and national spirit.",
+  "passage2": "People born in the Year of the Dragon often carry a charismatic leadership aura, positive energy, and grand thinking. They are ambitious, intelligent, upright, and value trustworthiness. However, they may sometimes be dreamy, quick-tempered, and need to learn emotional control and patience to achieve lasting success.",
+  "characteristics": ["Charismatic", "Positive", "Ambitious", "Intelligent", "Upright", "Dreamy", "Quick-tempered"],
+  "years": [2000, 2012, 2024],
+  "images": {
+    "card": "/assets/12congiap/5.png",
+    "product": "/assets/12congiap/animal/5.png"
+  }
+}
