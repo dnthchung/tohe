@@ -6,6 +6,7 @@ import biaChuCuoi from "/images/Bìa chú cuội.png";
 import nenGradient from "/images/Nền gradient.png";
 import nenSang from "/images/Nền sáng.png";
 import { Copyright } from "@/components/copyright";
+import Logo from "/Logo.png";
 
 // Loading component
 const LoadingScreen = () => (
@@ -92,17 +93,8 @@ export function HomePage() {
       {/* SECTION 1 - Welcome */}
       <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
         <img src={nenGradient} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
-        <div className="relative z-10" style={{ transform: "translateY(calc(var(--scroll) * 0.2))" }}>
-          <svg viewBox="0 0 500 200" className="w-[90vw] max-w-4xl mx-auto">
-            <defs>
-              <path id="curve" d="M 50 150 Q 250 0 450 150" fill="transparent" />
-            </defs>
-            <text fill="white" fontSize="24" fontWeight="bold">
-              <textPath href="#curve" startOffset="50%" textAnchor="middle">
-                CHUYỆN TÒ HE - TO HE TALES
-              </textPath>
-            </text>
-          </svg>
+        <div className="relative z-10 transition-transform duration-700 ease-out" style={{ transform: "translateY(calc(var(--scroll) * 0.2))" }}>
+          <img src={Logo} alt="Logo mặt trăng" className="w-100 h-100 object-contain mx-auto" />
         </div>
       </section>
 
