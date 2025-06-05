@@ -239,7 +239,7 @@ export function Chapter1Page() {
 
         {/* Enhanced Navigation Dots */}
         <div className="fixed bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-40 flex space-x-2 sm:space-x-3 bg-black/20 backdrop-blur-sm rounded-full px-3 py-2 sm:px-4 sm:py-3">
-          {contentChunks.map((chunk, index) => {
+          {contentChunks.map((chunk, _index) => {
             const isActive = activeSection === chunk.id;
             const isCompleted = visibleSections.has(chunk.id) && activeSection !== chunk.id;
 
