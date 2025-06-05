@@ -1,0 +1,16 @@
+{
+    "chuot" : {
+        "id": "1",
+        "animal": "Chuột",
+        "intro":"Trong văn hóa Á Đông, chuột là loài vật tượng trưng cho sự khôn ngoan, linh hoạt và tài trí. Không chỉ nhanh nhẹn, chuột còn được xem là biểu tượng của sự sung túc và thịnh vượng, bởi chúng thường xuất hiện ở những nơi đủ đầy, no ấm.",
+        "passage1": "Chú chuột tò he được nặn tỉ mỉ với sắc xám xanh dịu mắt, thân hình tròn trịa, đôi tai to tròn vểnh lên đáng yêu",
+        "passage2": "Người tuổi Tý thường sở hữu trí thông minh sắc bén cùng sự nhanh nhẹn và lanh lợi nổi bật. Họ có khả năng quan sát tỉ mỉ, dễ dàng nhận biết và nắm bắt những cơ hội xung quanh mình một cách nhạy bén. Không những thế, họ còn rất giỏi trong việc lên kế hoạch, luôn biết cách chuẩn bị kỹ càng để đạt được mục tiêu đề ra. Mặc dù đôi khi có phần hơi dè dặt trong cách thể hiện bản thân, nhưng bù lại, người tuổi Tý lại sở hữu ý chí kiên trì vững chắc và khả năng xoay chuyển tình thế rất linh hoạt, giúp họ vượt qua nhiều thử thách trong cuộc sống.",
+        "images": {
+        "card": "/assets/12congiap/1.png",
+      "product": "/assets/12congiap/animals/1.png"
+        },
+        "characteristics": ["Thông minh", "Nhanh nhẹn", "Linh hoạt", "Có tài kinh doanh"],
+        "years": ["1996", "2008", "2020", "2032"]
+      }
+
+}
