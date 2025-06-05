@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useEffect, useRef, useState, useMemo, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ImageGallery } from "../components/ImageGallery";
 import nenHong2 from "/images/Nền hồng nhạt fixed mây.png";
 
@@ -19,37 +19,31 @@ interface ContentChunk {
   sectionIndex: number;
   paragraph: Paragraph;
   type: "title" | "content";
-  height: number;
   isEven: boolean;
 }
 
 export function Chapter1Page() {
   const { t } = useTranslation("chapter1");
   const content = t("content", { returnObjects: true }) as ChapterContent;
-
-  const [scrollY, setScrollY] = useState(0);
-  const [containerHeight, setContainerHeight] = useState(0);
-  const [visibleChunks, setVisibleChunks] = useState<Set<string>>(new Set());
   const [popupImage, setPopupImage] = useState<string | null>(null);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [activeSection, setActiveSection] = useState<string>("");
+  const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const CHUNK_HEIGHT = window.innerHeight;
-  const BUFFER_SIZE = 2;
   const glassStyle = "bg-black/40 backdrop-blur-sm rounded-lg shadow-lg";
 
-  const contentChunks = useMemo(() => {
+  const contentChunks: ContentChunk[] = (() => {
     if (!content || typeof content !== "object") return [];
     const chunks: ContentChunk[] = [];
     let passageCounter = 0;
+
     chunks.push({
       id: "title",
       sectionTitle: "Title",
       sectionIndex: -1,
       paragraph: { passage: 0, text: "", images: [] },
       type: "title",
-      height: CHUNK_HEIGHT,
       isEven: false,
     });
 
@@ -61,7 +55,6 @@ export function Chapter1Page() {
           sectionIndex,
           paragraph,
           type: "content",
-          height: CHUNK_HEIGHT,
           isEven: passageCounter % 2 === 0,
         });
         passageCounter++;
@@ -69,231 +62,238 @@ export function Chapter1Page() {
     });
 
     return chunks;
-  }, [content, CHUNK_HEIGHT]);
+  })();
 
-  const chunkPositions = useMemo(() => {
-    let currentPosition = 0;
-    return contentChunks.map((chunk) => {
-      const position = currentPosition;
-      currentPosition += chunk.height;
-      return { ...chunk, top: position, bottom: currentPosition };
-    });
-  }, [contentChunks]);
-
-  const totalHeight = chunkPositions.length > 0 ? chunkPositions[chunkPositions.length - 1].bottom : 0;
-
-  const visibleChunkIndices = useMemo(() => {
-    const visibleIndices: number[] = [];
-    chunkPositions.forEach((chunk, index) => {
-      const chunkTop = chunk.top;
-      const chunkBottom = chunk.bottom;
-      const viewportTop = scrollY - BUFFER_SIZE * CHUNK_HEIGHT;
-      const viewportBottom = scrollY + containerHeight + BUFFER_SIZE * CHUNK_HEIGHT;
-      if (chunkBottom >= viewportTop && chunkTop <= viewportBottom) {
-        visibleIndices.push(index);
-      }
-    });
-    return visibleIndices;
-  }, [scrollY, containerHeight, chunkPositions, CHUNK_HEIGHT]);
-
-  const handleScroll = useCallback(() => {
-    if (scrollRef.current) {
-      const newScrollY = scrollRef.current.scrollTop;
-      setScrollY(newScrollY);
-      document.documentElement.style.setProperty("--scroll", `${newScrollY}px`);
-    }
-  }, []);
-
+  // Intersection Observer for scroll animations
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const chunkId = entry.target.getAttribute("data-chunk-id");
-          if (chunkId) {
-            setVisibleChunks((prev) => {
-              const newSet = new Set(prev);
-              entry.isIntersecting ? newSet.add(chunkId) : newSet.delete(chunkId);
-              return newSet;
-            });
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => new Set([...prev, entry.target.id]));
+            if (entry.intersectionRatio > 0.5) {
+              setActiveSection(entry.target.id);
+            }
           }
         });
       },
-      { threshold: 0.3, rootMargin: "-100px 0px -100px 0px", root: scrollRef.current },
+      {
+        threshold: [0.1, 0.5, 0.8],
+        rootMargin: "-10% 0px -10% 0px",
+      },
     );
 
-    const chunkElements = document.querySelectorAll("[data-chunk-id]");
-    chunkElements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [visibleChunkIndices]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (containerRef.current) {
-        setContainerHeight(containerRef.current.clientHeight);
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    contentChunks.forEach((chunk) => {
-      chunk.paragraph.images.forEach((src) => {
-        const img = new Image();
-        img.src = src;
-      });
+    // Observe all sections
+    Object.values(sectionRefs.current).forEach((ref) => {
+      if (ref) observerRef.current?.observe(ref);
     });
+
+    return () => observerRef.current?.disconnect();
   }, [contentChunks]);
 
-  const renderChunk = useCallback(
-    (chunkData: (typeof chunkPositions)[0], _index: number) => {
-      const isVisible = visibleChunks.has(chunkData.id);
-      const topOffset = chunkData.top;
-      const chunkHeight = chunkData.height;
-      const hasImages = chunkData.paragraph.images.length > 0;
-      const isEvenImageCount = chunkData.paragraph.images.length % 2 === 0 && chunkData.paragraph.images.length >= 2;
-      const contentOnLeft = chunkData.isEven;
+  const renderChunk = (chunk: ContentChunk) => {
+    const hasImages = chunk.paragraph.images.length > 0;
+    const isEvenImageCount = chunk.paragraph.images.length % 2 === 0 && chunk.paragraph.images.length >= 2;
+    const contentOnLeft = chunk.isEven;
+    const isVisible = visibleSections.has(chunk.id);
 
-      if (chunkData.type === "title") {
-        return (
+    return (
+      <div
+        key={chunk.id}
+        ref={(el) => {
+          sectionRefs.current[chunk.id] = el;
+        }}
+        className={`relative w-full min-h-screen flex flex-col justify-center items-center py-8 sm:py-12 px-4 sm:px-6 transition-all duration-1000 ease-out transform ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+        id={chunk.id}
+      >
+        {/* Background with proper responsive handling */}
+        <div
+          className="absolute inset-0 w-full h-full z-0"
+          style={{
+            backgroundImage: `url(${nenHong2})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center top",
+            backgroundRepeat: "no-repeat",
+            backgroundAttachment: "fixed",
+          }}
+        />
+
+        {/* Content with enhanced animations */}
+        {chunk.type === "title" ? (
           <div
-            key={chunkData.id}
-            data-chunk-id={chunkData.id}
-            className="absolute w-full flex flex-col items-center justify-center overflow-hidden"
-            style={{ top: topOffset, height: chunkHeight + 2 }}
+            className={`relative z-10 text-center px-4 sm:px-6 w-full max-w-6xl transition-all duration-1200 delay-300 ${
+              isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"
+            }`}
           >
-            <img
-              src={nenHong2}
-              className="absolute top-0 left-0 w-full z-0"
-              alt="Background"
-              loading="lazy"
-              style={{ objectFit: "cover", objectPosition: "center top", height: chunkHeight + 4, width: "100%", transform: "translateY(-2px)" }}
-            />
-            <div className="relative z-10 text-center px-6 w-full max-w-6xl">
-              <h1
-                className={`text-4xl md:text-6xl font-bold mb-8 text-white drop-shadow-lg transition-all duration-1500 ease-out ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-white drop-shadow-2xl leading-tight">{t("title")}</h1>
+            <p className="text-lg sm:text-xl md:text-2xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg">{t("description")}</p>
+          </div>
+        ) : isEvenImageCount ? (
+          <div
+            className={`relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center justify-center space-y-4 sm:space-y-6 transition-all duration-1000 delay-200 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            {chunk.paragraph.passage === 1 && (
+              <h2
+                className={`text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-4 transition-all duration-800 delay-400 ${
+                  isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
                 }`}
               >
-                {t("title")}
-              </h1>
-              <p
-                className={`text-xl md:text-2xl text-white max-w-4xl mx-auto leading-relaxed transition-all duration-1500 ease-out ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-                }`}
-                style={{ transitionDelay: "500ms" }}
-              >
-                {t("description")}
-              </p>
+                {chunk.sectionTitle}
+              </h2>
+            )}
+            <div className={`${glassStyle} p-4 sm:p-6 md:p-8 w-full transition-all duration-800 delay-500 ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-98"}`}>
+              <p className="text-base sm:text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium oswald">{chunk.paragraph.text}</p>
+            </div>
+            <div
+              className={`grid gap-3 sm:gap-4 w-full transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${
+                chunk.paragraph.images.length === 1
+                  ? "grid-cols-1 max-w-md mx-auto"
+                  : chunk.paragraph.images.length === 2
+                  ? "grid-cols-1 sm:grid-cols-2"
+                  : chunk.paragraph.images.length <= 4
+                  ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                  : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              }`}
+            >
+              {chunk.paragraph.images.map((imgSrc, index) => (
+                <img
+                  key={index}
+                  src={imgSrc}
+                  alt={`Image ${index + 1}`}
+                  loading="lazy"
+                  onClick={() => setPopupImage(imgSrc)}
+                  className={`rounded-lg shadow-md object-cover w-full cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-xl ${
+                    chunk.paragraph.images.length === 1 ? "max-h-[400px]" : "max-h-[250px] sm:max-h-[300px]"
+                  }`}
+                  style={{
+                    aspectRatio: chunk.paragraph.images.length === 1 ? "16 / 10" : "4 / 3",
+                    transitionDelay: `${index * 100}ms`,
+                  }}
+                />
+              ))}
             </div>
           </div>
-        );
-      }
-
-      return (
-        <div key={chunkData.id} data-chunk-id={chunkData.id} className="absolute w-full flex items-center justify-center overflow-hidden" style={{ top: topOffset, height: chunkHeight + 2 }}>
-          <img
-            src={nenHong2}
-            className="absolute top-0 left-0 w-full z-0"
-            alt="Background"
-            loading="lazy"
-            style={{ objectFit: "cover", objectPosition: "center top", height: chunkHeight + 4, width: "100%", transform: "translateY(-2px)" }}
-          />
-
-          {isEvenImageCount ? (
-            <div className="relative z-10 max-w-5xl mx-auto px-6 py-12 text-center flex flex-col items-center justify-center">
-              {chunkData.paragraph.passage === 1 && <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white oswald">{chunkData.sectionTitle}</h2>}
-              <div className={`${glassStyle} p-8 mb-8 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
-                <p className="text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium oswald">{chunkData.paragraph.text}</p>
+        ) : (
+          <div
+            className={`relative z-10 max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-8 sm:gap-12 transition-all duration-1000 delay-200 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <div
+              className={`space-y-4 sm:space-y-6 w-full lg:w-1/2 ${hasImages ? (contentOnLeft ? "order-1" : "order-2") : ""} transition-all duration-800 delay-400 ${
+                isVisible ? "opacity-100 translate-x-0" : `opacity-0 ${contentOnLeft ? "translate-x-8" : "-translate-x-8"}`
+              }`}
+            >
+              {chunk.paragraph.passage === 1 && <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center lg:text-left oswald drop-shadow-lg">{chunk.sectionTitle}</h2>}
+              <div className={`${glassStyle} p-4 sm:p-6 md:p-8`}>
+                <p className="text-base sm:text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium">{chunk.paragraph.text}</p>
               </div>
+            </div>
+            {hasImages && (
               <div
-                className={`grid gap-4 w-full
-              grid-cols-1
-              sm:grid-cols-2
-              md:grid-cols-${chunkData.paragraph.images.length >= 4 ? "3" : "2"}
-              lg:grid-cols-${chunkData.paragraph.images.length >= 6 ? "3" : "2"}
-              xl:grid-cols-${chunkData.paragraph.images.length >= 6 ? "4" : "3"}`}
+                className={`w-full lg:w-1/2 flex justify-center items-center transition-all duration-800 delay-600 ${contentOnLeft ? "order-2" : "order-1"} ${
+                  isVisible ? "opacity-100 translate-x-0" : `opacity-0 ${contentOnLeft ? "-translate-x-8" : "translate-x-8"}`
+                }`}
               >
-                {chunkData.paragraph.images.map((imgSrc, index) => (
-                  <img
-                    key={index}
-                    src={imgSrc}
-                    alt={`Image ${index + 1}`}
-                    loading="lazy"
-                    onClick={() => setPopupImage(imgSrc)}
-                    className={`rounded-lg shadow-md object-cover w-full cursor-pointer max-h-[250px]
-                    transition-transform duration-500 ease-in-out hover:scale-105 hover:z-10`}
-                    style={{ aspectRatio: "4 / 3" }}
-                  />
-                ))}
+                <ImageGallery images={chunk.paragraph.images} isVisible={isVisible} delay={800} />
               </div>
-            </div>
-          ) : (
-            <div className="relative z-10 max-w-7xl mx-auto px-6 w-full h-full flex items-center">
-              <div className={`grid grid-cols-1 ${hasImages ? "lg:grid-cols-2" : "lg:grid-cols-1"} gap-12 items-center w-full min-h-[80vh]"`}>
-                <div
-                  className={`space-y-6 ${hasImages ? (contentOnLeft ? "lg:order-1" : "lg:order-2") : "lg:col-span-1 max-w-4xl mx-auto"} transition-all duration-1200 ease-out ${
-                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
-                  }`}
-                  style={{ transitionDelay: "300ms" }}
-                >
-                  {chunkData.paragraph.passage === 1 && <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white text-center lg:text-left oswald">{chunkData.sectionTitle}</h2>}
-                  <div className={`${glassStyle} p-8`}>
-                    <p className="text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium">{chunkData.paragraph.text}</p>
-                  </div>
-                </div>
-                {hasImages && (
-                  <div className={`${contentOnLeft ? "lg:order-2" : "lg:order-1"} h-full flex items-center justify-center`}>
-                    <ImageGallery images={chunkData.paragraph.images} isVisible={isVisible} delay={600} />
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-        </div>
-      );
-    },
-    [visibleChunks, glassStyle, t],
-  );
-
-  return !content || typeof content !== "object" ? (
-    <div className="relative w-full h-screen flex items-center justify-center">
-      <img src={nenHong2} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Background" />
-      <div className="relative z-10 text-center">
-        <p className="text-lg text-white">Loading content...</p>
+            )}
+          </div>
+        )}
       </div>
-    </div>
-  ) : (
+    );
+  };
+
+  return (
     <>
       {popupImage && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center" onClick={() => setPopupImage(null)}>
-          <img src={popupImage} className="max-w-[90vw] max-h-[90vh] rounded-lg shadow-lg transition-transform duration-300 scale-100 hover:scale-105" alt="Zoomed" />
-          <button className="absolute top-4 right-4 text-white text-2xl font-bold" onClick={() => setPopupImage(null)}>
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={() => setPopupImage(null)}>
+          <img src={popupImage} className="max-w-[90vw] max-h-[90vh] rounded-lg shadow-2xl transition-all duration-300 scale-100 hover:scale-105" alt="Zoomed" />
+          <button
+            className="absolute top-4 right-4 text-white text-2xl sm:text-3xl font-bold hover:scale-110 transition-transform duration-200 bg-black/30 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center"
+            onClick={(e) => {
+              e.stopPropagation();
+              setPopupImage(null);
+            }}
+          >
             ×
           </button>
         </div>
       )}
-      <div className="relative w-full h-screen overflow-hidden oswald">
-        <div className="fixed inset-0 w-full h-full z-0" style={{ backgroundImage: `url(${nenHong2})`, backgroundSize: "cover", backgroundPosition: "center top", backgroundAttachment: "fixed" }} />
-        <div ref={scrollRef} className="w-full h-full overflow-y-auto overflow-x-hidden relative z-10" onScroll={handleScroll} style={{ scrollBehavior: "smooth" }}>
-          <div ref={containerRef} className="relative w-full" style={{ height: totalHeight }}>
-            {visibleChunkIndices.map((i) => renderChunk(chunkPositions[i], i))}
-          </div>
-        </div>
-        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 flex space-x-2">
-          {chunkPositions.map((chunkData) => (
-            <button
-              key={chunkData.id}
-              onClick={() => scrollRef.current?.scrollTo({ top: chunkData.top, behavior: "smooth" })}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 border border-white/30 ${
-                visibleChunks.has(chunkData.id) ? "bg-white scale-150 shadow-lg border-white" : "bg-white/40 hover:bg-white/60 hover:scale-125"
-              }`}
-              title={chunkData.type === "title" ? "Title" : `${chunkData.sectionTitle} - Passage ${chunkData.paragraph.passage}`}
-            />
-          ))}
+
+      <div
+        className="relative w-full min-h-screen oswald overflow-x-hidden chapter1-bg"
+        style={{
+          backgroundImage: `url(${nenHong2})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          backgroundRepeat: "repeat-y",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        <div className="relative z-10">{contentChunks.map((chunk) => renderChunk(chunk))}</div>
+
+        {/* Enhanced Navigation Dots */}
+        <div className="fixed bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-40 flex space-x-2 sm:space-x-3 bg-black/20 backdrop-blur-sm rounded-full px-3 py-2 sm:px-4 sm:py-3">
+          {contentChunks.map((chunk, index) => {
+            const isActive = activeSection === chunk.id;
+            const isCompleted = visibleSections.has(chunk.id) && activeSection !== chunk.id;
+
+            return (
+              <button
+                key={chunk.id}
+                onClick={() =>
+                  sectionRefs.current[chunk.id]?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                  })
+                }
+                className={`relative rounded-full transition-all duration-500 ease-out transform ${
+                  isActive ? "w-8 h-3 sm:w-10 sm:h-4 bg-white scale-110 shadow-lg" : isCompleted ? "w-3 h-3 sm:w-4 sm:h-4 bg-white/80 scale-100" : "w-2.5 h-2.5 sm:w-3 sm:h-3 bg-white/40 scale-90"
+                } hover:bg-white hover:scale-125 border border-white/30`}
+                title={chunk.type === "title" ? "Title" : `${chunk.sectionTitle} - Passage ${chunk.paragraph.passage}`}
+              >
+                {/* Active indicator pulse */}
+                {isActive && <div className="absolute inset-0 rounded-full bg-white animate-pulse opacity-50" />}
+
+                {/* Progress indicator */}
+                {isCompleted && <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/60 to-white/80" />}
+              </button>
+            );
+          })}
         </div>
       </div>
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+
+          .animate-fade-in {
+            animation: fade-in 0.3s ease-out;
+          }
+
+          /* Smooth scrolling for better UX */
+          html {
+            scroll-behavior: smooth;
+          }
+
+          /* Ensure responsive background on all devices */
+          @media (max-width: 640px) {
+            .chapter1-bg {
+              background-attachment: scroll !important;
+            }
+          }
+        `,
+        }}
+      />
     </>
   );
 }

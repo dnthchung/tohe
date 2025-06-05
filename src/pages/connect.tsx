@@ -17,7 +17,6 @@ export function ConnectPage() {
       <div className="relative z-10 flex items-center justify-center w-full h-screen px-4">
         <div className="bg-black/50 backdrop-blur-sm rounded-xl p-10 text-center max-w-3xl">
           <h1 className="text-4xl font-bold mb-4">{t("connect")}</h1>
-          <p className="text-lg mb-3">{t("content")}</p>
           <p className="italic mb-4">{t("updating")}</p>
           <p className="text-sm text-gray-300">{t("thanks")}</p>
         </div>

@@ -169,9 +169,9 @@ export function ProductsPage() {
                   relative group cursor-pointer
                   transform transition-all duration-500
                   hover:scale-105 hover:-translate-y-1
-                  shadow-sm hover:shadow-2xl
+
                   rounded-xl overflow-hidden
-                  border border-white/30
+
                   ${visibleCards.has(index) ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-75"}
                 `}
                 style={{ transitionDelay: `${index * 100}ms` }}

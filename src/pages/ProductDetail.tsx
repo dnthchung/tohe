@@ -161,8 +161,9 @@ export function ProductDetail() {
 
   return (
     <div className="relative w-full min-h-screen bg-black text-white">
-      <img src={nenGradient} alt="Background" className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
-      <div className="relative z-10 px-4 py-8">
+      <img src={nenGradient} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Light Background" />
+      <div className="absolute inset-0 bg-black/20 z-5" />
+      <div className="relative z-10 px-4 py-24">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-8">
