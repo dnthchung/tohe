@@ -203,9 +203,9 @@ export function Chapter1Page() {
 
           {isEvenImageCount ? (
             <div className="relative z-10 max-w-5xl mx-auto px-6 py-12 text-center flex flex-col items-center justify-center">
-              {chunkData.paragraph.passage === 1 && <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">{chunkData.sectionTitle}</h2>}
+              {chunkData.paragraph.passage === 1 && <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white oswald">{chunkData.sectionTitle}</h2>}
               <div className={`${glassStyle} p-8 mb-8 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
-                <p className="text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium">{chunkData.paragraph.text}</p>
+                <p className="text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium oswald">{chunkData.paragraph.text}</p>
               </div>
               <div
                 className={`grid gap-4 w-full
@@ -238,7 +238,7 @@ export function Chapter1Page() {
                   }`}
                   style={{ transitionDelay: "300ms" }}
                 >
-                  {chunkData.paragraph.passage === 1 && <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white text-center lg:text-left">{chunkData.sectionTitle}</h2>}
+                  {chunkData.paragraph.passage === 1 && <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white text-center lg:text-left oswald">{chunkData.sectionTitle}</h2>}
                   <div className={`${glassStyle} p-8`}>
                     <p className="text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium">{chunkData.paragraph.text}</p>
                   </div>
@@ -274,7 +274,7 @@ export function Chapter1Page() {
           </button>
         </div>
       )}
-      <div className="relative w-full h-screen overflow-hidden">
+      <div className="relative w-full h-screen overflow-hidden oswald">
         <div className="fixed inset-0 w-full h-full z-0" style={{ backgroundImage: `url(${nenHong2})`, backgroundSize: "cover", backgroundPosition: "center top", backgroundAttachment: "fixed" }} />
         <div ref={scrollRef} className="w-full h-full overflow-y-auto overflow-x-hidden relative z-10" onScroll={handleScroll} style={{ scrollBehavior: "smooth" }}>
           <div ref={containerRef} className="relative w-full" style={{ height: totalHeight }}>

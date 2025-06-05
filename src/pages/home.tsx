@@ -102,7 +102,7 @@ export function HomePage() {
       <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center">
-          <p className="text-2xl font-semibold leading-relaxed whitespace-pre-line max-w-4xl">{t("poem") || "This is the poem section. Centered and full‑screen."}</p>
+          <p className="oswald text-2xl font-semibold leading-relaxed whitespace-pre-line max-w-4xl">{t("poem") || "This is the poem section. Centered and full‑screen."}</p>
         </div>
       </section>
 
@@ -110,7 +110,7 @@ export function HomePage() {
       <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center">
-          <p className="text-2xl font-medium leading-relaxed whitespace-pre-line max-w-4xl">{t("section1") || "Section 1 content goes here."}</p>
+          <p className="oswald text-2xl font-medium leading-relaxed whitespace-pre-line max-w-4xl">{t("section1") || "Section 1 content goes here."}</p>
         </div>
       </section>
 
@@ -118,8 +118,7 @@ export function HomePage() {
       <section className="relative h-screen flex flex-col justify-center items-center text-white overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">CHUYỆN TÒ HE</h2>
-          <p className="text-2xl font-medium leading-relaxed whitespace-pre-line max-w-4xl">{t("section2") || "Section 2 content goes here."}</p>
+          <p className=" oswald text-2xl font-medium leading-relaxed whitespace-pre-line max-w-4xl">{t("section2") || "Section 2 content goes here."}</p>
         </div>
       </section>
 
@@ -127,8 +126,7 @@ export function HomePage() {
       <section className="relative h-screen flex flex-col justify-center items-center text-white overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">CHUYỆN TÒ HE</h2>
-          <p className="text-2xl font-medium leading-relaxed whitespace-pre-line max-w-4xl">{t("section3") || "Section 3 content goes here."}</p>
+          <p className="oswald text-2xl font-medium leading-relaxed whitespace-pre-line max-w-4xl">{t("section3") || "Section 3 content goes here."}</p>
         </div>
       </section>
 

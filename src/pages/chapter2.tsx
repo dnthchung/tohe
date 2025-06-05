@@ -172,7 +172,7 @@ export function Chapter2Page() {
             />
             <div className="relative z-10 text-center px-6 w-full max-w-6xl">
               <h1
-                className={`text-4xl md:text-6xl font-bold mb-8 text-white drop-shadow-lg transition-all duration-1500 ease-out ${
+                className={`whitespace-pre-line text-4xl md:text-6xl font-bold mb-8 text-white drop-shadow-lg text-center leading-tight max-w-[90vw] md:max-w-5xl mx-auto transition-all duration-1500 ease-out ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                 }`}
               >
@@ -280,7 +280,7 @@ export function Chapter2Page() {
           </button>
         </div>
       )}
-      <div className="relative w-full h-screen overflow-hidden">
+      <div className="oswald relative w-full h-screen overflow-hidden">
         <div className="fixed inset-0 w-full h-full z-0" style={{ backgroundImage: `url(${nenHong2})`, backgroundSize: "cover", backgroundPosition: "center top", backgroundAttachment: "fixed" }} />
         <div ref={scrollRef} className="w-full h-full overflow-y-auto overflow-x-hidden relative z-10" onScroll={handleScroll} style={{ scrollBehavior: "smooth" }}>
           <div ref={containerRef} className="relative w-full" style={{ height: totalHeight }}>

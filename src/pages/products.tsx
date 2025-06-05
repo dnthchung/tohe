@@ -16,6 +16,7 @@ import khi from "../assets/12congiap/9.png";
 import ga from "../assets/12congiap/10.png";
 import cho from "../assets/12congiap/11.png";
 import lon from "../assets/12congiap/12.png";
+import { Copyright } from "@/components/copyright";
 
 const animalCards = [
   { id: "1", name: "chuot", img: chuot },
@@ -107,7 +108,7 @@ export function ProductsPage() {
   }
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden">
+    <div className="relative w-full min-h-screen overflow-x-hidden oswald">
       {/* Section 1: Giới thiệu hộp với nền sáng */}
       <section className="relative min-h-screen flex flex-col items-center justify-center">
         {/* Background using nenGradient image */}
@@ -121,7 +122,7 @@ export function ProductsPage() {
           {/* Header with fade-in animation */}
           <div className={`pt-16 mb-12 text-center transition-all duration-1000 transform ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"}`}>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg mb-6">Mùa 1: Tò He x 12 con giáp</h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl lg:text-2xl text-white max-w-3xl mx-auto leading-relaxed">
               Khám phá bộ sưu tập độc đáo với 12 con giáp được tạo hình tinh xảo từ nghệ thuật tò he truyền thống Việt Nam
             </p>
           </div>
@@ -216,6 +217,10 @@ export function ProductsPage() {
           ))}
         </div>
       </section>
+      {/* Footer luôn dính đáy */}
+      <footer className="relative z-10">
+        <Copyright />
+      </footer>
     </div>
   );
 }

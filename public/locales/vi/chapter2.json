@@ -1,83 +1,63 @@
 {
-  "title": "Kỳ 2: Hành Trình Tò He Qua Thăng Trầm Đất Việt",
+  "title": "Kỳ 2: Hành Trình Tò He Qua Thăng Trầm\nĐất Việt",
   "description": "Tò he – hành trình từ truyền thống dân gian đến di sản sống động trong thời hiện đại.",
   "content": {
     "I. Một nắm bột kể chuyện trăm năm": [
       {
         "passage": 1,
         "text": "Tò he lặng lẽ tồn tại như một phần tự nhiên trong đời sống tinh thần của người Việt. Chính sự khiêm nhường ấy khiến tò he trở thành chứng tích sống động của một nền văn hóa dân gian lâu đời – nơi nghệ thuật, tín ngưỡng và đời sống dân dã quyện vào nhau.",
-        "images": [
-          "images/imageForEachChapter/6.jpg"
-        ]
+        "images": ["images/imageForEachChapter/6.jpg"]
       },
       {
         "passage": 2,
         "text": "Từ mâm cỗ cúng tổ tiên, tò he dần bước ra ngoài cổng đình, xuống các phiên chợ quê, và vào trong ký ức tuổi thơ bao thế hệ. Những nghệ nhân dân gian – không sân khấu, không ánh đèn – chỉ với một thanh tre, ít màu tự nhiên và đôi tay tài hoa, đã “thổi hồn” vào bột nếp. Và thế là lịch sử, cổ tích, văn hóa… cùng sống lại trong ánh mắt trong veo của lũ trẻ.",
-        "images": [
-          "images/imageForEachChapter/9.jpg"
-        ]
+        "images": ["images/imageForEachChapter/9.jpg"]
       },
       {
         "passage": 3,
         "text": "Tò he đi qua những giai đoạn thăng trầm của lịch sử: thời chiến tranh, thời bao cấp, thời đất nước đổi mới. Nó có lúc bị lãng quên, có khi lép vế giữa thị trường đồ chơi nhựa, nhưng chưa bao giờ biến mất hoàn toàn. Vì bên trong hình hài nhỏ bé ấy, là cả một chặng đường mà lịch sử sống dậy bằng màu sắc và trí tưởng tượng.",
-        "images": [
-          "images/imageForEachChapter/20.jpg"
-        ]
+        "images": ["images/imageForEachChapter/20.jpg"]
       }
     ],
     "II. Một món đồ chơi – Hai tầng di sản": [
       {
         "passage": 1,
         "text": "Tò he là món đồ chơi, nhưng cũng là một tầng ký ức tập thể, nơi chất chứa những gì gần gũi và sâu sắc nhất của người Việt. Nó phản ánh một nền văn hóa nông nghiệp thuần Việt – từ nguyên liệu gạo nếp, màu thiên nhiên, cho tới cách làm thủ công hoàn toàn bằng tay.",
-        "images": [
-          "images/imageForEachChapter/8.jpg"
-        ]
+        "images": ["images/imageForEachChapter/8.jpg"]
       },
       {
         "passage": 2,
         "text": "Không có khuôn mẫu, không máy móc, nghệ nhân tò he học bằng cách quan sát, luyện tập và ghi nhớ. Nghề được truyền từ cha sang con, không thành sách, không giảng đường, chỉ bằng đôi tay và tấm lòng. Tò he vì vậy mà không bao giờ giống nhau – mỗi nắm bột là một bản thể độc đáo, một \"tác phẩm\" riêng biệt được nặn bằng cảm xúc và văn hóa cá nhân.",
-        "images": [
-          "images/imageForEachChapter/10.jpg"
-        ]
+        "images": ["images/imageForEachChapter/10.jpg"]
       },
       {
         "passage": 3,
         "text": "Trong đó, giá trị văn hóa của tò he được thể hiện rõ rệt: nó gói gọn trong lòng bàn tay cả một hệ thống biểu tượng dân gian – từ hình ảnh đến câu chuyện, từ phong tục đến mỹ học. Tò he không đơn thuần là đồ chơi. Nó là nghệ thuật thị giác dân gian; là cách người Việt kể lại thế giới quan của mình bằng hình khối và màu sắc.",
-        "images": [
-          "images/imageForEachChapter/16.jpg"
-        ]
+        "images": ["images/imageForEachChapter/16.jpg"]
       }
     ],
     "III. Từ ký ức đến hiện tại – Sự hồi sinh mềm mại": [
       {
         "passage": 1,
         "text": "Khi đất nước bước vào thời đại công nghệ, có lúc người ta tưởng tò he đã thuộc về quá khứ. Đồ chơi điện tử, hoạt hình ngoại nhập, mạng xã hội... khiến những nắm bột dân gian dường như lạc lõng. Nhưng điều kỳ lạ là, chính trong lúc ấy, tò he lại dần dần trở về.",
-        "images": [
-          "images/imageForEachChapter/18.jpg"
-        ]
+        "images": ["images/imageForEachChapter/18.jpg"]
       },
       {
         "passage": 2,
         "text": "Nhiều nghệ nhân trẻ bắt đầu làm mới tò he: tạo hình nhân vật hiện đại như Doraemon, Elsa, Mario…; kết hợp trình diễn làm tò he tại các workshop, lễ hội; đem tò he vào bảo tàng, lớp học nghệ thuật, và đặc biệt, trong những chương trình dành cho trẻ em đặc biệt, tự kỷ, khiếm thính. Tò he được nhìn nhận không chỉ là một món đồ chơi cổ – mà là cầu nối giữa nghệ thuật truyền thống và giáo dục hiện đại.",
-        "images": [
-          "images/imageForEachChapter/3.jpg"
-        ]
+        "images": ["images/imageForEachChapter/3.jpg"]
       },
       {
         "passage": 3,
         "text": "Việc tò he hiện diện trong các sự kiện văn hóa quốc tế – từ Nhật Bản, Hàn Quốc đến Pháp, Mỹ – như một “đại sứ văn hóa” nhỏ bé, nhưng giàu sức nặng. Bởi lẽ, trong mỗi sản phẩm không chỉ có sự khéo léo mà còn có cả tâm tình, cả lịch sử, cả bản sắc Việt Nam.",
-        "images": [
-          "images/imageForEachChapter/4.jpg"
-        ]
+        "images": ["images/imageForEachChapter/4.jpg"]
       }
     ],
     "IV. Chạm vào văn hóa – Giữ lấy hồn dân tộc": [
       {
         "passage": 1,
         "text": "Ngày nay, khi một đứa trẻ nắm tò he trên tay, có thể em chưa hiểu hết câu chuyện đằng sau nó. Nhưng trong sự háo hức đó, là một phần của dòng chảy truyền thống vẫn đang tiếp tục. Là bàn tay nối dài của thế hệ ông cha. Là nhịp cầu từ làng nghề Xuân La đến đô thị hiện đại, từ một góc chợ quê đến sân khấu quốc tế.",
-        "images": [
-          "images/imageForEachChapter/23.jpg"
-        ]
+        "images": ["images/imageForEachChapter/23.jpg"]
       },
       {
         "passage": 2,

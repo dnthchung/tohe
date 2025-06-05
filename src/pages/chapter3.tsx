@@ -178,12 +178,13 @@ export function Chapter3Page() {
             />
             <div className="relative z-10 text-center px-6 w-full max-w-6xl">
               <h1
-                className={`text-4xl md:text-6xl font-bold mb-8 text-white drop-shadow-lg transition-all duration-1500 ease-out ${
+                className={`whitespace-pre-line text-4xl md:text-6xl font-bold mb-8 text-white drop-shadow-lg text-center leading-tight max-w-[90vw] md:max-w-5xl mx-auto transition-all duration-1500 ease-out ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                 }`}
               >
                 {t("title")}
               </h1>
+
               <p
                 className={`text-xl md:text-2xl text-white max-w-4xl mx-auto leading-relaxed transition-all duration-1500 ease-out ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
@@ -285,14 +286,14 @@ export function Chapter3Page() {
   ) : (
     <>
       {popupImage && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center" onClick={() => setPopupImage(null)}>
+        <div className=" fixed inset-0 z-50 bg-black/80 flex items-center justify-center" onClick={() => setPopupImage(null)}>
           <img src={popupImage} className="max-w-[90vw] max-h-[90vh] rounded-lg shadow-lg transition-transform duration-300 scale-100 hover:scale-105" alt="Zoomed" />
           <button className="absolute top-4 right-4 text-white text-2xl font-bold" onClick={() => setPopupImage(null)}>
             ×
           </button>
         </div>
       )}
-      <div className="relative w-full h-screen overflow-hidden">
+      <div className="oswald relative w-full h-screen overflow-hidden">
         <div
           className="fixed inset-0 w-full h-full z-0"
           style={{

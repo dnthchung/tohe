@@ -140,3 +140,12 @@
 .animate-slideProgress {
   animation: slideProgress 4s linear infinite;
 }
+
+/* index.css hoặc globals.css */
+.oswald {
+  font-family: "Oswald", sans-serif;
+}
+
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
