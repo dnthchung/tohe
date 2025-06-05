@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useRef, useState } from "react";
 import { ImageGallery } from "../components/ImageGallery";
 import nenHong2 from "/images/Nền hồng nhạt fixed mây.png";
+import { Copyright } from "@/components/copyright";
 
 interface Paragraph {
   passage: number;
@@ -266,6 +267,10 @@ export function Chapter2Page() {
             );
           })}
         </div>
+        {/* Footer luôn dính đáy */}
+        <footer className="relative z-10">
+          <Copyright />
+        </footer>
       </div>
 
       <style
