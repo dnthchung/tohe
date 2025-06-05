@@ -1,6 +1,19 @@
 {
-  "title": "Products",
-  "content": "This is the content for",
-  "page": "page",
-  "description": "Explore our amazing products and services."
+  "title": "Season 1: Tò He x The 12 Animals of the Vietnamese Zodiac",
+  "description": "Explore a unique collection featuring the 12 zodiac animals intricately crafted from traditional Vietnamese tò he art",
+  "title-box": "12 Zodiac Animals in Tò He",
+  "description-box": "Choose your zodiac animal to explore details",
+  "explore-zodiac": "Explore the 12 zodiac animals",
+  "content": {
+    "passage1": {
+      "text": "In Vietnamese culture, the 12 zodiac animals are more than markers of time — they represent deep beliefs, character traits, and the harmony between humans and nature. Each animal carries its own symbolism, reflecting values such as courage, intelligence, loyalty, and perseverance. As a result, the zodiac is deeply woven into Vietnamese spiritual life, folk arts, and cultural identity."
+    },
+    "passage2": {
+      "text": "This tò he collection inspired by the 12 zodiac signs brings together two traditional heritages in one creative expression. Made from colorful hand-molded rice powder, each tò he figure offers a playful yet meaningful interpretation of these familiar symbols. More than handcrafted toys, these figures act as cultural storytellers — preserving and sharing the beauty of Vietnamese traditions in a fresh, engaging way, especially for younger generations."
+    }
+  },
+  "zodiac-animals": [
+    "Rat", "Ox", "Tiger", "Cat", "Dragon", "Snake",
+    "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig"
+  ]
 }

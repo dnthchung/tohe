@@ -149,3 +149,14 @@
 .poppins {
   font-family: "Poppins", sans-serif;
 }
+
+@font-face {
+  font-family: "NVN Motherland";
+  src: url("/fonts/NVN-Motherland.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-nvn {
+  font-family: "NVN Motherland", sans-serif;
+}

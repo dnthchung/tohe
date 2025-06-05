@@ -102,7 +102,7 @@ export function HomePage() {
       <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center">
-          <p className="oswald text-2xl font-semibold leading-relaxed whitespace-pre-line max-w-4xl">{t("poem") || "This is the poem section. Centered and full‑screen."}</p>
+          <p className="font-nvn text-4xl font-semibold leading-relaxed whitespace-pre-line max-w-4xl">{t("poem") || "This is the poem section. Centered and full‑screen."}</p>
         </div>
       </section>
 

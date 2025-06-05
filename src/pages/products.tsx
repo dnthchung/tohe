@@ -33,8 +33,6 @@ const animalCards = [
   { id: "12", name: "lon", img: lon },
 ];
 
-const zodiacNames = ["Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
-
 // Loading component
 const LoadingScreen = () => (
   <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
@@ -50,14 +48,15 @@ export function ProductsPage() {
   const { t } = useTranslation("products");
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [showContent, setShowContent] = useState(false); // Thêm state riêng cho animation
   const [visibleCards, setVisibleCards] = useState(new Set());
+  const [boxMoved, setBoxMoved] = useState(false);
+  const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
     // Preload all images
     const preloadImages = async () => {
       const imageUrls = [nenGradient, nenSang, hopToHe, ...animalCards.map((card) => card.img)];
-
       const imagePromises = imageUrls.map((src) => {
         return new Promise((resolve, reject) => {
           const img = new Image();
@@ -72,14 +71,19 @@ export function ProductsPage() {
         // Add minimum loading time for better UX
         setTimeout(() => {
           setIsLoading(false);
-          setIsLoaded(true);
+          // Delay để tạo hiệu ứng animation
+          setTimeout(() => {
+            setShowContent(true);
+          }, 100); // Delay 100ms sau khi loading xong
         }, 1500);
       } catch (error) {
         console.error("Error loading images:", error);
         // Still proceed even if some images fail to load
         setTimeout(() => {
           setIsLoading(false);
-          setIsLoaded(true);
+          setTimeout(() => {
+            setShowContent(true);
+          }, 100);
         }, 2000);
       }
     };
@@ -88,19 +92,32 @@ export function ProductsPage() {
   }, []);
 
   useEffect(() => {
-    if (!isLoading && isLoaded) {
-      // Animate cards appearing one by one
-      const timer = setTimeout(() => {
+    if (!isLoading && showContent) {
+      // Animation sequence for section 1
+      const boxMoveTimer = setTimeout(() => {
+        setBoxMoved(true);
+      }, 500); // Giảm delay xuống
+
+      const contentTimer = setTimeout(() => {
+        setContentVisible(true);
+      }, 800); // Content appears after box has moved
+
+      // Animate cards appearing one by one for section 3
+      const cardsTimer = setTimeout(() => {
         animalCards.forEach((_, index) => {
           setTimeout(() => {
             setVisibleCards((prev) => new Set([...prev, index]));
           }, index * 100); // Stagger animation by 100ms
         });
-      }, 1000); // Delayed to start after first section
+      }, 1200); // Delayed to start after section 1 animations
 
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(boxMoveTimer);
+        clearTimeout(contentTimer);
+        clearTimeout(cardsTimer);
+      };
     }
-  }, [isLoading, isLoaded]);
+  }, [isLoading, showContent]); // Thay đổi dependency
 
   // Show loading screen while resources are loading
   if (isLoading) {
@@ -109,46 +126,70 @@ export function ProductsPage() {
 
   return (
     <div className="relative w-full min-h-screen overflow-x-hidden oswald">
-      {/* Section 1: Giới thiệu hộp với nền sáng */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center">
+      {/* Section 1: Combined layout with box and content side by side */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center py-6">
         {/* Background using nenGradient image */}
         <img src={nenGradient} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Light Background" />
-
         {/* Overlay for better contrast */}
         <div className="absolute inset-0 bg-black/20 z-5" />
 
         {/* Content for section 1 */}
-        <div className="relative z-10 flex flex-col items-center px-4 py-8">
+        <div className="relative z-10 flex flex-col items-center px-4 py-8 w-full max-w-7xl">
           {/* Header with fade-in animation */}
-          <div className={`pt-16 mb-12 text-center transition-all duration-1000 transform ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"}`}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg mb-6">Mùa 1: Tò He x 12 con giáp</h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-white max-w-3xl mx-auto leading-relaxed">
-              Khám phá bộ sưu tập độc đáo với 12 con giáp được tạo hình tinh xảo từ nghệ thuật tò he truyền thống Việt Nam
+          <div className="pt-16 mb-12 text-center">
+            <h1
+              className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg mb-6 transition-all duration-1000 transform ${
+                showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              {t("title")}
+            </h1>
+            <p
+              className={`text-lg md:text-xl lg:text-2xl text-white max-w-3xl mx-auto leading-relaxed transition-all duration-1000 transform delay-200 ${
+                showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              {t("description")}
             </p>
           </div>
 
-          {/* Box Display with scale animation */}
-          <div className={`transition-all duration-1000 delay-500 transform ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>
-            <img src={hopToHe} alt="Hộp Tò He" className="w-[300px] md:w-[400px] lg:w-[500px] drop-shadow-2xl hover:scale-105 transition-transform duration-300" />
+          {/* Main content layout - Box and paragraphs side by side */}
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 w-full">
+            {/* Box Display with synchronized animation */}
+            <div className={`transition-all duration-1000 transform flex-shrink-0 ${contentVisible ? "opacity-100 scale-100 translate-x-0" : "opacity-0 scale-75 translate-x-8"}`}>
+              <img src={hopToHe} alt="Hộp Tò He" className="w-[300px] md:w-[400px] lg:w-[500px] drop-shadow-2xl hover:scale-105 transition-transform duration-300" />
+            </div>
+
+            {/* Content paragraphs with slide-in animation */}
+            <div className={`flex flex-col gap-8 max-w-2xl transition-all duration-1000 transform ${contentVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}>
+              {/* First paragraph */}
+              <div className="bg-black/40 backdrop-blur-sm rounded-lg shadow-lg p-6 lg:p-8">
+                <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed font-medium">{t("content.passage1.text")}</p>
+              </div>
+
+              {/* Second paragraph */}
+              <div className="bg-black/40 backdrop-blur-sm rounded-lg shadow-lg p-6 lg:p-8">
+                <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed font-medium">{t("content.passage2.text")}</p>
+              </div>
+            </div>
           </div>
 
           {/* Scroll indicator */}
-          <div className={`mt-16 transition-all duration-1000 delay-1000 transform ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <div className={`mt-16 transition-all duration-1000 delay-1000 transform ${showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <div className="animate-bounce">
-              <svg className="w-6 h-6 mx-auto text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 mx-auto text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </div>
-            <p className="text-gray-600 text-sm mt-2">Khám phá 12 con giáp</p>
+            <p className="text-gray-300 text-sm mt-2">{t("explore-zodiac")}</p>
           </div>
         </div>
       </section>
 
-      {/* Section 2: Grid 12 con giáp với nền gradient */}
+      {/* Section 2: Grid 12 con giáp với nền sáng */}
       <section className="relative min-h-screen flex flex-col items-center justify-center">
-        {/* Background using nenSang image */}
+        {/* Background using nenGradient image */}
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Gradient Background" />
-
         {/* Overlay for better contrast */}
         <div className="absolute inset-0 bg-black/20 z-5" />
 
@@ -156,8 +197,8 @@ export function ProductsPage() {
         <div className="relative z-10 flex flex-col items-center px-4 py-16 text-white">
           {/* Section title */}
           <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-2xl mb-4">12 Con Giáp Tò He</h2>
-            <p className="text-lg md:text-xl text-white/90 drop-shadow-lg">Chọn con giáp của bạn để khám phá chi tiết</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-2xl mb-4">{t("title-box")}</h2>
+            <p className="text-lg md:text-xl text-white/90 drop-shadow-lg">{t("description-box")}</p>
           </div>
 
           {/* Card Grid - 4 columns x 3 rows with staggered animation */}
@@ -166,12 +207,7 @@ export function ProductsPage() {
               <div
                 key={card.id}
                 className={`
-                  relative group cursor-pointer
-                  transform transition-all duration-500
-                  hover:scale-105 hover:-translate-y-1
-
-                  rounded-xl overflow-hidden
-
+                  relative group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:-translate-y-1 rounded-xl overflow-hidden
                   ${visibleCards.has(index) ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-75"}
                 `}
                 style={{ transitionDelay: `${index * 100}ms` }}
@@ -180,18 +216,15 @@ export function ProductsPage() {
                 {/* Hình ảnh */}
                 <div className="relative overflow-hidden">
                   <img src={card.img} alt={card.name} className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1" />
-
                   {/* Shimmer ánh sáng khi hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
-
                   {/* Overlay ánh sáng khi hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-white/5 via-transparent to-black/10 opacity-50 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </div>
 
                 {/* Số thứ tự hiển thị khi hover */}
                 <div className="absolute top-2 left-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100 shadow-lg">
-                  {/* #{card.id} */}
-                  {zodiacNames[index]}
+                {t(`zodiac-animals.${index}`)}
                 </div>
 
                 {/* Gradient viền glow khi hover */}
@@ -217,6 +250,7 @@ export function ProductsPage() {
           ))}
         </div>
       </section>
+
       {/* Footer luôn dính đáy */}
       <footer className="relative z-10">
         <Copyright />

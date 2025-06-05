@@ -1,6 +1,19 @@
 {
-  "title": "Sản phẩm",
-  "content": "Đây là nội dung cho trang",
-  "page": "trang",
-  "description": "Khám phá các sản phẩm và dịch vụ tuyệt vời của chúng tôi."
+  "title": "Mùa 1: Tò He x 12 con giáp",
+  "description": "Khám phá bộ sưu tập độc đáo với 12 con giáp được tạo hình tinh xảo từ nghệ thuật tò he truyền thống Việt Nam",
+  "title-box": "12 Con Giáp Tò He",
+  "description-box": "Chọn con giáp của bạn để khám phá chi tiết",
+  "explore-zodiac": "Khám phá 12 con giáp",
+  "content": {
+    "passage1": {
+      "text": "Trong văn hóa Việt Nam, 12 con giáp không chỉ là biểu tượng gắn liền với vòng quay thời gian mà còn thể hiện những nét tính cách, phẩm chất và niềm tin sâu sắc của người Việt vào quy luật tự nhiên và cuộc sống. Mỗi con giáp mang một ý nghĩa riêng, đại diện cho những giá trị như lòng dũng cảm, sự thông minh, trung thành hay kiên định. 12 con giáp vì thế không chỉ hiện diện trong đời sống tâm linh, tín ngưỡng mà còn là một phần không thể thiếu trong nghệ thuật và văn hóa dân gian Việt Nam."
+    },
+    "passage2": {
+      "text": "Bộ sản phẩm tò he với tạo hình chủ đề 12 con giáp là cách kết nối hai giá trị truyền thống đặc sắc. Tò he – với chất liệu bột nặn dân gian đầy màu sắc – mang đến một hình thức thể hiện sinh động, gần gũi và sáng tạo cho những hình tượng vốn đã rất quen thuộc. Mỗi tác phẩm không chỉ là sản phẩm thủ công tỉ mỉ mà còn là một “kể chuyện viên” văn hóa, góp phần lưu giữ, truyền cảm hứng và lan tỏa nét đẹp của di sản dân tộc theo một cách mới mẻ, dễ tiếp cận hơn với công chúng, đặc biệt là giới trẻ."
+    }
+  },
+  "zodiac-animals": [
+    "Chuột", "Trâu", "Hổ", "Mèo", "Rồng", "Rắn",
+    "Ngựa", "Dê", "Khỉ", "Gà", "Chó", "Heo"
+  ]
 }
