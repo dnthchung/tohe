@@ -35,6 +35,9 @@ const LoadingScreen = () => (
 export function HomePage() {
   const { t } = useTranslation("home");
   const [isLoading, setIsLoading] = useState(true);
+  const [mountainOpacity, setMountainOpacity] = useState(0);
+  const [chiHangOpacity, setChiHangOpacity] = useState(0);
+  const [chuCuoiOpacity, setChuCuoiOpacity] = useState(0);
 
   // Preload images
   useEffect(() => {
@@ -52,7 +55,6 @@ export function HomePage() {
         });
 
         await Promise.all(imagePromises);
-
         // Add a small delay for better UX
         setTimeout(() => {
           setIsLoading(false);
@@ -67,12 +69,91 @@ export function HomePage() {
     preloadImages();
   }, []);
 
-  // Scroll effect
+  // Enhanced scroll effect with smooth mountain transitions
   useEffect(() => {
     if (isLoading) return;
 
     const handleScroll = () => {
       document.documentElement.style.setProperty("--scroll", `${window.scrollY}px`);
+
+      const scrollY = window.scrollY;
+      const screenHeight = window.innerHeight;
+
+      // Define transition zones
+      const fadeInStart = screenHeight * 0.8; // Start fading in at 80% of first screen
+      const fadeInEnd = screenHeight * 1.2; // Fully visible at 120% of first screen
+      const fadeOutStart = screenHeight * 2.8; // Start fading out at 280% of first screen
+      const fadeOutEnd = screenHeight * 3.2; // Fully hidden at 320% of first screen
+
+      let opacity = 0;
+
+      if (scrollY >= fadeInStart && scrollY <= fadeInEnd) {
+        // Fade in phase
+        const progress = (scrollY - fadeInStart) / (fadeInEnd - fadeInStart);
+        opacity = Math.min(1, progress);
+      } else if (scrollY > fadeInEnd && scrollY < fadeOutStart) {
+        // Fully visible phase
+        opacity = 1;
+      } else if (scrollY >= fadeOutStart && scrollY <= fadeOutEnd) {
+        // Fade out phase
+        const progress = (scrollY - fadeOutStart) / (fadeOutEnd - fadeOutStart);
+        opacity = Math.max(0, 1 - progress);
+      }
+
+      // Apply easing function for smoother transitions
+      const easedOpacity = opacity === 0 || opacity === 1 ? opacity : -Math.cos(opacity * Math.PI) / 2 + 0.5; // easeInOutSine
+
+      setMountainOpacity(easedOpacity);
+
+      // Character visibility with smooth transitions
+      // Chị Hằng (Section 4)
+      const section4Start = screenHeight * 3;
+      const section4End = screenHeight * 4;
+      const section4FadeInStart = section4Start - screenHeight / 3; // 1/3 màn hình trước khi vào section
+      const section4FadeOutEnd = section4End; // Ẩn khi hết section
+
+      let chiHangOp = 0;
+      if (scrollY >= section4FadeInStart && scrollY < section4Start) {
+        // Fade in khi chớm vào section
+        const progress = (scrollY - section4FadeInStart) / (screenHeight / 3);
+        chiHangOp = Math.min(1, progress);
+      } else if (scrollY >= section4Start && scrollY < section4FadeOutEnd) {
+        // Hiện hoàn toàn trong section
+        chiHangOp = 1;
+      } else if (scrollY >= section4FadeOutEnd) {
+        // Ẩn dần khi ra khỏi section
+        const fadeOutDistance = screenHeight / 3;
+        const progress = Math.min(1, (scrollY - section4End) / fadeOutDistance);
+        chiHangOp = Math.max(0, 1 - progress);
+      }
+
+      // Chú Cuội (Section 5)
+      const section5Start = screenHeight * 4;
+      const section5End = screenHeight * 5;
+      const section5FadeInStart = section5Start - screenHeight / 3; // 1/3 màn hình trước khi vào section
+      const section5FadeOutEnd = section5End; // Ẩn khi hết section
+
+      let chuCuoiOp = 0;
+      if (scrollY >= section5FadeInStart && scrollY < section5Start) {
+        // Fade in khi chớm vào section
+        const progress = (scrollY - section5FadeInStart) / (screenHeight / 3);
+        chuCuoiOp = Math.min(1, progress);
+      } else if (scrollY >= section5Start && scrollY < section5FadeOutEnd) {
+        // Hiện hoàn toàn trong section
+        chuCuoiOp = 1;
+      } else if (scrollY >= section5FadeOutEnd) {
+        // Ẩn dần khi ra khỏi section
+        const fadeOutDistance = screenHeight / 3;
+        const progress = Math.min(1, (scrollY - section5End) / fadeOutDistance);
+        chuCuoiOp = Math.max(0, 1 - progress);
+      }
+
+      // Apply easing
+      const easedChiHangOpacity = chiHangOp === 0 || chiHangOp === 1 ? chiHangOp : -Math.cos(chiHangOp * Math.PI) / 2 + 0.5;
+      const easedChuCuoiOpacity = chuCuoiOp === 0 || chuCuoiOp === 1 ? chuCuoiOp : -Math.cos(chuCuoiOp * Math.PI) / 2 + 0.5;
+
+      setChiHangOpacity(easedChiHangOpacity);
+      setChuCuoiOpacity(easedChuCuoiOpacity);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -93,20 +174,49 @@ export function HomePage() {
       <img
         src={biaChuCuoi}
         className="fixed left-0 bottom-0 w-[70vw] z-10 pointer-events-none transition-transform duration-300 ease-out"
-        style={{ transform: "translateX(calc(var(--scroll) * -1))" }}
+        style={{
+          transform: "translateX(calc(var(--scroll) * -1))",
+        }}
         alt="Chu Cuội"
       />
       <img
         src={biaChiHang}
         className="fixed right-0 bottom-0 w-[70vw] z-10 pointer-events-none transition-transform duration-300 ease-out"
-        style={{ transform: "translateX(calc(var(--scroll) * 1))" }}
+        style={{
+          transform: "translateX(calc(var(--scroll) * 1))",
+        }}
         alt="Chị Hằng"
+      />
+
+      {/* Enhanced Mountain backgrounds with smooth transitions */}
+      <img
+        src={bgNuiTrai}
+        className="fixed bottom-0 left-0 w-auto h-130 z-15 pointer-events-none transition-all duration-500 ease-out"
+        style={{
+          opacity: mountainOpacity,
+          transform: `translateY(${(1 - mountainOpacity) * 20}px) scale(${0.95 + mountainOpacity * 0.05})`,
+        }}
+        alt="Núi trái"
+      />
+      <img
+        src={bgNuiPhai}
+        className="fixed bottom-0 right-0 w-auto h-130 z-15 pointer-events-none transition-all duration-500 ease-out"
+        style={{
+          opacity: mountainOpacity,
+          transform: `translateY(${(1 - mountainOpacity) * 20}px) scale(${0.95 + mountainOpacity * 0.05})`,
+        }}
+        alt="Núi phải"
       />
 
       {/* SECTION 1 - Welcome */}
       <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
         <img src={nenGradient} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
-        <div className="relative z-10 transition-transform duration-700 ease-out" style={{ transform: "translateY(calc(var(--scroll) * 0.2))" }}>
+        <div
+          className="relative z-10 transition-transform duration-700 ease-out"
+          style={{
+            transform: "translateY(calc(var(--scroll) * 0.2))",
+          }}
+        >
           <img src={Logo} alt="Logo mặt trăng" className="w-100 h-100 object-contain mx-auto" />
         </div>
       </section>
@@ -127,19 +237,53 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 4 - Chuyện tò he 1 */}
-      <section className="relative h-screen flex items-center justify-center text-neutral-600 overflow-hidden">
+      {/* SECTION 4 - Chuyện tò he 1 với Chị Hằng */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
-        <div className="relative z-10 px-6 max-w-4xl">
-          <p className="faustina text-xl font-medium leading-relaxed text-left whitespace-pre-line">{t("section2") || "Section 2 content goes here."}</p>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex items-center justify-between">
+          {/* Nội dung bên trái */}
+          <div className="w-1/2 pr-8">
+            <p className="faustina text-xl font-medium leading-relaxed text-left whitespace-pre-line text-neutral-600">{t("section2") || "Section 2 content goes here."}</p>
+          </div>
+
+          {/* Chị Hằng bên phải */}
+          <div className="w-1/2 flex justify-center">
+            <img
+              src={chiHang}
+              alt="Chị Hằng"
+              className="max-w-full h-auto object-contain transition-all duration-700 ease-out"
+              style={{
+                maxHeight: "80vh",
+                opacity: chiHangOpacity,
+                transform: `translateY(${(1 - chiHangOpacity) * 30}px) scale(${0.9 + chiHangOpacity * 0.1})`,
+              }}
+            />
+          </div>
         </div>
       </section>
 
-      {/* SECTION 5 - Chuyện tò he 2 */}
-      <section className="relative h-screen flex items-center justify-center text-neutral-600 overflow-hidden">
+      {/* SECTION 5 - Chuyện tò he 2 với Chú Cuội */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
-        <div className="relative z-10 px-6 max-w-4xl">
-          <p className="faustina text-xl font-medium leading-relaxed text-left whitespace-pre-line">{t("section3") || "Section 1 content goes here."}</p>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex items-center justify-between">
+          {/* Chú Cuội bên trái */}
+          <div className="w-1/2 flex justify-center">
+            <img
+              src={chuCuoi}
+              alt="Chú Cuội"
+              className="max-w-full h-auto object-contain transition-all duration-700 ease-out"
+              style={{
+                maxHeight: "80vh",
+                opacity: chuCuoiOpacity,
+                transform: `translateY(${(1 - chuCuoiOpacity) * 30}px) scale(${0.9 + chuCuoiOpacity * 0.1})`,
+              }}
+            />
+          </div>
+
+          {/* Nội dung bên phải */}
+          <div className="w-1/2 pl-8">
+            <p className="faustina text-xl font-medium leading-relaxed text-left whitespace-pre-line text-neutral-600">{t("section3") || "Section 3 content goes here."}</p>
+          </div>
         </div>
       </section>
 
