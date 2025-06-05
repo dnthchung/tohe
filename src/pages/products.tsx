@@ -55,12 +55,7 @@ export function ProductsPage() {
   useEffect(() => {
     // Preload all images
     const preloadImages = async () => {
-      const imageUrls = [
-        nenGradient,
-        nenSang,
-        hopToHe,
-        ...animalCards.map(card => card.img)
-      ];
+      const imageUrls = [nenGradient, nenSang, hopToHe, ...animalCards.map((card) => card.img)];
 
       const imagePromises = imageUrls.map((src) => {
         return new Promise((resolve, reject) => {
@@ -119,7 +114,7 @@ export function ProductsPage() {
         <img src={nenGradient} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Light Background" />
 
         {/* Overlay for better contrast */}
-        {/* <div className="absolute inset-0 bg-black/20 z-5" /> */}
+        <div className="absolute inset-0 bg-black/20 z-5" />
 
         {/* Content for section 1 */}
         <div className="relative z-10 flex flex-col items-center px-4 py-8">
@@ -154,7 +149,7 @@ export function ProductsPage() {
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Gradient Background" />
 
         {/* Overlay for better contrast */}
-        {/* <div className="absolute inset-0 bg-black/20 z-5" /> */}
+        <div className="absolute inset-0 bg-black/20 z-5" />
 
         {/* Content for section 2 */}
         <div className="relative z-10 flex flex-col items-center px-4 py-16 text-white">

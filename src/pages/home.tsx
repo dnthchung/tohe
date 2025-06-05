@@ -74,7 +74,7 @@ export function HomePage() {
   return (
     <div className="relative w-full overflow-x-hidden bg-black">
       {/* Overlay for better contrast */}
-      {/* <div className="absolute inset-0 bg-black/20 z-5" /> */}
+      <div className="absolute inset-0 bg-black/20 z-5" />
 
       {/* Parallax layers */}
       <img
