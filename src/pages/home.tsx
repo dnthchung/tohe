@@ -226,7 +226,7 @@ export function HomePage() {
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center max-w-4xl">
           <p
-            className="milestone-script text-3xl md:text-4xl lg:text-5xl font-normal italic leading-relaxed whitespace-pre-line text-white/95 tracking-wide"
+            className="milestone-script text-2xl md:text-3xl lg:text-4xl font-normal italic leading-relaxed whitespace-pre-line text-white/95 tracking-wide"
             style={{
               lineHeight: "1.6",
               fontWeight: "400",

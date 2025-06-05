@@ -1,10 +1,10 @@
 {
   "ran": {
     "id": 6,
-    "animal": "Tỵ",
+    "animal": "Tỵ (Rắn)",
     "intro": "Rắn là biểu tượng của trí tuệ, sự thâm sâu và khả năng tái sinh. Trong văn hóa Á Đông, rắn còn được xem là loài vật mang lại tài lộc, sức mạnh nội tâm và sự sống dai dẳng.",
     "passage1": "Chú rắn tò he là hình ảnh của sự tinh anh và điềm tĩnh. Thân hình uốn lượn mềm mại với tông vàng chủ đạo, điểm những dải màu xanh ngọc và đỏ cam hòa quyện, tạo cảm giác vừa quyến rũ vừa bí ẩn. Đôi mắt tròn đen lấp lánh ánh nhìn thông tuệ, chiếc lưỡi đỏ nhỏ xinh vươn ra nhẹ nhàng như đang lắng nghe chuyển động của thế giới.",
-    "passage2": "Người tuổi Tị thường có đầu óc nhạy bén, sống sâu sắc, điềm tĩnh và kín đáo. Họ giỏi quan sát, phân tích tình huống và biết cách xử lý khéo léo. Tuy nhiên, tính cách thận trọng quá mức đôi khi khiến họ trở nên đa nghi, khó mở lòng và dễ lung lay trước áp lực lớn nếu không có điểm tựa tinh thần vững chắc.",
+    "passage2": "Người tuổi Tỵ thường có đầu óc nhạy bén, sống sâu sắc, điềm tĩnh và kín đáo. Họ giỏi quan sát, phân tích tình huống và biết cách xử lý khéo léo. Tuy nhiên, tính cách thận trọng quá mức đôi khi khiến họ trở nên đa nghi, khó mở lòng và dễ lung lay trước áp lực lớn nếu không có điểm tựa tinh thần vững chắc.",
     "characteristics": ["Nhạy bén", "Sâu sắc", "Điềm tĩnh", "Kín đáo", "Khéo léo", "Thận trọng", "Đa nghi"],
     "years": [2001, 2013, 2025],
     "images": {
