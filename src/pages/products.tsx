@@ -125,7 +125,7 @@ export function ProductsPage() {
   }
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden oswald">
+    <div className="relative w-full min-h-screen overflow-x-hidden faustina">
       {/* Section 1: Combined layout with box and content side by side */}
       <section className="relative min-h-screen flex flex-col items-center justify-center py-6">
         {/* Background using nenGradient image */}
@@ -145,7 +145,7 @@ export function ProductsPage() {
               {t("title")}
             </h1>
             <p
-              className={`text-lg md:text-xl lg:text-2xl text-white max-w-3xl mx-auto leading-relaxed transition-all duration-1000 transform delay-200 ${
+              className={`text-lg md:text-xl lg:text-2xl text-white max-w-3xl mx-auto leading-relaxed transition-all duration-1000 transform delay-200 faustina ${
                 showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
@@ -164,12 +164,12 @@ export function ProductsPage() {
             <div className={`flex flex-col gap-8 max-w-2xl transition-all duration-1000 transform ${contentVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}>
               {/* First paragraph */}
               <div className="bg-black/40 backdrop-blur-sm rounded-lg shadow-lg p-6 lg:p-8">
-                <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed font-medium">{t("content.passage1.text")}</p>
+                <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed font-medium faustina">{t("content.passage1.text")}</p>
               </div>
 
               {/* Second paragraph */}
               <div className="bg-black/40 backdrop-blur-sm rounded-lg shadow-lg p-6 lg:p-8">
-                <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed font-medium">{t("content.passage2.text")}</p>
+                <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed font-medium faustina">{t("content.passage2.text")}</p>
               </div>
             </div>
           </div>

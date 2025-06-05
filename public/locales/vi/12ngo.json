@@ -1,13 +1,15 @@
 {
-  "id": 7,
-  "animal": "Ngọ",
-  "intro": "Trong văn hóa Á Đông, ngựa là biểu tượng của sự bền bỉ, trung thành và tự do. Ngựa gắn liền với hình ảnh phi nước đại, mang khát vọng vươn xa, chinh phục thử thách.",
-  "passage1": "Chú ngựa tò he hiện lên với dáng vẻ oai phong uy nghi, đầu ngẩng cao đầy kiêu hãnh như sẵn sàng phi nước đại trên mọi nẻo đường. Đôi mắt to tròn sáng ngời không chỉ toát lên sự nhanh nhẹn mà còn phản chiếu tinh thần tự do mãnh liệt và kiên cường.",
-  "passage2": "Người tuổi Ngọ thường có tính cách mạnh mẽ, quyết đoán và tràn đầy nhiệt huyết. Họ thích hành động hơn lời nói, yêu tự do và thường không chịu bó buộc. Tính cách cởi mở, nhiệt tình và độc lập giúp người tuổi Ngọ luôn nổi bật trong đám đông, nhưng cũng dễ mệt mỏi nếu bị kìm hãm cá tính.",
-  "characteristics": ["Mạnh mẽ", "Quyết đoán", "Nhiệt huyết", "Tự do", "Cởi mở", "Nhiệt tình", "Độc lập"],
-  "years": [1990, 2002, 2014],
-  "images": {
-    "card": "/assets/12congiap/7.png",
-    "product": "/assets/12congiap/animal/7.png"
+  "ngua": {
+    "id": 7,
+    "animal": "Ngọ",
+    "intro": "Trong văn hóa Á Đông, ngựa là biểu tượng của sự bền bỉ, trung thành và tự do. Ngựa gắn liền với hình ảnh phi nước đại, mang khát vọng vươn xa, chinh phục thử thách.",
+    "passage1": "Chú ngựa tò he hiện lên với dáng vẻ oai phong uy nghi, đầu ngẩng cao đầy kiêu hãnh như sẵn sàng phi nước đại trên mọi nẻo đường. Đôi mắt to tròn sáng ngời không chỉ toát lên sự nhanh nhẹn mà còn phản chiếu tinh thần tự do mãnh liệt và kiên cường.",
+    "passage2": "Người tuổi Ngọ thường có tính cách mạnh mẽ, quyết đoán và tràn đầy nhiệt huyết. Họ thích hành động hơn lời nói, yêu tự do và thường không chịu bó buộc. Tính cách cởi mở, nhiệt tình và độc lập giúp người tuổi Ngọ luôn nổi bật trong đám đông, nhưng cũng dễ mệt mỏi nếu bị kìm hãm cá tính.",
+    "characteristics": ["Mạnh mẽ", "Quyết đoán", "Nhiệt huyết", "Tự do", "Cởi mở", "Nhiệt tình", "Độc lập"],
+    "years": [1990, 2002, 2014],
+    "images": {
+      "card": "/assets/12congiap/7.png",
+      "product": "/assets/12congiap/animals/7.png"
+    }
   }
 }

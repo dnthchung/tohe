@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import nenGradient from "/images/Nền gradient.png";
 
 interface AnimalData {
@@ -17,85 +17,120 @@ interface AnimalData {
   years: string[];
 }
 
+// Mapping từ tên động vật sang tên file JSON
+const animalToFileMapping: { [key: string]: string } = {
+  chuot: "ty",
+  trau: "suu",
+  ho: "dan",
+  meo: "mao",
+  rong: "thin",
+  ran: "ti",
+  ngua: "ngo",
+  de: "mui",
+  khi: "than",
+  ga: "dau",
+  cho: "tuat",
+  lon: "hoi"
+};
+
 export function ProductDetail() {
-  const { animalName } = useParams();
-  const { t } = useTranslation("12ty");
+  const { animalName } = useParams(); // ex: "chuot", "trau", "ho"
+  const { i18n, t } = useTranslation();
+  const { t: tCommon } = useTranslation("common");
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
+  const [animal, setAnimal] = useState<AnimalData | null>(null);
 
   useEffect(() => {
-    const preloadImages = async () => {
+    const loadData = async () => {
       if (!animalName) return;
 
-      const animal = t(animalName, { returnObjects: true }) as AnimalData;
-      if (!animal || !animal.animal) return;
+      console.log("Current language:", i18n.language, "Detected language:", i18n.resolvedLanguage);
 
-      const imageUrls = [nenGradient, animal.images.card, animal.images.product];
-      const promises = imageUrls.map(
-        (src) =>
-          new Promise((resolve, reject) => {
-            const img = new Image();
-            img.onload = resolve;
-            img.onerror = reject;
-            img.src = src;
-          }),
-      );
+      // Chuyển đổi tên động vật sang tên file JSON
+      const fileName = animalToFileMapping[animalName];
+      if (!fileName) {
+        console.error(`No mapping found for animal: ${animalName}`);
+        setIsLoading(false);
+        return;
+      }
 
+                                    const namespace = `12${fileName}`; // → "12ty", "12suu", ...
       try {
-        await Promise.all(promises);
+        // Thử fetch trực tiếp thay vì dựa vào i18next backend
+        const currentLang = i18n.language || 'vi';
+        console.log("Fetching data for:", { animalName, fileName, namespace, currentLang });
+
+        const response = await fetch(`/locales/${currentLang}/${namespace}.json`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch ${namespace}.json: ${response.status}`);
+        }
+
+        const jsonData = await response.json();
+        console.log("Fetched JSON data:", jsonData);
+
+        const data = jsonData[animalName] as AnimalData;
+        console.log("Extracted animal data:", data);
+
+        if (!data || typeof data !== 'object' || !data.animal) {
+          console.error("Data validation failed:", { data, type: typeof data, jsonData, animalName });
+          throw new Error("Invalid data structure");
+        }
+
+        // Preload images
+        const imageUrls = [nenGradient, data.images.card, data.images.product];
+        const preload = imageUrls.map(
+          (src) =>
+            new Promise((res, rej) => {
+              const img = new Image();
+              img.onload = () => res(true);
+              img.onerror = () => rej();
+              img.src = src;
+            }),
+        );
+        await Promise.all(preload);
+
+        setAnimal(data);
         setIsLoading(false);
-        // Delay để tạo hiệu ứng xuất hiện mượt mà
         setTimeout(() => setShowContent(true), 100);
-      } catch {
+      } catch (err) {
+        console.error("Failed to load animal data:", err);
         setIsLoading(false);
-        setTimeout(() => setShowContent(true), 100);
       }
     };
 
-    preloadImages();
-  }, [animalName, t]);
+    loadData();
+  }, [animalName, i18n, t]);
 
-  if (!animalName) return <div className="text-white py-10 text-center">No animal selected.</div>;
-
-  const animal = t(animalName, { returnObjects: true }) as AnimalData;
-
-  if (!animal || !animal.animal) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-black text-white">
-        <h2 className="text-2xl font-bold">Animal not found</h2>
-      </div>
-    );
+  if (!animalName) {
+    return <div className="text-white py-10 text-center">{tCommon("productDetail.noAnimalSelected")}</div>;
   }
 
-  if (isLoading) {
+  if (isLoading || !animal) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-black text-white">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4" />
-          <p>Loading...</p>
+          <p>{tCommon("productDetail.loadingContent")}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden oswald text-white">
-      {/* Single Section with Gradient Background */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center py-32">
-        {/* Background */}
+    <div className="relative w-full min-h-screen overflow-x-hidden faustina text-white">
+      <section className="relative min-h-screen flex flex-col items-center justify-center py-20">
         <img src={nenGradient} alt="Gradient background" className="absolute top-0 left-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 bg-black/20 z-5" />
 
-        {/* Content */}
         <div className="relative z-10 max-w-7xl w-full px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left Side - Card and Animal Images */}
+          {/* Left - Hình ảnh */}
           <div className="flex flex-col space-y-8">
-            {/* Animal Image */}
+            {/* Hình sản phẩm */}
             <div
-              className={`backdrop-blur-sm rounded-xl p-8 border border-white/10 group hover:z-50 relative transform transition-all duration-1000 ease-out ${
-                showContent ? "translate-x-0 opacity-100" : "-translate-x-16 opacity-0"
+              className={`backdrop-blur-sm rounded-xl p-8 border border-white/10 group relative transition-all duration-1000 ease-out ${
+                showContent ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"
               }`}
-              style={{ animationDelay: "0.2s" }}
             >
               <div className="relative overflow-visible">
                 <img
@@ -103,17 +138,15 @@ export function ProductDetail() {
                   alt="Animal"
                   className="mx-auto w-72 md:w-80 lg:w-96 h-72 object-cover rounded-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-1 group-hover:shadow-2xl group-hover:shadow-white/20"
                 />
-                {/* Overlay effect */}
                 <div className="absolute inset-0 bg-gradient-to-t opacity-50 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-lg" />
               </div>
             </div>
 
-            {/* Card Image */}
+            {/* Hình thẻ */}
             <div
-              className={`backdrop-blur-sm rounded-xl p-8 border border-white/10 group hover:z-50 relative transform transition-all duration-1000 ease-out ${
-                showContent ? "translate-x-0 opacity-100" : "-translate-x-16 opacity-0"
+              className={`backdrop-blur-sm rounded-xl p-8 border border-white/10 group relative transition-all duration-1000 ease-out ${
+                showContent ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"
               }`}
-              style={{ animationDelay: "0.4s" }}
             >
               <div className="relative overflow-visible">
                 <img
@@ -125,67 +158,43 @@ export function ProductDetail() {
             </div>
           </div>
 
-          {/* Right Side - Information */}
+          {/* Right - Thông tin */}
           <div className="space-y-6">
-            {/* Animal Name */}
+            {/* Tên con giáp */}
             <div
-              className={`bg-black/40 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/10 hover:bg-black/50 transition-all duration-1000 ease-out ${
-                showContent ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
+              className={`bg-black/40 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/10 transition-all duration-1000 ease-out ${
+                showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
               }`}
-              style={{ animationDelay: "0.1s" }}
             >
               <h1 className="text-3xl font-bold text-center text-yellow-400 mb-2 drop-shadow-lg">{animal.animal}</h1>
             </div>
 
-            {/* Intro */}
-            <div
-              className={`bg-black/40 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/10 hover:bg-black/50 transition-all duration-1000 ease-out group ${
-                showContent ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
-              }`}
-              style={{ animationDelay: "0.3s" }}
-            >
-              <h2 className="text-xl font-bold mb-4 text-yellow-300 drop-shadow-lg group-hover:text-yellow-200 transition-colors">Giới thiệu</h2>
-              <p className="text-white/90 text-base leading-relaxed">{animal.intro}</p>
+            {/* Giới thiệu */}
+            <div className="info-block" style={{ transitionDelay: "0.2s" }}>
+              <h2 className="section-title">{tCommon("productDetail.introduction")}</h2>
+              <p className="section-text faustina">{animal.intro}</p>
             </div>
 
-            {/* Tò He Description */}
-            <div
-              className={`bg-black/40 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/10 hover:bg-black/50 transition-all duration-1000 ease-out group ${
-                showContent ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
-              }`}
-              style={{ animationDelay: "0.5s" }}
-            >
-              <h2 className="text-xl font-bold mb-4 text-yellow-300 drop-shadow-lg group-hover:text-yellow-200 transition-colors">Mô tả Tò He</h2>
-              <p className="text-white/90 text-base leading-relaxed">{animal.passage1}</p>
+            {/* Mô tả Tò He */}
+            <div className="info-block" style={{ transitionDelay: "0.3s" }}>
+              <h2 className="section-title">{tCommon("productDetail.toHeDescription")}</h2>
+              <p className="section-text faustina">{animal.passage1}</p>
             </div>
 
-            {/* Zodiac Insight */}
-            <div
-              className={`bg-black/40 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/10 hover:bg-black/50 transition-all duration-1000 ease-out group ${
-                showContent ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
-              }`}
-              style={{ animationDelay: "0.7s" }}
-            >
-              <h2 className="text-xl font-bold mb-4 text-yellow-300 drop-shadow-lg group-hover:text-yellow-200 transition-colors">Đặc điểm tính cách</h2>
-              <p className="text-white/90 text-base leading-relaxed mb-4">{animal.passage2}</p>
+            {/* Đặc điểm tính cách */}
+            <div className="info-block" style={{ transitionDelay: "0.4s" }}>
+              <h2 className="section-title">{tCommon("productDetail.personalityTraits")}</h2>
+              <p className="section-text faustina">{animal.passage2}</p>
             </div>
 
-            {/* Characteristics */}
-            <div
-              className={`bg-black/40 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/10 hover:bg-black/50 transition-all duration-1000 ease-out group ${
-                showContent ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
-              }`}
-              style={{ animationDelay: "0.9s" }}
-            >
-              <h2 className="text-xl font-bold mb-4 text-yellow-300 drop-shadow-lg group-hover:text-yellow-200 transition-colors">Đặc điểm nổi bật</h2>
+            {/* Đặc điểm nổi bật */}
+            <div className="info-block" style={{ transitionDelay: "0.5s" }}>
+              <h2 className="section-title">{tCommon("productDetail.keyCharacteristics")}</h2>
               <div className="grid grid-cols-2 gap-3">
                 {animal.characteristics.map((char, idx) => (
                   <div
                     key={idx}
-                    className={`bg-gradient-to-r from-orange-500/30 to-red-500/30 text-white text-center py-2 px-3 rounded-lg text-sm font-medium border border-orange-400/30 hover:from-orange-500/40 hover:to-red-500/40 hover:scale-105 transition-all duration-500 cursor-pointer transform ${
-                      showContent ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                    }`}
-                    style={{ animationDelay: `${1.1 + idx * 0.1}s` }}
+                    className="bg-gradient-to-r from-orange-500/30 to-red-500/30 text-white text-center py-2 px-3 rounded-lg text-sm font-medium border border-orange-400/30 hover:scale-105 transition-all duration-300"
                   >
                     {char}
                   </div>
@@ -193,22 +202,14 @@ export function ProductDetail() {
               </div>
             </div>
 
-            {/* Years */}
-            <div
-              className={`bg-black/40 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/10 hover:bg-black/50 transition-all duration-1000 ease-out group ${
-                showContent ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
-              }`}
-              style={{ animationDelay: "1.3s" }}
-            >
-              <h2 className="text-xl font-bold mb-4 text-yellow-300 drop-shadow-lg group-hover:text-yellow-200 transition-colors">Các năm tương ứng</h2>
+            {/* Các năm tương ứng */}
+            <div className="info-block" style={{ transitionDelay: "0.6s" }}>
+              <h2 className="section-title">{tCommon("productDetail.correspondingYears")}</h2>
               <div className="flex flex-wrap gap-3">
                 {animal.years.map((year, idx) => (
                   <span
                     key={idx}
-                    className={`bg-gradient-to-r from-blue-500/30 to-purple-500/30 text-white px-4 py-2 rounded-lg font-medium border border-blue-400/30 hover:from-blue-500/40 hover:to-purple-500/40 hover:scale-105 transition-all duration-500 cursor-pointer shadow-lg transform ${
-                      showContent ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                    }`}
-                    style={{ animationDelay: `${1.5 + idx * 0.1}s` }}
+                    className="bg-gradient-to-r from-blue-500/30 to-purple-500/30 text-white px-4 py-2 rounded-lg font-medium border border-blue-400/30 hover:scale-105 transition-all duration-300"
                   >
                     {year}
                   </span>
@@ -218,7 +219,7 @@ export function ProductDetail() {
           </div>
         </div>
 
-        {/* Floating particles effect */}
+        {/* Floating particles */}
         <div className="absolute inset-0 pointer-events-none z-5">
           {[...Array(15)].map((_, i) => (
             <div
@@ -236,6 +237,28 @@ export function ProductDetail() {
           ))}
         </div>
       </section>
+
+      <style>{`
+        .info-block {
+          background: rgba(0, 0, 0, 0.4);
+          backdrop-filter: blur(4px);
+          border-radius: 1rem;
+          padding: 1.5rem;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          transition: all 1s ease-out;
+        }
+        .section-title {
+          font-size: 1.25rem;
+          font-weight: bold;
+          color: #facc15;
+          margin-bottom: 0.75rem;
+          text-shadow: 0 0 5px #000;
+        }
+        .section-text {
+          color: rgba(255, 255, 255, 0.9);
+          line-height: 1.75;
+        }
+      `}</style>
     </div>
   );
 }

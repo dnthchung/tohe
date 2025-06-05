@@ -1,13 +1,15 @@
 {
-  "id": 12,
-  "animal": "Hợi",
-  "intro": "Trong văn hóa Á Đông, lợn là loài vật tượng trưng cho sự thịnh vượng, ấm no và sung túc. Lợn thường xuất hiện trong những dịp lễ tết hoặc cúng tế, đại diện cho tài lộc, may mắn và cuộc sống đủ đầy.",
-  "passage1": "Chú lợn tò he mang vẻ ngoài tròn trĩnh, dễ thương với đôi mắt to tròn, khuôn miệng cười mỉm và hai má hồng hây hây được điểm xuyết một cách khéo léo. Chiếc đuôi xoăn tít tạo nên hình ảnh ngộ nghĩnh, thân thiện, toát lên sự no đủ và an nhiên.",
-  "passage2": "Người tuổi Hợi thường hiền lành, độ lượng và sống thiên về tình cảm. Họ không quá tham vọng, luôn biết hài lòng và tận hưởng những điều nhỏ bé nhưng ý nghĩa trong cuộc sống. Tính cách ôn hòa giúp họ dễ được lòng người khác, và dù đôi lúc có vẻ chậm rãi, họ lại rất kiên định với những gì mình tin tưởng. Với trái tim ấm áp và tấm lòng bao dung, người tuổi Hợi thường mang đến cảm giác bình yên và hạnh phúc cho những ai ở bên cạnh họ.",
-  "characteristics": ["Hiền lành", "Độ lượng", "Tình cảm", "Ôn hòa", "Kiên định", "Bao dung", "Bình yên"],
-  "years": [1995, 2007, 2019],
-  "images": {
-    "card": "/assets/12congiap/12.png",
-    "product": "/assets/12congiap/animal/12.png"
+  "lon": {
+    "id": 12,
+    "animal": "Hợi",
+    "intro": "Trong văn hóa Á Đông, lợn là loài vật tượng trưng cho sự thịnh vượng, ấm no và sung túc. Lợn thường xuất hiện trong những dịp lễ tết hoặc cúng tế, đại diện cho tài lộc, may mắn và cuộc sống đủ đầy.",
+    "passage1": "Chú lợn tò he mang vẻ ngoài tròn trĩnh, dễ thương với đôi mắt to tròn, khuôn miệng cười mỉm và hai má hồng hây hây được điểm xuyết một cách khéo léo. Chiếc đuôi xoăn tít tạo nên hình ảnh ngộ nghĩnh, thân thiện, toát lên sự no đủ và an nhiên.",
+    "passage2": "Người tuổi Hợi thường hiền lành, độ lượng và sống thiên về tình cảm. Họ không quá tham vọng, luôn biết hài lòng và tận hưởng những điều nhỏ bé nhưng ý nghĩa trong cuộc sống. Tính cách ôn hòa giúp họ dễ được lòng người khác, và dù đôi lúc có vẻ chậm rãi, họ lại rất kiên định với những gì mình tin tưởng. Với trái tim ấm áp và tấm lòng bao dung, người tuổi Hợi thường mang đến cảm giác bình yên và hạnh phúc cho những ai ở bên cạnh họ.",
+    "characteristics": ["Hiền lành", "Độ lượng", "Tình cảm", "Ôn hòa", "Kiên định", "Bao dung", "Bình yên"],
+    "years": [1995, 2007, 2019],
+    "images": {
+      "card": "/assets/12congiap/12.png",
+      "product": "/assets/12congiap/animals/12.png"
+    }
   }
 }

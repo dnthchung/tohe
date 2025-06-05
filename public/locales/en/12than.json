@@ -1,13 +1,15 @@
 {
-  "id": 9,
-  "animal": "Monkey",
-  "intro": "In Eastern culture, the monkey symbolizes intelligence, flexibility, and cleverness. The monkey’s image is associated with skillfulness, creativity, and the ability to quickly adapt.",
-  "passage1": "The tò he monkey shines with a vivid yellow face, twinkling mischievous eyes, and a beaming smile. Its small, curled tail and lively sitting pose highlight its playful, agile nature.",
-  "passage2": "People born in the Year of the Monkey are often witty, talkative, and sharp-minded. They love challenges, are resourceful, and easily win favor thanks to their humor and charm. However, if not kept in check, their impulsiveness and overconfidence can cause them to miss long-term opportunities.",
-  "characteristics": ["Witty", "Talkative", "Sharp-minded", "Creative", "Humorous", "Charming", "Impulsive"],
-  "years": [1992, 2004, 2016],
-  "images": {
-    "card": "/assets/12congiap/9.png",
-    "product": "/assets/12congiap/animal/9.png"
+  "khi": {
+    "id": 9,
+    "animal": "Monkey",
+    "intro": "In Eastern culture, the monkey symbolizes intelligence, flexibility, and cleverness. The monkey’s image is associated with skillfulness, creativity, and the ability to quickly adapt.",
+    "passage1": "The tò he monkey shines with a vivid yellow face, twinkling mischievous eyes, and a beaming smile. Its small, curled tail and lively sitting pose highlight its playful, agile nature.",
+    "passage2": "People born in the Year of the Monkey are often witty, talkative, and sharp-minded. They love challenges, are resourceful, and easily win favor thanks to their humor and charm. However, if not kept in check, their impulsiveness and overconfidence can cause them to miss long-term opportunities.",
+    "characteristics": ["Witty", "Talkative", "Sharp-minded", "Creative", "Humorous", "Charming", "Impulsive"],
+    "years": [1992, 2004, 2016],
+    "images": {
+      "card": "/assets/12congiap/9.png",
+      "product": "/assets/12congiap/animals/9.png"
+    }
   }
 }

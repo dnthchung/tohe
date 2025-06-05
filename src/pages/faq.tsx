@@ -8,7 +8,7 @@ export function FAQPage() {
   const faqKeys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"];
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden flex flex-col oswald">
+    <div className="relative w-full min-h-screen overflow-hidden flex flex-col faustina">
       {/* Nền gradient cố định */}
       <img src={nenGradient} alt="Background" className="fixed top-0 left-0 w-full h-full object-cover z-0" />
       {/* Nền phụ lặp toàn trang */}
@@ -20,7 +20,7 @@ export function FAQPage() {
           {faqKeys.map((key) => (
             <AccordionItem key={key} value={key} className="bg-white/90 backdrop-blur-md rounded-xl border border-gray-200">
               <AccordionTrigger className="px-6 py-4 text-left text-lg font-semibold">{t(`${key}.question`)}</AccordionTrigger>
-              <AccordionContent className="px-6 pb-4 text-gray-700 leading-relaxed">{t(`${key}.answer`)}</AccordionContent>
+                              <AccordionContent className="px-6 pb-4 text-gray-700 leading-relaxed faustina">{t(`${key}.answer`)}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>

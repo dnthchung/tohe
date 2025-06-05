@@ -223,17 +223,25 @@ export function HomePage() {
 
       {/* SECTION 2 - Poem */}
       <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
-        <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
-        <div className="relative z-10 px-6 text-center">
-          <p className="font-nvn text-4xl font-semibold leading-relaxed whitespace-pre-line max-w-4xl text-white/80">{t("poem") || "This is the poem section. Centered and full‑screen."}</p>
+        <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Background" />
+        <div className="relative z-10 px-6 text-center max-w-4xl">
+          <p
+            className="milestone-script text-4xl md:text-5xl lg:text-6xl font-normal italic leading-relaxed whitespace-pre-line text-white/95 tracking-wide"
+            style={{
+              lineHeight: "1.6",
+              fontWeight: "400",
+            }}
+          >
+            {t("poem") || "Tớ hẹn mối em một dòng\nEm mua một cái cho chồng em chơi.\nChồng em đánh hông thi thôi\nEm mua cái khác em chơi một mình"}
+          </p>
         </div>
       </section>
 
       {/* SECTION 3 - Content 1 */}
-      <section className="relative h-screen flex items-center justify-center text-neutral-700 overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 px-6 max-w-4xl">
-          <p className="faustina text-xl font-medium leading-relaxed text-left whitespace-pre-line">{t("section1") || "Section 1 content goes here."}</p>
+          <p className="faustina text-2xl font-medium leading-relaxed text-left whitespace-pre-line text-white">{t("section1") || "Section 1 content goes here."}</p>
         </div>
       </section>
 
@@ -242,12 +250,12 @@ export function HomePage() {
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Nội dung bên trái */}
-          <div className="w-1/2 pr-8">
-            <p className="faustina text-xl font-medium leading-relaxed text-left whitespace-pre-line text-neutral-600">{t("section2") || "Section 2 content goes here."}</p>
+          <div className="w-1/2 pr-4">
+            <p className="faustina text-2xl font-medium leading-relaxed text-left whitespace-pre-line text-white">{t("section2") || "Section 2 content goes here."}</p>
           </div>
 
           {/* Chị Hằng bên phải */}
-          <div className="w-1/2 flex justify-center">
+          <div className="w-1/2 flex justify-start pl-2">
             <img
               src={chiHang}
               alt="Chị Hằng"
@@ -267,7 +275,7 @@ export function HomePage() {
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Chú Cuội bên trái */}
-          <div className="w-1/2 flex justify-center">
+          <div className="w-1/2 flex justify-end pr-2">
             <img
               src={chuCuoi}
               alt="Chú Cuội"
@@ -281,8 +289,8 @@ export function HomePage() {
           </div>
 
           {/* Nội dung bên phải */}
-          <div className="w-1/2 pl-8">
-            <p className="faustina text-xl font-medium leading-relaxed text-left whitespace-pre-line text-neutral-600">{t("section3") || "Section 3 content goes here."}</p>
+          <div className="w-1/2 pl-4">
+            <p className="faustina text-2xl font-medium leading-relaxed text-left whitespace-pre-line text-white">{t("section3") || "Section 3 content goes here."}</p>
           </div>
         </div>
       </section>

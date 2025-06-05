@@ -1,13 +1,15 @@
 {
-  "id": 4,
-  "animal": "Cat",
-  "intro": "The cat symbolizes elegance, peace, and good fortune. In Vietnamese life, it is also associated with warding off evil and protecting the serenity of the home.",
-  "passage1": "The cat tò he is a small, colorful cat with a bold and cheerful appearance. Its golden fur is decorated with playful swirls of red, green, orange, and blue—like patterns from a traditional folk painting. Big round eyes sparkle with curiosity, and upright ears give it an alert, expressive look.",
-  "passage2": "People born in the Year of the Cat often have gentle, sensitive personalities and show great care for others. They live with refinement, skillfully maintaining harmony in relationships. However, because they dislike conflict, they tend to avoid confrontation and need to learn to assert their opinions more clearly in important situations.",
-  "characteristics": ["Gentle", "Sensitive", "Caring", "Refined", "Skillful", "Harmonious", "Avoidant"],
-  "years": [1999, 2011, 2023],
-  "images": {
-    "card": "/assets/12congiap/4.png",
-    "product": "/assets/12congiap/animal/4.png"
+  "meo": {
+    "id": 4,
+    "animal": "Cat",
+    "intro": "The cat symbolizes elegance, peace, and good fortune. In Vietnamese life, it is also associated with warding off evil and protecting the serenity of the home.",
+    "passage1": "The cat tò he is a small, colorful cat with a bold and cheerful appearance. Its golden fur is decorated with playful swirls of red, green, orange, and blue—like patterns from a traditional folk painting. Big round eyes sparkle with curiosity, and upright ears give it an alert, expressive look.",
+    "passage2": "People born in the Year of the Cat often have gentle, sensitive personalities and show great care for others. They live with refinement, skillfully maintaining harmony in relationships. However, because they dislike conflict, they tend to avoid confrontation and need to learn to assert their opinions more clearly in important situations.",
+    "characteristics": ["Gentle", "Sensitive", "Caring", "Refined", "Skillful", "Harmonious", "Avoidant"],
+    "years": [1999, 2011, 2023],
+    "images": {
+      "card": "/assets/12congiap/4.png",
+      "product": "/assets/12congiap/animals/4.png"
+    }
   }
 }

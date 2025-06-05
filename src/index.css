@@ -153,6 +153,15 @@
 .faustina {
   font-family: "Faustina", sans-serif;
 }
+@font-face {
+  font-family: "Milestone Script";
+  src: url("/fonts/Milestone-Script.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.milestone-script {
+  font-family: "Milestone Script", sans-serif;
+}
 
 @font-face {
   font-family: "NVN Motherland";

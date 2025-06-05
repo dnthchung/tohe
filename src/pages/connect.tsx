@@ -6,7 +6,7 @@ export function ConnectPage() {
   const { t } = useTranslation("connect");
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden text-white oswald">
+    <div className="relative w-full min-h-screen overflow-hidden text-white faustina">
       {/* Nền gradient cố định */}
       <img src={nenGradient} alt="Background" className="fixed top-0 left-0 w-full h-full object-cover z-0" />
 

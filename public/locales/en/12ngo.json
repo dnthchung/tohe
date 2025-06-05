@@ -1,13 +1,15 @@
 {
-  "id": 7,
-  "animal": "Horse",
-  "intro": "In East Asian culture, the horse symbolizes endurance, loyalty, and freedom. The horse is tied to the image of galloping toward distant horizons, embodying a spirit of conquest and ambition.",
-  "passage1": "The tò he horse appears with a majestic and proud stance, its head held high with confidence, ready to gallop freely across every path. Its large, bright eyes not only convey agility but also reflect a fierce spirit of freedom and resilience.",
-  "passage2": "People born in the Year of the Horse often have strong, decisive, and passionate personalities. They prefer action over words, love freedom, and dislike restrictions. Their open, enthusiastic, and independent nature makes them stand out in a crowd, but they can also become easily drained when their individuality is suppressed.",
-  "characteristics": ["Strong", "Decisive", "Passionate", "Free-spirited", "Open", "Enthusiastic", "Independent"],
-  "years": [1990, 2002, 2014],
-  "images": {
-    "card": "/assets/12congiap/7.png",
-    "product": "/assets/12congiap/animal/7.png"
+  "ngua": {
+    "id": 7,
+    "animal": "Horse",
+    "intro": "In East Asian culture, the horse symbolizes endurance, loyalty, and freedom. The horse is tied to the image of galloping toward distant horizons, embodying a spirit of conquest and ambition.",
+    "passage1": "The tò he horse appears with a majestic and proud stance, its head held high with confidence, ready to gallop freely across every path. Its large, bright eyes not only convey agility but also reflect a fierce spirit of freedom and resilience.",
+    "passage2": "People born in the Year of the Horse often have strong, decisive, and passionate personalities. They prefer action over words, love freedom, and dislike restrictions. Their open, enthusiastic, and independent nature makes them stand out in a crowd, but they can also become easily drained when their individuality is suppressed.",
+    "characteristics": ["Strong", "Decisive", "Passionate", "Free-spirited", "Open", "Enthusiastic", "Independent"],
+    "years": [1990, 2002, 2014],
+    "images": {
+      "card": "/assets/12congiap/7.png",
+      "product": "/assets/12congiap/animals/7.png"
+    }
   }
 }

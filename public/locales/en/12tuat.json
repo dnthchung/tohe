@@ -1,13 +1,15 @@
 {
-  "id": 11,
-  "animal": "Dog",
-  "intro": "In East Asian culture, the dog symbolizes loyalty, protection, and compassion. It has long been seen as a faithful guardian and a source of comfort and peace.",
-  "passage1": "The tò he dog is carefully handcrafted with a charming form that fully embodies its cultural symbolism in East Asian traditions. Its upright ears and alert eyes give it a watchful look. With sleek, colorful fur, a curled tail, and a poised sitting posture, it resembles a loyal companion always ready to guard and protect its owner.",
-  "passage2": "People born in the Year of the Dog are sincere, dependable, and guided by a strong sense of justice. Though sometimes cautious or overly concerned, their honesty and loyalty make them a steady, trustworthy presence in the lives of others.",
-  "characteristics": ["Sincere", "Dependable", "Just", "Honest", "Loyal", "Cautious", "Trustworthy"],
-  "years": [1994, 2006, 2018],
-  "images": {
-    "card": "/assets/12congiap/11.png",
-    "product": "/assets/12congiap/animal/11.png"
+  "cho": {
+    "id": 11,
+    "animal": "Dog",
+    "intro": "In East Asian culture, the dog symbolizes loyalty, protection, and compassion. It has long been seen as a faithful guardian and a source of comfort and peace.",
+    "passage1": "The tò he dog is carefully handcrafted with a charming form that fully embodies its cultural symbolism in East Asian traditions. Its upright ears and alert eyes give it a watchful look. With sleek, colorful fur, a curled tail, and a poised sitting posture, it resembles a loyal companion always ready to guard and protect its owner.",
+    "passage2": "People born in the Year of the Dog are sincere, dependable, and guided by a strong sense of justice. Though sometimes cautious or overly concerned, their honesty and loyalty make them a steady, trustworthy presence in the lives of others.",
+    "characteristics": ["Sincere", "Dependable", "Just", "Honest", "Loyal", "Cautious", "Trustworthy"],
+    "years": [1994, 2006, 2018],
+    "images": {
+      "card": "/assets/12congiap/11.png",
+      "product": "/assets/12congiap/animals/11.png"
+    }
   }
 }

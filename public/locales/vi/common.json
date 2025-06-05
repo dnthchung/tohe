@@ -1,3 +1,12 @@
 {
-    "learnMore": "Tìm hiểu thêm"
-  }
+    "learnMore": "Tìm hiểu thêm",
+    "productDetail": {
+        "introduction": "Giới thiệu",
+        "toHeDescription": "Mô tả Tò He",
+        "personalityTraits": "Đặc điểm tính cách",
+        "keyCharacteristics": "Đặc điểm nổi bật",
+        "correspondingYears": "Các năm tương ứng",
+        "loadingContent": "Đang tải nội dung...",
+        "noAnimalSelected": "Không có con giáp nào được chọn."
+    }
+}

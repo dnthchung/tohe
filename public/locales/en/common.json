@@ -1,3 +1,12 @@
 {
-    "learnMore": "Learn More"
-  }
+    "learnMore": "Learn More",
+    "productDetail": {
+        "introduction": "Introduction",
+        "toHeDescription": "Tò He Description",
+        "personalityTraits": "Personality Traits",
+        "keyCharacteristics": "Key Characteristics",
+        "correspondingYears": "Corresponding Years",
+        "loadingContent": "Loading content...",
+        "noAnimalSelected": "No zodiac animal selected."
+    }
+}

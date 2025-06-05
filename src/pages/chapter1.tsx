@@ -129,7 +129,7 @@ export function Chapter1Page() {
             }`}
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-white drop-shadow-2xl leading-tight">{t("title")}</h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg">{t("description")}</p>
+            <p className="text-lg sm:text-xl md:text-2xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg faustina">{t("description")}</p>
           </div>
         ) : isEvenImageCount ? (
           <div
@@ -147,7 +147,7 @@ export function Chapter1Page() {
               </h2>
             )}
             <div className={`${glassStyle} p-4 sm:p-6 md:p-8 w-full transition-all duration-800 delay-500 ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-98"}`}>
-              <p className="text-base sm:text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium oswald">{chunk.paragraph.text}</p>
+              <p className="text-base sm:text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium faustina">{chunk.paragraph.text}</p>
             </div>
             <div
               className={`grid gap-3 sm:gap-4 w-full transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${
@@ -189,10 +189,10 @@ export function Chapter1Page() {
                 isVisible ? "opacity-100 translate-x-0" : `opacity-0 ${contentOnLeft ? "translate-x-8" : "-translate-x-8"}`
               }`}
             >
-              {chunk.paragraph.passage === 1 && <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center lg:text-left oswald drop-shadow-lg">{chunk.sectionTitle}</h2>}
-              <div className={`${glassStyle} p-4 sm:p-6 md:p-8`}>
-                <p className="text-base sm:text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium">{chunk.paragraph.text}</p>
-              </div>
+              {chunk.paragraph.passage === 1 && <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center lg:text-left faustina drop-shadow-lg">{chunk.sectionTitle}</h2>}
+                              <div className={`${glassStyle} p-4 sm:p-6 md:p-8`}>
+                  <p className="text-base sm:text-lg md:text-xl text-white whitespace-pre-wrap leading-relaxed font-medium faustina">{chunk.paragraph.text}</p>
+                </div>
             </div>
             {hasImages && (
               <div
@@ -227,7 +227,7 @@ export function Chapter1Page() {
       )}
 
       <div
-        className="relative w-full min-h-screen oswald overflow-x-hidden chapter1-bg"
+        className="relative w-full min-h-screen faustina overflow-x-hidden chapter1-bg"
         style={{
           backgroundImage: `url(${nenHong2})`,
           backgroundSize: "cover",

@@ -1,13 +1,15 @@
 {
-  "id": 6,
-  "animal": "Snake",
-  "intro": "The snake symbolizes wisdom, depth, and the ability for transformation. In East Asian culture, it is also seen as a bringer of wealth, inner strength, and enduring vitality.",
-  "passage1": "The snake tò he exudes quiet intelligence and poise. Its slender, flowing form—primarily golden, intertwined with vivid jade and orange-red ribbons—conveys both elegance and mystique. The glossy black eyes radiate awareness, while a delicate red tongue extends as if tasting the air for secrets untold.",
-  "passage2": "People born in the Year of the Snake are often sharp-minded, thoughtful, calm, and discreet. They are skilled at observing, analyzing situations, and handling matters tactfully. However, their overly cautious nature can sometimes make them distrustful, hesitant to open up, and vulnerable under heavy pressure without a solid emotional anchor.",
-  "characteristics": ["Sharp-minded", "Thoughtful", "Calm", "Discreet", "Tactful", "Cautious", "Distrustful"],
-  "years": [2001, 2013, 2025],
-  "images": {
-    "card": "/assets/12congiap/6.png",
-    "product": "/assets/12congiap/animal/6.png"
+  "ran": {
+    "id": 6,
+    "animal": "Snake",
+    "intro": "The snake symbolizes wisdom, depth, and the ability for transformation. In East Asian culture, it is also seen as a bringer of wealth, inner strength, and enduring vitality.",
+    "passage1": "The snake tò he exudes quiet intelligence and poise. Its slender, flowing form—primarily golden, intertwined with vivid jade and orange-red ribbons—conveys both elegance and mystique. The glossy black eyes radiate awareness, while a delicate red tongue extends as if tasting the air for secrets untold.",
+    "passage2": "People born in the Year of the Snake are often sharp-minded, thoughtful, calm, and discreet. They are skilled at observing, analyzing situations, and handling matters tactfully. However, their overly cautious nature can sometimes make them distrustful, hesitant to open up, and vulnerable under heavy pressure without a solid emotional anchor.",
+    "characteristics": ["Sharp-minded", "Thoughtful", "Calm", "Discreet", "Tactful", "Cautious", "Distrustful"],
+    "years": [2001, 2013, 2025],
+    "images": {
+      "card": "/assets/12congiap/6.png",
+      "product": "/assets/12congiap/animals/6.png"
+    }
   }
 }
