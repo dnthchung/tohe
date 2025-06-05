@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { ImageGallery } from "../components/ImageGallery";
 import nenHong2 from "/images/Nền hồng nhạt fixed mây.png";
 import { Copyright } from "@/components/copyright";
@@ -25,6 +26,7 @@ interface ContentChunk {
 
 export function Chapter2Page() {
   const { t } = useTranslation("chapter2");
+  const location = useLocation();
   const content = t("content", { returnObjects: true }) as ChapterContent;
   const [popupImage, setPopupImage] = useState<string | null>(null);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -64,6 +66,11 @@ export function Chapter2Page() {
 
     return chunks;
   })();
+
+  // Scroll to top when component mounts or route changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
   // Intersection Observer for scroll animations
   useEffect(() => {

@@ -226,7 +226,7 @@ export function HomePage() {
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-cover z-0" alt="Background" />
         <div className="relative z-10 px-6 text-center max-w-4xl">
           <p
-            className="milestone-script text-4xl md:text-5xl lg:text-6xl font-normal italic leading-relaxed whitespace-pre-line text-white/95 tracking-wide"
+            className="milestone-script text-3xl md:text-4xl lg:text-5xl font-normal italic leading-relaxed whitespace-pre-line text-white/95 tracking-wide"
             style={{
               lineHeight: "1.6",
               fontWeight: "400",
@@ -248,9 +248,9 @@ export function HomePage() {
       {/* SECTION 4 - Chuyện tò he 1 với Chị Hằng */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <img src={nenSang} className="absolute top-0 left-0 w-full h-full object-fill z-0" alt="Background" />
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex items-center justify-between pl-20">
           {/* Nội dung bên trái */}
-          <div className="w-1/2 pr-4">
+          <div className="w-1/2 pl-8 pr-4">
             <p className="faustina text-2xl font-medium leading-relaxed text-left whitespace-pre-line text-white">{t("section2") || "Section 2 content goes here."}</p>
           </div>
 

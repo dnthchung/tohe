@@ -12,8 +12,5 @@
       "text": "Bộ sản phẩm tò he với tạo hình chủ đề 12 con giáp là cách kết nối hai giá trị truyền thống đặc sắc. Tò he – với chất liệu bột nặn dân gian đầy màu sắc – mang đến một hình thức thể hiện sinh động, gần gũi và sáng tạo cho những hình tượng vốn đã rất quen thuộc. Mỗi tác phẩm không chỉ là sản phẩm thủ công tỉ mỉ mà còn là một “kể chuyện viên” văn hóa, góp phần lưu giữ, truyền cảm hứng và lan tỏa nét đẹp của di sản dân tộc theo một cách mới mẻ, dễ tiếp cận hơn với công chúng, đặc biệt là giới trẻ."
     }
   },
-  "zodiac-animals": [
-    "Chuột", "Trâu", "Hổ", "Mèo", "Rồng", "Rắn",
-    "Ngựa", "Dê", "Khỉ", "Gà", "Chó", "Heo"
-  ]
+  "zodiac-animals": ["Tý (Chuột)", "Sửu (Trâu)", "Dần (Hổ)", "Mão (Mèo)", "Thìn (Rồng)", "Tỵ (Rắn)", "Ngọ (Ngựa)", "Mùi (Dê)", "Thân (Khỉ)", "Dậu (Gà)", "Tuất (Chó)", "Hợi (Heo)"]
 }
